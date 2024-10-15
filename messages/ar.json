@@ -1,0 +1,12 @@
+{
+  "seo": {
+    "title": "عنوان SEO",
+    "description": "وصف SEO"
+  },
+  "navbar": {
+    "home": "الرئيسية",
+    "menu": "القائمة",
+    "about": "عنا",
+    "contact": "اتصل بنا"
+  }
+}

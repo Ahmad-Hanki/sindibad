@@ -1,0 +1,12 @@
+{
+    "seo": {
+        "title": "SEO title",
+        "description": "SEO description"
+    },
+    "navbar": {
+        "home": "Home",
+        "menu": "Menu",
+        "about": "About",
+        "contact": "Contact"
+    }
+}

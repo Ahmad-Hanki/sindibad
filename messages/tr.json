@@ -1,0 +1,12 @@
+{
+  "seo": {
+    "title": "SEO başlık",
+    "description": "SEO açıklama"
+  },
+  "navbar": {
+    "home": "Anasayfa",
+    "menu": "Menü",
+    "about": "Hakkımızda",
+    "contact": "İletişim"
+  }
+}
