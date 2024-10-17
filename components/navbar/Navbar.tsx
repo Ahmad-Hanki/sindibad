@@ -17,7 +17,11 @@ const Navbar = () => {
             <PcNavbar links={links} />
           </div>
           <div className="md:hidden">
-            <MobileNavbar links={links} />
+            <MobileNavbar
+              menuText={t("links")}
+              getInTouch={t("getInTouch")}
+              links={links}
+            />
           </div>
         </div>
       </Container>

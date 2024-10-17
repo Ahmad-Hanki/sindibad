@@ -75,7 +75,7 @@ const PcNavbar = ({ links }: PcNavbarProps) => {
               key={index}
               href={link.url}
               className={`text-xl text-secondary-foreground/70  transition-all duration-200 hover:text-primary/70  ${
-                link.active && "text-primary"
+                link.active && "!text-primary"
               }`}
             >
               {link.title}

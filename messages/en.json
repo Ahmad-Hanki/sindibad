@@ -7,6 +7,8 @@
         "home": "Home",
         "menu": "Menu",
         "about": "About",
-        "contact": "Contact"
+        "contact": "Contact",
+        "links": "Links",
+        "getInTouch": "Get in touch"
     }
 }
