@@ -5,15 +5,28 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
 import Logo from "../Logo";
+import FlagsPc from "./FlagsPc";
+import { cn } from "@/lib/utils";
+import Cart from "../cart/Cart";
 
 interface PcNavbarProps {
   links: string[];
+  choseALanguage: string;
 }
 
-const PcNavbar = ({ links }: PcNavbarProps) => {
+const PcNavbar = ({ links, choseALanguage }: PcNavbarProps) => {
   const locale = useLocale();
 
   const pathname = usePathname();
+
+  const getOnlyPathname = (): string => {
+    // Replace the current locale part (whether 'en', 'ar', or 'tr') with the new locale
+    return pathname.replace(/^\/(en|ar|tr)/, "/");
+  };
+
+  const pn = getOnlyPathname();
+  console.log(pn);
+
   const navLinks = [
     {
       title: links[0],
@@ -74,21 +87,29 @@ const PcNavbar = ({ links }: PcNavbarProps) => {
             <Link
               key={index}
               href={link.url}
-              className={`text-xl text-secondary-foreground/70  transition-all duration-200 hover:text-primary/70  ${
-                link.active && "!text-primary"
-              }`}
+              className={cn(
+                "text-xl text-secondary-foreground/70  transition-all duration-200 hover:text-primary/70",
+                link.active && "text-primary",
+                pn === "/" && !link.active && "text-white"
+              )}
             >
               {link.title}
             </Link>
           ))}
         </nav>
 
+        
+
         <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 mx-9">
+          <Cart  />
+        </div>
           <Link href={contact.url}>
             <Button variant={"default"} className="px-3 rounded-md text-xl">
               {contact.title}
             </Button>
           </Link>
+          <FlagsPc choseALanguage={choseALanguage} />
         </div>
       </div>
     </div>

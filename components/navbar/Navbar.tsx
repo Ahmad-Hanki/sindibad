@@ -10,13 +10,13 @@ const Navbar = () => {
   const links = [t("home"), t("menu"), t("about"), t("contact")];
 
   return (
-    <div className="bg-popover py-4">
+    <div className="py-4">
       <Container>
         <div>
-          <div className="hidden md:block">
-            <PcNavbar links={links} />
+          <div className="hidden lg:block">
+            <PcNavbar choseALanguage={t("choseALanguage")} links={links} />
           </div>
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <MobileNavbar
               menuText={t("links")}
               getInTouch={t("getInTouch")}

@@ -9,6 +9,12 @@
     "about": "Hakkımızda",
     "contact": "İletişim",
     "links": "Bağlantılar",
-    "getInTouch": "İletişime geçin"
+    "getInTouch": "İletişime geçin",
+    "choseALanguage": "Dil seçin"
+  },
+  "home": {
+    "headerTitle": "Al Sindibad Restoranı",
+    "headerDescription": "Restoranımız, Batı mutfağı sevenler için benzersiz bir deneyim sunar, gelenek ve yeniliği harmanlayarak çeşitli Avrupa ve Amerikan mutfaklarından en iyi yemekleri sunar. Tüm damak zevklerine hitap eden çeşitli bir menü ve zarif bir atmosferin keyfini çıkarın, en kaliteliyi sağlamak için en taze malzemeleri kullanarak.",
+    "headerButton": "Sipariş ver"
   }
 }
