@@ -28,7 +28,7 @@ const Hero = ({ buttonText, description, title }: HeroProps) => {
           <div className="w-full">
             <Container>
               <div className="space-y-5">
-                <h1 className="text-5xl text-white">{title}</h1>
+                <h1 className="text-5xl text-white font-semibold">{title}</h1>
                 <p className="text-gray-300 max-w-2xl text-xl">{description}</p>
                 <div className="pt-3">
                   <Link href={"/menu"}>

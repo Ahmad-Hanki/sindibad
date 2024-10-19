@@ -41,10 +41,10 @@ export default async function RootLayout({
   return (
     <html dir={locale == "ar" ? "rtl" : "ltr"} lang={locale}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
         <NextIntlClientProvider messages={messages}>
-          <main>
+          <main className="max-w-[100vw] overflow-hidden">
             <Navbar />
             {children}
           </main>
