@@ -7,7 +7,7 @@ import Logo from "../Logo";
 const Navbar = () => {
   const t = useTranslations("navbar");
 
-  const links = [t("home"), t("menu"), t("about"), t("contact")];
+  const links = [t("home"), t("menu"), t("about"), t("order")];
 
   return (
     <div className="py-4">

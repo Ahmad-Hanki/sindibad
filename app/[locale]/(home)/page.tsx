@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import Hero from "./_components/Hero";
 import Recommended from "./_components/Recommended";
 import bg from "@/public/images/bg.png";
+import Location from "./_components/Location";
 const Home = () => {
   const t = useTranslations("home");
 
@@ -21,6 +22,8 @@ const Home = () => {
       />
 
       <Recommended recommended={t("recommended")} list={dataForRecommended} />
+
+      <Location />
     </div>
   );
 };

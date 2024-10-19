@@ -1,21 +1,21 @@
 {
-    "seo": {
-        "title": "SEO title",
-        "description": "SEO description"
-    },
-    "navbar": {
-        "home": "Home",
-        "menu": "Menu",
-        "about": "About",
-        "contact": "Contact",
-        "links": "Links",
-        "getInTouch": "Get in touch",
-        "choseALanguage": "Choose a language"
-    },
-    "home": {
-        "headerTitle":"Al Sindibad Restaurant",
-        "headerDescription":"Our restaurant offers a unique experience for lovers of Western cuisine, blending tradition and innovation to serve the finest dishes from various European and American kitchens. Enjoy an elegant atmosphere and a diverse menu that caters to all tastes, using the freshest ingredients to ensure unparalleled quality.",
-        "headerButton":"Order now",
-        "recommended":"Recommended Dishes"
-    }
+  "seo": {
+    "title": "SEO title",
+    "description": "SEO description"
+  },
+  "navbar": {
+    "home": "Home",
+    "menu": "Menu",
+    "about": "About",
+    "order": "Order Now",
+    "links": "Links",
+    "getInTouch": "Get in touch",
+    "choseALanguage": "Choose a language"
+  },
+  "home": {
+    "headerTitle": "Al Sindibad Restaurant",
+    "headerDescription": "Our restaurant offers a unique experience for lovers of Western cuisine, blending tradition and innovation to serve the finest dishes from various European and American kitchens. Enjoy an elegant atmosphere and a diverse menu that caters to all tastes, using the freshest ingredients to ensure unparalleled quality.",
+    "headerButton": "Order now",
+    "recommended": "Recommended Dishes"
+  }
 }

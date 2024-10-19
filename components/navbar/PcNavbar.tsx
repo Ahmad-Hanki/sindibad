@@ -65,16 +65,16 @@ const PcNavbar = ({ links, choseALanguage }: PcNavbarProps) => {
     title: links[3],
     url:
       locale == "en"
-        ? "/contact"
+        ? "/menu"
         : locale == "ar"
-        ? "/ar/contact"
-        : "/tr/contact",
+        ? "/ar/menu"
+        : "/tr/menu",
     active:
       locale == "en"
-        ? pathname === "/contact"
+        ? pathname === "/menu"
         : locale == "ar"
-        ? pathname === "/ar/contact"
-        : pathname === "/tr/contact",
+        ? pathname === "/ar/menu"
+        : pathname === "/tr/menu",
   };
 
   return (

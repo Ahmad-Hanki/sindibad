@@ -59,18 +59,13 @@ const MobileNavbar = ({ links, getInTouch, menuText }: MobileNavbarProps) => {
     },
     {
       title: links[3],
-      url:
-        locale == "en"
-          ? "/contact"
-          : locale == "ar"
-          ? "/ar/contact"
-          : "/tr/contact",
+      url: locale == "en" ? "/menu" : locale == "ar" ? "/ar/menu" : "/tr/menu",
       active:
         locale == "en"
-          ? pathname === "/contact"
+          ? pathname === "/menu"
           : locale == "ar"
-          ? pathname === "/ar/contact"
-          : pathname === "/tr/contact",
+          ? pathname === "/ar/menu"
+          : pathname === "/tr/menu",
     },
   ];
 
