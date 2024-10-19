@@ -16,6 +16,19 @@
     "headerTitle": "Al Sindibad Restoranı",
     "headerDescription": "Restoranımız, Batı mutfağı sevenler için benzersiz bir deneyim sunar, gelenek ve yeniliği harmanlayarak çeşitli Avrupa ve Amerikan mutfaklarından en iyi yemekleri sunar. Tüm damak zevklerine hitap eden çeşitli bir menü ve zarif bir atmosferin keyfini çıkarın, en kaliteliyi sağlamak için en taze malzemeleri kullanarak.",
     "headerButton": "Sipariş ver",
-    "recommended":"Öne Çıkan Yemekler"
+    "recommended":"Öne Çıkan Yemekler",
+    "contactData":"İletişim Bilgilerimiz",
+    "address":"Adres",
+    "phone":"Telefon",
+    "email":"E-posta"
+  },
+  "footer": {
+    "aboutSindibad":"Sindibad Hakkında",
+    "aboutDescription":"Sindibad, kalite ve tazelik üzerine odaklanarak lezzetli bir fast food deneyimi sunan şirin bir yerel restorandır. Sulu burgerlerden gevrek tavuk sandviçlerine ve mükemmel baharatlanmış patates kızartmalarına kadar her yemek, sadece en kaliteli malzemeler kullanılarak özenle hazırlanmıştır. Hızlı ve dostça hizmetiyle Sindibad, müşterilerin yemek yiyebileceği veya yanlarında götürebileceği bir yerde hoş bir atmosfer sunar. Sindibad, lezzetli ve unutulmaz bir fast food deneyimi için mükemmel bir noktadır, hepsi bir arada, sıcak bir konumda.",
+    "services":"Hizmetlerimiz",
+    "s1":"Anasayfa",
+    "s2":"Menü",
+    "s3":"Hakkımızda",
+    "contactData":"İletişim Bilgileri"
   }
 }

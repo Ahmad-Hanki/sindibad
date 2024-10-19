@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { Metadata } from "next";
 import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/footer/Footer";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -47,6 +48,7 @@ export default async function RootLayout({
           <main className="max-w-[100vw] overflow-hidden">
             <Navbar />
             {children}
+            <Footer />
           </main>
         </NextIntlClientProvider>
       </body>

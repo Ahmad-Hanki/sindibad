@@ -84,7 +84,7 @@ const MobileNavbar = ({ links, getInTouch, menuText }: MobileNavbarProps) => {
         </div>
 
         <div className="z-[100] flex gap-4 items-center">
-          <Cart />
+          {!open && <Cart />}
           <Hamburger
             toggled={open}
             onToggle={() => setOpen((prev) => !prev)}
