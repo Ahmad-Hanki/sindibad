@@ -13,7 +13,7 @@ interface HeroProps {
 const Hero = ({ buttonText, description, title }: HeroProps) => {
   // get the image from the backend
   return (
-    <div className="absolute inset-0 w-full -z-10">
+    <div className="absolute inset-0 w-full">
       <div className="w-full min-h-screen aspect-auto relative">
         <div>
           <Image

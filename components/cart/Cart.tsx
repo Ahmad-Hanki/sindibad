@@ -21,7 +21,7 @@ const Cart = () => {
   return (
     <div>
       <Dialog>
-        <DialogTrigger className="relative">
+        <DialogTrigger className="relative h-fit">
 
           <ShoppingBasketIcon
             className={cn(

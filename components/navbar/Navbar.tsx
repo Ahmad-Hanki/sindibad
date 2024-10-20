@@ -2,7 +2,6 @@ import { useTranslations } from "next-intl";
 import Container from "../Container";
 import PcNavbar from "./PcNavbar";
 import MobileNavbar from "./MobileNavbar";
-import Logo from "../Logo";
 
 const Navbar = () => {
   const t = useTranslations("navbar");
@@ -10,7 +9,7 @@ const Navbar = () => {
   const links = [t("home"), t("menu"), t("about"), t("order")];
 
   return (
-    <div className="py-4">
+    <div className="py-4 z-30 relative">
       <Container>
         <div>
           <div className="hidden lg:block">

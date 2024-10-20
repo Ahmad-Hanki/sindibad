@@ -8,6 +8,7 @@ import Logo from "../Logo";
 import FlagsPc from "./FlagsPc";
 import { cn } from "@/lib/utils";
 import Cart from "../cart/Cart";
+import { User } from "lucide-react";
 
 interface PcNavbarProps {
   links: string[];
@@ -63,12 +64,7 @@ const PcNavbar = ({ links, choseALanguage }: PcNavbarProps) => {
 
   const contact = {
     title: links[3],
-    url:
-      locale == "en"
-        ? "/menu"
-        : locale == "ar"
-        ? "/ar/menu"
-        : "/tr/menu",
+    url: locale == "en" ? "/menu" : locale == "ar" ? "/ar/menu" : "/tr/menu",
     active:
       locale == "en"
         ? pathname === "/menu"
@@ -98,12 +94,18 @@ const PcNavbar = ({ links, choseALanguage }: PcNavbarProps) => {
           ))}
         </nav>
 
-        
-
         <div className="flex items-center gap-4">
-        <div className="flex items-center gap-4 mx-9">
-          <Cart  />
-        </div>
+          <div className="flex items-center gap-4 mx-9">
+            <Cart />
+            <Link href={"/dashboard"}>
+              <User
+                className={cn(
+                  "transition-all duration-200  hover:text-primary/70 w-9 h-9 lg:w-8 lg:h-8",
+                  getOnlyPathname() == "/" && "text-white"
+                )}
+              />
+            </Link>
+          </div>
           <Link href={contact.url}>
             <Button variant={"default"} className="px-3 rounded-md text-xl">
               {contact.title}
