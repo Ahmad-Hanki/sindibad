@@ -1,23 +1,12 @@
 import Container from "@/components/Container";
-import Header from "./_components/Header";
-import AddProductForm from "./_components/AddProductForm";
+
+import DashboardClient from "./dashboard-client";
 
 const page = ({ params: { locale } }: { params: { locale: string } }) => {
   return (
-    <div className="w-full">
+    <div className="w-full py-3">
       <Container>
-        <Header
-          title={
-            locale == "en"
-              ? "The Products"
-              : locale == "ar"
-              ? "المنتجات"
-              : "Ürünler"
-          }
-        >
-          
-          <AddProductForm/>
-        </Header>
+        <DashboardClient locale={locale} />
       </Container>
     </div>
   );

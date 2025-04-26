@@ -17,21 +17,20 @@
     "headerDescription": "Our restaurant offers a unique experience for lovers of Western cuisine, blending tradition and innovation to serve the finest dishes from various European and American kitchens. Enjoy an elegant atmosphere and a diverse menu that caters to all tastes, using the freshest ingredients to ensure unparalleled quality.",
     "headerButton": "Order now",
     "recommended": "Recommended Dishes",
-    "contactData":"Our Contact Data",
-    "address":"Address",
-    "phone":"Phone",
-    "email":"Email"
+    "contactData": "Our Contact Data",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email"
   },
   "footer": {
-    "aboutSindibad":"About Sindibad",
-    "aboutDescription":"Sindibad is a charming local restaurant that offers a delicious fast food experience with a focus on quality and freshness. From juicy burgers to crispy chicken sandwiches and perfectly seasoned fries, every meal is prepared with care using only the finest ingredients. With its quick and friendly service, Sindibad provides a welcoming atmosphere where customers can enjoy a satisfying meal, whether they’re dining in or grabbing something on the go. It’s the perfect spot for a flavorful and memorable fast food experience, all in one cozy location.",
-    "services":"Our Services",
-    "s1":"Home",
-    "s2":"Menu",
-    "s3":"About",
+    "aboutSindibad": "About Sindibad",
+    "aboutDescription": "Sindibad is a charming local restaurant that offers a delicious fast food experience with a focus on quality and freshness. From juicy burgers to crispy chicken sandwiches and perfectly seasoned fries, every meal is prepared with care using only the finest ingredients. With its quick and friendly service, Sindibad provides a welcoming atmosphere where customers can enjoy a satisfying meal, whether they’re dining in or grabbing something on the go. It’s the perfect spot for a flavorful and memorable fast food experience, all in one cozy location.",
+    "services": "Our Services",
+    "s1": "Home",
+    "s2": "Menu",
+    "s3": "About",
 
-    "contactData":"Contact Data",
-    "copyRight":"© 2024 Sindibad. All rights reserved."
-
+    "contactData": "Contact Data",
+    "copyRight": "© 2024 Sindibad. All rights reserved."
   }
 }
