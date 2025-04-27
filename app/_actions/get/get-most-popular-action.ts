@@ -2,7 +2,7 @@
 
 import prisma from "@/lib/db";
 
-export const getMostPopularAction = async () => {
+export const getMostPopularProductsAction = async () => {
   try {
     const res = await prisma.product.findMany({
       where: {

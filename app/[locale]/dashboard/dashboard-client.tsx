@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Header from "./_components/Header";
 import AddProductForm from "./_components/AddProductForm";
+import ProductsTables from "./_components/table/products-table";
 
 const DashboardClient = ({ locale }: { locale: string }) => {
   const [open, setOpen] = useState(false);
@@ -20,6 +21,8 @@ const DashboardClient = ({ locale }: { locale: string }) => {
       >
         <AddProductForm open={open} setOpen={setOpen} />
       </Header>
+
+      <ProductsTables />
     </div>
   );
 };
