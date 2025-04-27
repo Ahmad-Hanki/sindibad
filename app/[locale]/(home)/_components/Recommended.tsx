@@ -1,6 +1,4 @@
-"use client";
 
-import Container from "@/components/Container";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -11,18 +9,17 @@ import {
 } from "@/components/ui/carousel";
 import Image, { StaticImageData } from "next/image";
 import Autoplay from "embla-carousel-autoplay";
+import { useMostPopular } from "../_api/get-most-popular";
 
 interface RecommendedProps {
-  list: {
-    id: string;
-    name: string;
-    image: string | StaticImageData;
-  }[];
-
   recommended: string;
 }
 
-const Recommended = ({ list, recommended }: RecommendedProps) => {
+// need to be reworked
+
+const Recommended = ({ recommended }: RecommendedProps) => {
+  const { data: list } = useMostPopular({});
+
   return (
     <div className="mt-[calc(100vh-112px)] py-20">
       <h2 className="pb-10 text-5xl font-semibold text-center">
@@ -41,7 +38,7 @@ const Recommended = ({ list, recommended }: RecommendedProps) => {
           className="w-full px-0 max-w-[90rem]"
         >
           <CarouselContent>
-            {list.map((item, index) => (
+            {list?.map((item, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                 <div className="p-1">
                   <Card className="border-primary border-4 rounded-2xl ">
@@ -55,7 +52,7 @@ const Recommended = ({ list, recommended }: RecommendedProps) => {
                               src={item.image}
                               alt={item.name}
                               fill
-                              className="object-cover object-center transition-all duration-500 hover:scale-110"
+                              className=" object-center transition-all duration-500 hover:scale-110"
                             />
                           </div>
                         </div>

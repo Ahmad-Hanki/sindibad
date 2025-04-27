@@ -6,6 +6,7 @@ import { Metadata } from "next";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import { Toaster } from "@/components/ui/toaster";
+import { AppProvider } from "@/providers/react-query";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -45,14 +46,16 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
-        <NextIntlClientProvider messages={messages}>
-          <main className="max-w-[100vw] overflow-hidden">
-            <Navbar />
-            {children}
-            <Toaster />
-            <Footer />
-          </main>
-        </NextIntlClientProvider>
+        <AppProvider>
+          <NextIntlClientProvider messages={messages}>
+            <main className="max-w-[100vw] overflow-hidden">
+              <Navbar />
+              {children}
+              <Toaster />
+              <Footer />
+            </main>
+          </NextIntlClientProvider>
+        </AppProvider>
       </body>
     </html>
   );

@@ -26,7 +26,6 @@ const PcNavbar = ({ links, choseALanguage }: PcNavbarProps) => {
   };
 
   const pn = getOnlyPathname();
-  console.log(pn);
 
   const navLinks = [
     {

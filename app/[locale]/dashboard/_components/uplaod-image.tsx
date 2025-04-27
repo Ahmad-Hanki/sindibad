@@ -15,16 +15,21 @@ const UploadImage = ({
       <CldUploadWidget
         signatureEndpoint="/api/sign-cloudinary-params"
         uploadPreset="sindibad"
-        onSuccess={(result) => {
+        onSuccess={(result, { widget }) => {
           // @ts-ignore
           setImage(result?.info?.secure_url ?? "");
+          // widget.close();
         }}
         onUploadAdded={() => console.log("Upload started!")}
         onQueuesEnd={() => console.log("Queue finished!")}
         onError={(error) => console.log("Error!", error)}
       >
         {({ open }) => {
-          return <Button onClick={() => open()}>{title}</Button>;
+          return (
+            <Button type="button" onClick={() => open()}>
+              {title}
+            </Button>
+          );
         }}
       </CldUploadWidget>
     </div>

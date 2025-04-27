@@ -7,6 +7,8 @@ import { Input } from "@/components/ui/input";
 import { useLocale } from "next-intl";
 import { Dispatch, useState } from "react";
 import UploadImage from "./uplaod-image";
+import { useCreateMeal } from "../_api/add-new-meal";
+import { useToast } from "@/hooks/use-toast";
 
 const AddProductForm = ({
   open,
@@ -15,9 +17,43 @@ const AddProductForm = ({
   open: boolean;
   setOpen: Dispatch<React.SetStateAction<boolean>>;
 }) => {
+  const { toast } = useToast();
+
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const locale = useLocale();
-  const addHAndler = async (FormData: FormData) => {};
+  const { mutateAsync, isPending } = useCreateMeal({
+    mutationConfig: {
+      onSuccess: () => {
+        toast({ title: "Meal added successfully" });
+        setImageUrl(null);
+        setOpen(false);
+      },
+    },
+  });
+  const addHAndler = async (FormData: FormData) => {
+    const name = FormData.get("name") as string;
+    ///....
+    // add the meal name
+    // add the meal description
+    // add the meal image
+    // add the meal price
+    // add the meal category
+    // add if the meal is most popular
+
+    // check if no data is empty
+
+    // and then add the meal
+
+    const data = {
+      name,
+      description: "",
+      image: imageUrl ?? "",
+      price: 0,
+      categoryId: "9ba5ff15-68e4-4e02-94e2-85ceeaad26c5", // hardcoded id for now
+      mostPopular: true, // hardcoded for now
+    };
+    await mutateAsync({ data });
+  };
 
   return (
     <div>
