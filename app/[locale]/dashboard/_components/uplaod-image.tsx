@@ -1,4 +1,3 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import { CldUploadWidget } from "next-cloudinary";
 import { Dispatch, SetStateAction } from "react";
@@ -13,6 +12,13 @@ const UploadImage = ({
   return (
     <div>
       <CldUploadWidget
+        options={{
+          sources: ["local", "url", "camera"],
+          multiple: false,
+          resourceType: "image",
+          clientAllowedFormats: ["jpg", "jpeg", "png", "gif", "webp"],
+          maxFiles: 1,
+        }}
         signatureEndpoint="/api/sign-cloudinary-params"
         uploadPreset="sindibad"
         onSuccess={(result, { widget }) => {

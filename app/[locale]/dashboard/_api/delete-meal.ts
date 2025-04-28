@@ -1,28 +1,24 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { MutationConfig } from "@/lib/react-query";
-import {
-  addNewMealAction,
-  MealType,
-} from "@/app/_actions/post/add-new-meal-action";
-import { Product } from "@prisma/client";
 import { getAllProductsQueryOptions } from "./get-all-products";
+import { deleteMealAction } from "@/app/_actions/delete/delete-product-action";
 
-export const createMeal = async ({
-  data,
+export const deleteMeal = async ({
+  MealId,
 }: {
-  data: MealType;
-}): Promise<Product> => {
-  return await addNewMealAction(data);
+  MealId: string;
+}) => {
+  return deleteMealAction(MealId);
 };
 
-type UseCreateMealOptions = {
-  mutationConfig?: MutationConfig<typeof createMeal>;
+type UseDeleteMealOptions = {
+  mutationConfig?: MutationConfig<typeof deleteMeal>;
 };
 
-export const useCreateMeal = ({
+export const useDeleteMeal = ({
   mutationConfig,
-}: UseCreateMealOptions = {}) => {
+}: UseDeleteMealOptions = {}) => {
   const queryClient = useQueryClient();
 
   const { onSuccess, ...restConfig } = mutationConfig || {};
@@ -35,6 +31,6 @@ export const useCreateMeal = ({
       onSuccess?.(...args);
     },
     ...restConfig,
-    mutationFn: createMeal,
+    mutationFn: deleteMeal,
   });
 };

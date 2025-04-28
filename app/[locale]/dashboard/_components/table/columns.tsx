@@ -1,8 +1,10 @@
 import { ColumnDef } from "@tanstack/react-table";
 import Image from "next/image";
+import DropDownActions from "./dropdown-actions";
 
 export interface Product {
   id: string;
+  categoryId: string;
   name: string;
   description: string;
   price: number;
@@ -42,6 +44,14 @@ export const enColumns: ColumnDef<Product>[] = [
       );
     },
   },
+  {
+    accessorKey: "actions",
+    header: "Actions",
+    cell: ({ row }) => {
+      const data = row.original;
+      return <DropDownActions data={data} />;
+    },
+  },
 ];
 
 export const trColumns: ColumnDef<Product>[] = [
@@ -77,6 +87,14 @@ export const trColumns: ColumnDef<Product>[] = [
       );
     },
   },
+  {
+    accessorKey: "actions",
+    header: "İşlemler",
+    cell: ({ row }) => {
+      const data = row.original;
+      return <DropDownActions data={data} />;
+    },
+  },
 ];
 
 export const arColumns: ColumnDef<Product>[] = [
@@ -110,6 +128,14 @@ export const arColumns: ColumnDef<Product>[] = [
           height={50}
         />
       );
+    },
+  },
+  {
+    accessorKey: "actions",
+    header: "الإجراءات",
+    cell: ({ row }) => {
+      const data = row.original;
+      return <DropDownActions data={data} />;
     },
   },
 ];

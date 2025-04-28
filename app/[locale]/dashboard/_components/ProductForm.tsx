@@ -2,7 +2,7 @@
 
 import SubmitButton from "@/components/SubmitButton";
 import { Button } from "@/components/ui/button";
-import { DialogClose } from "@/components/ui/dialog";
+import { DialogClose, DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { useLocale } from "next-intl";
 import { Dispatch, useState } from "react";
@@ -10,7 +10,7 @@ import UploadImage from "./uplaod-image";
 import { useCreateMeal } from "../_api/add-new-meal";
 import { useToast } from "@/hooks/use-toast";
 
-const AddProductForm = ({
+const ProductForm = ({
   open,
   setOpen,
 }: {
@@ -87,34 +87,37 @@ const AddProductForm = ({
         />
 
         {/* select section */}
-        <div className="flex justify-between items-center gap-4">
-          <DialogClose
-            onClick={() => {
-              setOpen(false);
-            }}
-            asChild
-          >
-            <Button type="button" variant="secondary" className="text-lg w-fit">
+        <div>
+          <DialogFooter className="flex justify-between items-center gap-4">
+            <Button
+              onClick={() => {
+                setOpen(false);
+              }}
+              type="button"
+              variant="secondary"
+            >
               {locale == "en" ? "Cancel" : locale == "ar" ? "الغاء" : "İptal"}
             </Button>
-          </DialogClose>
 
-          <SubmitButton
-            type="submit"
-            submit={locale == "en" ? "Add" : locale == "ar" ? "اضافة" : "Ekle"}
-            className="w-fit"
-            submitting={
-              locale == "en"
-                ? "Adding"
-                : locale == "ar"
-                ? "جاري الاضافة"
-                : "Ekleniyor"
-            }
-          />
+            <SubmitButton
+              type="submit"
+              submit={
+                locale == "en" ? "Add" : locale == "ar" ? "اضافة" : "Ekle"
+              }
+              className="w-fit"
+              submitting={
+                locale == "en"
+                  ? "Adding"
+                  : locale == "ar"
+                  ? "جاري الاضافة"
+                  : "Ekleniyor"
+              }
+            />
+          </DialogFooter>
         </div>
       </form>
     </div>
   );
 };
 
-export default AddProductForm;
+export default ProductForm;

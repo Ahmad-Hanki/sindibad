@@ -6,23 +6,26 @@ import {
   MealType,
 } from "@/app/_actions/post/add-new-meal-action";
 import { Product } from "@prisma/client";
+import { updateMealAction } from "@/app/_actions/put/update-product-action";
 import { getAllProductsQueryOptions } from "./get-all-products";
 
-export const createMeal = async ({
+export const updateMeal = async ({
   data,
+  id,
 }: {
   data: MealType;
+  id: string;
 }): Promise<Product> => {
-  return await addNewMealAction(data);
+  return await updateMealAction(data, id);
 };
 
-type UseCreateMealOptions = {
-  mutationConfig?: MutationConfig<typeof createMeal>;
+type UseUpdateMealOptions = {
+  mutationConfig?: MutationConfig<typeof updateMeal>;
 };
 
-export const useCreateMeal = ({
+export const useUpdateMeal = ({
   mutationConfig,
-}: UseCreateMealOptions = {}) => {
+}: UseUpdateMealOptions = {}) => {
   const queryClient = useQueryClient();
 
   const { onSuccess, ...restConfig } = mutationConfig || {};
@@ -35,6 +38,6 @@ export const useCreateMeal = ({
       onSuccess?.(...args);
     },
     ...restConfig,
-    mutationFn: createMeal,
+    mutationFn: updateMeal,
   });
 };
