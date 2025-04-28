@@ -1,7 +1,7 @@
 import { queryOptions, useQuery } from "@tanstack/react-query";
 
 import { QueryConfig } from "@/lib/react-query";
-import { getAllProductsAction } from "@/app/_actions/get/get-all-producats";
+import { getAllProductsAction } from "@/server-actions/get/get-all-producats";
 
 export const getAllProducts = async () => {
   return await getAllProductsAction();

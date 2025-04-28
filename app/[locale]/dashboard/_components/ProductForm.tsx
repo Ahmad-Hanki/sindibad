@@ -2,7 +2,7 @@
 
 import SubmitButton from "@/components/SubmitButton";
 import { Button } from "@/components/ui/button";
-import { DialogClose, DialogFooter } from "@/components/ui/dialog";
+import { DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { useLocale } from "next-intl";
 import { Dispatch, useState } from "react";
@@ -11,7 +11,7 @@ import { useCreateMeal } from "../_api/add-new-meal";
 import { useToast } from "@/hooks/use-toast";
 
 const ProductForm = ({
-  open,
+  // open,
   setOpen,
 }: {
   open: boolean;
@@ -21,7 +21,7 @@ const ProductForm = ({
 
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const locale = useLocale();
-  const { mutateAsync, isPending } = useCreateMeal({
+  const { mutateAsync } = useCreateMeal({
     mutationConfig: {
       onSuccess: () => {
         toast({ title: "Meal added successfully" });

@@ -7,7 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
 import { useMostPopular } from "../_api/get-most-popular";
 

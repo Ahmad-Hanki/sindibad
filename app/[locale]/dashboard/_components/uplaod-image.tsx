@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { CldUploadWidget } from "next-cloudinary";
 import { Dispatch, SetStateAction } from "react";
-// complete the code in the middle
 const UploadImage = ({
   setImage,
   title,
@@ -21,7 +20,11 @@ const UploadImage = ({
         }}
         signatureEndpoint="/api/sign-cloudinary-params"
         uploadPreset="sindibad"
-        onSuccess={(result, { widget }) => {
+        onSuccess={(
+          result
+          // { widget }
+        ) => {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           setImage(result?.info?.secure_url ?? "");
           // widget.close();

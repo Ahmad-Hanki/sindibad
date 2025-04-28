@@ -1,12 +1,9 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { MutationConfig } from "@/lib/react-query";
-import {
-  addNewMealAction,
-  MealType,
-} from "@/app/_actions/post/add-new-meal-action";
+import { MealType } from "@/server-actions/post/add-new-meal-action";
 import { Product } from "@prisma/client";
-import { updateMealAction } from "@/app/_actions/put/update-product-action";
+import { updateMealAction } from "@/server-actions/put/update-product-action";
 import { getAllProductsQueryOptions } from "./get-all-products";
 
 export const updateMeal = async ({

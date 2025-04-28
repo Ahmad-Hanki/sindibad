@@ -1,8 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { Plus } from "lucide-react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Dispatch } from "react";
 import ProductForm from "./ProductForm";
 import { Product } from "@prisma/client";
@@ -13,7 +11,10 @@ interface HeaderProps {
   open: boolean;
 }
 
-const ProductDialog = ({ open, setOpen, initialData }: HeaderProps) => {
+const ProductDialog = ({ open, setOpen, 
+  // initialData 
+
+}: HeaderProps) => {
   return (
     <div>
       <Dialog open={open} modal={false}>

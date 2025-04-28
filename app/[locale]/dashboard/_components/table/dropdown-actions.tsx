@@ -9,7 +9,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const DropDownActions = ({ data }: { data: Product }) => {
+const DropDownActions = ({ 
+    // data
+
+ }: { data: Product }) => {
   return (
     <div>
       <DropdownMenu>

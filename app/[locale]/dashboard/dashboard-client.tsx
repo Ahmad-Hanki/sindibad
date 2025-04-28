@@ -1,7 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import Header from "./_components/ProductDialog";
-import AddProductForm from "./_components/ProductForm";
 import ProductsTables from "./_components/table/products-table";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";

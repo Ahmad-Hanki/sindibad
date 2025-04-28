@@ -1,9 +1,9 @@
 import { queryOptions, useQuery } from "@tanstack/react-query";
 
 import { QueryConfig } from "@/lib/react-query";
-import { getMostPopularProductsAction } from "@/app/_actions/get/get-most-popular-action";
+import { getMostPopularProductsAction } from "@/server-actions/get/get-most-popular-action";
 
-export const getMostPopular = async() => {
+export const getMostPopular = async () => {
   return await getMostPopularProductsAction();
 };
 

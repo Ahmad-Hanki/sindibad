@@ -6,5 +6,7 @@ export const getAllCategoriesAction = async () => {
   try {
     const res = await prisma.category.findMany({});
     return res;
-  } catch (error) {}
+  } catch (error) {
+    console.error("Error fetching all categories:", error);
+  }
 };

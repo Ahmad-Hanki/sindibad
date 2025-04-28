@@ -2,13 +2,11 @@
 import ar from "@/public/images/ar.jpg";
 import en from "@/public/images/en.jpg";
 import tr from "@/public/images/tr.jpg";
-import { useLocale } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const Flags = () => {
-  const locale = useLocale();
   const pathname = usePathname();
 
   // Helper function to switch locale in the pathname

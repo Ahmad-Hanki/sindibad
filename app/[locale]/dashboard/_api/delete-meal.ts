@@ -2,13 +2,9 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { MutationConfig } from "@/lib/react-query";
 import { getAllProductsQueryOptions } from "./get-all-products";
-import { deleteMealAction } from "@/app/_actions/delete/delete-product-action";
+import { deleteMealAction } from "@/server-actions/delete/delete-product-action";
 
-export const deleteMeal = async ({
-  MealId,
-}: {
-  MealId: string;
-}) => {
+export const deleteMeal = async ({ MealId }: { MealId: string }) => {
   return deleteMealAction(MealId);
 };
 

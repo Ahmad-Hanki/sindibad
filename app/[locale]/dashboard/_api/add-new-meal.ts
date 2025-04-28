@@ -4,7 +4,7 @@ import { MutationConfig } from "@/lib/react-query";
 import {
   addNewMealAction,
   MealType,
-} from "@/app/_actions/post/add-new-meal-action";
+} from "@/server-actions/post/add-new-meal-action";
 import { Product } from "@prisma/client";
 import { getAllProductsQueryOptions } from "./get-all-products";
 
