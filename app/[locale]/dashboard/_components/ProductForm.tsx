@@ -4,8 +4,7 @@ import SubmitButton from "@/components/SubmitButton";
 import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { useLocale } from "next-intl";
-import { Dispatch, useState } from "react";
+import { Dispatch } from "react";
 import UploadImage from "./uplaod-image";
 import { useCreateMeal } from "../_api/add-new-meal";
 import { useToast } from "@/hooks/use-toast";
@@ -157,7 +156,7 @@ const ProductForm = ({
         />
         <FormField
           control={form.control}
-          name="descrıptıon_tr"
+          name="description_tr"
           render={({ field }) => (
             <FormItem>
               <FormLabel>

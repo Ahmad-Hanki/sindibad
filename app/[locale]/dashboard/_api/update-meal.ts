@@ -1,16 +1,16 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { MutationConfig } from "@/lib/react-query";
-import { MealType } from "@/server-actions/post/add-new-meal-action";
 import { Product } from "@prisma/client";
 import { updateMealAction } from "@/server-actions/put/update-product-action";
 import { getAllProductsQueryOptions } from "./get-all-products";
+import { FormSchemaInput } from "../_utils/form-schemes";
 
 export const updateMeal = async ({
   data,
   id,
 }: {
-  data: MealType;
+  data: FormSchemaInput;
   id: string;
 }): Promise<Product> => {
   return await updateMealAction(data, id);

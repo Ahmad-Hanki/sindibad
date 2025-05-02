@@ -21,7 +21,7 @@ export const getProductFormSchema = (locale: string) => {
       message: "الوصف مطلوب",
     }),
 
-    descrıptıon_tr: z.string().min(1, {
+    description_tr: z.string().min(1, {
       message: "Açıklama zorunludur",
     }),
     price: z.number().min(1, {
