@@ -1,19 +1,12 @@
 "use server";
 
+import { FormSchemaInput } from "@/app/[locale]/dashboard/_utils/form-schemes";
 import prisma from "@/lib/db";
 import { Product } from "@prisma/client";
 
-export interface MealType {
-  name: string;
-  description: string;
-  image: string;
-  price: number;
-  categoryId: string;
-  mostPopular: boolean;
-}
 // app/_actions/post/add-new-meal-action.ts
 export const addNewMealAction = async (
-  formData: MealType
+  formData: FormSchemaInput
 ): Promise<Product> => {
   try {
     const res = await prisma.product.create({
@@ -24,6 +17,8 @@ export const addNewMealAction = async (
         price: formData.price,
         categoryId: formData.categoryId,
         mostPopular: formData.mostPopular,
+        name_ar: formData.name_ar,
+        name_tr: formData.name_tr,
       },
     });
     return res;

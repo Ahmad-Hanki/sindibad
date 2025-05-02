@@ -9,81 +9,250 @@ import { Dispatch, useState } from "react";
 import UploadImage from "./uplaod-image";
 import { useCreateMeal } from "../_api/add-new-meal";
 import { useToast } from "@/hooks/use-toast";
-
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { FormSchemaInput, getProductFormSchema } from "../_utils/form-schemes";
+import { Textarea } from "@/components/ui/textarea";
+import { SelectCategories } from "./select-categories";
 const ProductForm = ({
   // open,
   setOpen,
+  locale,
 }: {
   open: boolean;
   setOpen: Dispatch<React.SetStateAction<boolean>>;
+  locale: string;
 }) => {
+  const form = useForm<FormSchemaInput>({
+    resolver: zodResolver(getProductFormSchema(locale)),
+    defaultValues: {},
+  });
+  // THIS FORM WILL CHANGES TO REACT FORM
   const { toast } = useToast();
 
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
-  const locale = useLocale();
   const { mutateAsync } = useCreateMeal({
     mutationConfig: {
       onSuccess: () => {
         toast({ title: "Meal added successfully" });
-        setImageUrl(null);
         setOpen(false);
       },
     },
   });
-  const addHAndler = async (FormData: FormData) => {
-    const name = FormData.get("name") as string;
-    ///....
-    // add the meal name
-    // add the meal description
-    // add the meal image
-    // add the meal price
-    // add the meal category
-    // add if the meal is most popular
+  async function onSubmit(values: FormSchemaInput) {
+    await mutateAsync({ data: values });
+  }
 
-    // check if no data is empty
-
-    // and then add the meal
-
-    const data = {
-      name,
-      description: "",
-      image: imageUrl ?? "",
-      price: 0,
-      categoryId: "9ba5ff15-68e4-4e02-94e2-85ceeaad26c5", // hardcoded id for now
-      mostPopular: true, // hardcoded for now
-    };
-    await mutateAsync({ data });
-  };
+  console.log(form.getValues().categoryId);
 
   return (
-    <div>
-      <form action={addHAndler} className="flex flex-col gap-6">
-        <div className="flex flex-col gap-2">
-          <label className="font-semibold" htmlFor="name">
-            {locale == "en" ? "Name" : locale == "ar" ? "الاسم" : "Adı"}
-          </label>
-          <Input type="text" name="name" className="text-lg" />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label className="font-semibold" htmlFor="description">
-            {locale == "en"
-              ? "Description"
-              : locale == "ar"
-              ? "الوصف"
-              : "Açıklama"}
-          </label>
-          <Input className="text-lg" type="text" name="description" />
-        </div>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                {/* its the english name */}
+                {locale == "en"
+                  ? "English Name"
+                  : locale == "ar"
+                  ? "الاسم الانجليزي"
+                  : "İngilizce Adı"}
+              </FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="name_ar"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                {/* its the english name */}
+                {locale == "en"
+                  ? "Arabic Name"
+                  : locale == "ar"
+                  ? "الاسم العربي"
+                  : "Arapça Adı"}
+              </FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="name_tr"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                {/* its the english name */}
+                {locale == "en"
+                  ? "Turkish Name"
+                  : locale == "ar"
+                  ? "الاسم التركي"
+                  : "Türkçe Adı"}
+              </FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="description"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                {/* its the english name */}
+                {locale == "en"
+                  ? "English Description"
+                  : locale == "ar"
+                  ? "الوصف الانجليزي"
+                  : "İngilizce Açıklama"}
+              </FormLabel>
+              <FormControl>
+                <Textarea {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="description_ar"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                {/* its the english name */}
+                {locale == "en"
+                  ? "Arabic Description"
+                  : locale == "ar"
+                  ? "الوصف العربي"
+                  : "Açıklama (Arapça)"}
+              </FormLabel>
+              <FormControl>
+                <Textarea {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="descrıptıon_tr"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                {/* its the english name */}
+                {locale == "en"
+                  ? "Turkish Description"
+                  : locale == "ar"
+                  ? "الوصف التركي"
+                  : "Türkçe Açıklama"}
+              </FormLabel>
+              <FormControl>
+                <Textarea {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="description"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                {/* its the english name */}
+                {locale == "en"
+                  ? "Description"
+                  : locale == "ar"
+                  ? "الوصف"
+                  : "Açıklama"}
+              </FormLabel>
+              <FormControl>
+                <SelectCategories onValueChange={field.onChange} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="price"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                {/* its the english name */}
+                {locale == "en" ? "Price" : locale == "ar" ? "السعر" : "Fiyat"}
+              </FormLabel>
+              <FormControl>
+                {/* I need an input that accepts only numbers. and accept only 2 decimals */}
+                <Input
+                  type="number"
+                  step={0.01}
+                  {...field}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    if (value === "") {
+                      field.onChange(value); // or null/undefined if you prefer
+                    } else {
+                      const numValue = parseFloat(value);
+                      if (!isNaN(numValue)) {
+                        field.onChange(numValue);
+                      }
+                    }
+                  }}
+                  value={field.value ?? ""} // Handles null/undefined cases
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-        <UploadImage
-          setImage={setImageUrl}
-          title={
-            locale == "en"
-              ? "Upload an Image"
-              : locale == "ar"
-              ? "ارفع صورة"
-              : "Resim Yükle"
-          }
+        <FormField
+          control={form.control}
+          name="description"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                {/* its the english name */}
+                {locale == "en" ? "Image" : locale == "ar" ? "الصورة" : "Resim"}
+              </FormLabel>
+              <FormControl>
+                <UploadImage
+                  setImage={field.onChange}
+                  title={
+                    locale == "en"
+                      ? "Upload an Image"
+                      : locale == "ar"
+                      ? "ارفع صورة"
+                      : "Resim Yükle"
+                  }
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
 
         {/* select section */}
@@ -116,7 +285,7 @@ const ProductForm = ({
           </DialogFooter>
         </div>
       </form>
-    </div>
+    </Form>
   );
 };
 

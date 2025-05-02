@@ -1,0 +1,13 @@
+// This is your main Prisma schema file
+// It imports all other parts of your schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["prismaSchemaFolder"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
