@@ -16,8 +16,8 @@ type VariantType =
 interface DeleteButtonProps extends ButtonProps {
   // Extend ButtonProps
   submit: string;
-  submitting: string;
   variant?: VariantType;
+  loading?: boolean;
   className?: string;
 }
 
@@ -25,12 +25,12 @@ const SubmitButton = ({
   className,
   submit,
   variant = "default",
-  submitting,
+  loading,
   ...props
 }: DeleteButtonProps) => {
   const { pending } = useFormStatus();
 
-  if (!pending)
+  if (!pending && !loading)
     return (
       <Button
         type={"submit"}
@@ -50,7 +50,6 @@ const SubmitButton = ({
       {...props}
     >
       <Loader2 className="animate-spin transition-all h-4 w-4" />
-      <p>{submitting}</p>
     </Button>
   );
 };

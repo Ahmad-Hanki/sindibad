@@ -9,7 +9,7 @@ const DashboardClient = ({ locale }: { locale: string }) => {
   const [open, setOpen] = useState(false);
   return (
     <div>
-      <ProductDialog open={open} setOpen={setOpen} />
+      <ProductDialog open={open} setOpen={setOpen} locale={locale} />
       <div className="flex items-center justify-between w-full">
         <h1 className="text-lg font-semibold flex-1 w-full ">
           {locale == "en"

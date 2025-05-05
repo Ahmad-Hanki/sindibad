@@ -1,17 +1,10 @@
 import { ColumnDef } from "@tanstack/react-table";
 import Image from "next/image";
 import DropDownActions from "./dropdown-actions";
+import { GetAllProductsResponseType } from "@/server-actions/get/get-all-producats";
 
-export interface Product {
-  id: string;
-  categoryId: string;
-  name: string;
-  description: string;
-  price: number;
-  categoryName: string;
-  image: string;
-}
-export const enColumns: ColumnDef<Product>[] = [
+
+export const enColumns: ColumnDef<GetAllProductsResponseType>[] = [
   {
     accessorKey: "name",
     header: "Name",
@@ -46,21 +39,25 @@ export const enColumns: ColumnDef<Product>[] = [
   },
   {
     accessorKey: "actions",
-    header: "Actions",
+    header: () => <div className=" flex justify-end">Actions</div>,
     cell: ({ row }) => {
       const data = row.original;
-      return <DropDownActions data={data} />;
+      return (
+        <div className="flex justify-end">
+          <DropDownActions data={data} />
+        </div>
+      );
     },
   },
 ];
 
-export const trColumns: ColumnDef<Product>[] = [
+export const trColumns: ColumnDef<GetAllProductsResponseType>[] = [
   {
-    accessorKey: "name",
+    accessorKey: "name_tr",
     header: "İsim",
   },
   {
-    accessorKey: "description",
+    accessorKey: "description_tr",
     header: "Açıklama",
   },
   {
@@ -89,53 +86,75 @@ export const trColumns: ColumnDef<Product>[] = [
   },
   {
     accessorKey: "actions",
-    header: "İşlemler",
+    header: () => <div className=" flex justify-end">İşlemler</div>,
     cell: ({ row }) => {
       const data = row.original;
-      return <DropDownActions data={data} />;
+      return (
+        <div className="flex justify-end">
+          <DropDownActions data={data} />
+        </div>
+      );
     },
   },
 ];
 
-export const arColumns: ColumnDef<Product>[] = [
+export const arColumns: ColumnDef<GetAllProductsResponseType>[] = [
   {
-    accessorKey: "name",
-    header: "الاسم",
+    accessorKey: "name_ar",
+    header: () => <div className="text-right w-full">الاسم</div>, // Right-aligned header
+    cell: ({ getValue }) => (
+      <div className="text-right">{getValue() as string}</div>
+    ),
   },
   {
-    accessorKey: "description",
-    header: "الوصف",
+    accessorKey: "description_ar",
+    header: () => <div className="text-right w-full">الوصف</div>,
+    cell: ({ getValue }) => (
+      <div className="text-right">{getValue() as string}</div>
+    ),
   },
   {
     accessorKey: "price",
-    header: "السعر",
+    header: () => <div className="text-right w-full">السعر</div>,
+    cell: ({ getValue }) => (
+      <div className="text-right">{getValue() as string}</div>
+    ),
   },
   {
     accessorKey: "categoryName",
-    header: "الفئة",
+    header: () => <div className="text-right w-full">الفئة</div>,
+    cell: ({ getValue }) => (
+      <div className="text-right">{getValue() as string}</div>
+    ),
   },
   {
     accessorKey: "image",
-    header: "صورة",
+    header: () => <div className="text-right w-full">صورة</div>,
     cell: ({ row }) => {
       const image = row.getValue("image") as string;
       return (
-        <Image
-          src={image}
-          alt="صورة المنتج"
-          className="object-cover rounded-md"
-          width={50}
-          height={50}
-        />
+        <div>
+          <Image
+            src={image}
+            alt="صورة المنتج"
+            className="object-cover rounded-md"
+            width={50}
+            height={50}
+          />
+        </div>
       );
     },
   },
   {
     accessorKey: "actions",
-    header: "الإجراءات",
+    header: () => <div className=" w-full">الإجراءات</div>,
     cell: ({ row }) => {
       const data = row.original;
-      return <DropDownActions data={data} />;
+      return (
+        <div className="flex justify-end">
+          <DropDownActions data={data} />
+        </div>
+      );
     },
   },
 ];
