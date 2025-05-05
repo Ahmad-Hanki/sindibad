@@ -3,23 +3,16 @@
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Dispatch } from "react";
 import ProductForm from "./ProductForm";
-import { Product } from "@prisma/client";
+import { GetAllProductsResponseType } from "@/server-actions/get/get-all-producats";
 
 interface HeaderProps {
-  initialData?: Product;
+  initialData?: GetAllProductsResponseType;
   setOpen: Dispatch<React.SetStateAction<boolean>>;
   locale: string;
   open: boolean;
 }
 
-const ProductDialog = ({
-  open,
-  locale,
-
-  setOpen,
-}: // initialData
-
-HeaderProps) => {
+const ProductDialog = ({ open, locale, initialData, setOpen }: HeaderProps) => {
   return (
     <div>
       <Dialog open={open} modal={false}>
@@ -28,7 +21,13 @@ HeaderProps) => {
         )}
         <div>
           <DialogContent className="max-w-[550px] max-h-[600px] overflow-y-auto">
-            <ProductForm open={open} setOpen={setOpen} locale={locale} />
+            <ProductForm
+              open={open}
+              setOpen={setOpen}
+              locale={locale}
+              initialData={initialData}
+              
+            />
           </DialogContent>
         </div>
       </Dialog>

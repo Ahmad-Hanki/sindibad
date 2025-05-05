@@ -15,12 +15,6 @@ export function LoginForm() {
   const locale = useLocale();
   const submit =
     locale === "en" ? "Login" : locale === "ar" ? "تسجيل الدخول" : "otur aç";
-  const submitting =
-    locale === "en"
-      ? "Logging in"
-      : locale === "ar"
-      ? "يتم تسجيل الدخول"
-      : "otur açılıyor";
 
   const submitted = async (formData: FormData) => {
     const password = formData.get("password") as string;
@@ -80,7 +74,7 @@ export function LoginForm() {
           />
         </div>
       </div>
-      <SubmitButton type="submit" submit={submit} submitting={submitting} />
+      <SubmitButton type="submit" submit={submit} />
     </form>
   );
 }

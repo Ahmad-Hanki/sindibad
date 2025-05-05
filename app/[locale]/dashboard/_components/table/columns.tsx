@@ -1,17 +1,10 @@
 import { ColumnDef } from "@tanstack/react-table";
 import Image from "next/image";
 import DropDownActions from "./dropdown-actions";
+import { GetAllProductsResponseType } from "@/server-actions/get/get-all-producats";
 
-export interface Product {
-  id: string;
-  categoryId: string;
-  name: string;
-  description: string;
-  price: number;
-  categoryName: string;
-  image: string;
-}
-export const enColumns: ColumnDef<Product>[] = [
+
+export const enColumns: ColumnDef<GetAllProductsResponseType>[] = [
   {
     accessorKey: "name",
     header: "Name",
@@ -58,13 +51,13 @@ export const enColumns: ColumnDef<Product>[] = [
   },
 ];
 
-export const trColumns: ColumnDef<Product>[] = [
+export const trColumns: ColumnDef<GetAllProductsResponseType>[] = [
   {
-    accessorKey: "name",
+    accessorKey: "name_tr",
     header: "İsim",
   },
   {
-    accessorKey: "description",
+    accessorKey: "description_tr",
     header: "Açıklama",
   },
   {
@@ -105,16 +98,16 @@ export const trColumns: ColumnDef<Product>[] = [
   },
 ];
 
-export const arColumns: ColumnDef<Product>[] = [
+export const arColumns: ColumnDef<GetAllProductsResponseType>[] = [
   {
-    accessorKey: "name",
+    accessorKey: "name_ar",
     header: () => <div className="text-right w-full">الاسم</div>, // Right-aligned header
     cell: ({ getValue }) => (
       <div className="text-right">{getValue() as string}</div>
     ),
   },
   {
-    accessorKey: "description",
+    accessorKey: "description_ar",
     header: () => <div className="text-right w-full">الوصف</div>,
     cell: ({ getValue }) => (
       <div className="text-right">{getValue() as string}</div>

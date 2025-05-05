@@ -13,6 +13,8 @@ export const addNewMealAction = async (
       data: {
         name: formData.name,
         description: formData.description,
+        description_ar: formData.description_ar,
+        description_tr: formData.description_tr,
         image: formData.image,
         price: formData.price,
         categoryId: formData.categoryId,

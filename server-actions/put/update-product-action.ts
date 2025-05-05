@@ -20,7 +20,6 @@ export const updateMealAction = async (
         name_tr: formData.name_tr,
         description_ar: formData.description_ar,
         description_tr: formData.description_tr,
-
         image: formData.image,
         price: formData.price,
         categoryId: formData.categoryId,

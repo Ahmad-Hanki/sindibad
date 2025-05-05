@@ -1,5 +1,4 @@
 import { MoreVertical } from "lucide-react";
-import { Product } from "./columns";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,26 +7,60 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useLocale } from "next-intl";
+import { useState } from "react";
+import ProductDialog from "../ProductDialog";
+import { GetAllProductsResponseType } from "@/server-actions/get/get-all-producats";
+import { useDeleteMeal } from "../../_api/delete-meal";
 
-const DropDownActions = ({}: // data
+const DropDownActions = ({ data }: { data: GetAllProductsResponseType }) => {
+  const locale = useLocale();
+  const [open, setOpen] = useState(false);
 
-{
-  data: Product;
-}) => {
+  const { mutateAsync } = useDeleteMeal({
+    mutationConfig: {
+      onSuccess: () => {},
+    },
+  });
+
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger>
-        <MoreVertical />
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>Profile</DropdownMenuItem>
-        <DropdownMenuItem>Billing</DropdownMenuItem>
-        <DropdownMenuItem>Team</DropdownMenuItem>
-        <DropdownMenuItem>Subscription</DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <div>
+      <ProductDialog
+        setOpen={setOpen}
+        locale={locale}
+        open={open}
+        initialData={data}
+      />
+      <DropdownMenu>
+        <DropdownMenuTrigger>
+          <MoreVertical />
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuLabel>
+            {locale == "en"
+              ? "Actions"
+              : locale == "tr"
+              ? "Eylemler"
+              : "الأفعال"}{" "}
+          </DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem
+            onClick={() => {
+              setOpen(true);
+            }}
+          >
+            {locale == "en" ? "Edit" : locale == "tr" ? "Düzenle" : "تعديل"}{" "}
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={async () => {
+              await mutateAsync({ MealId: data.id });
+            }}
+          >
+            {locale == "en" ? "Delete" : locale == "tr" ? "Sil" : "حذف"}{" "}
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
   );
 };
 

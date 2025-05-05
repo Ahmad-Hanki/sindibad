@@ -19,6 +19,10 @@ export const getAllProductsAction = async () => {
       id: product.id,
       name: product.name,
       description: product.description,
+      name_ar: product.name_ar,
+      name_tr: product.name_tr,
+      description_ar: product.description_ar,
+      description_tr: product.description_tr,
       price: product.price,
       image: product.image,
       createdAt: product.createdAt,
@@ -32,3 +36,7 @@ export const getAllProductsAction = async () => {
     console.error("Error fetching most popular products:", error);
   }
 };
+
+export type GetAllProductsResponseType = NonNullable<
+  Awaited<ReturnType<typeof getAllProductsAction>>
+>[number];
