@@ -7,6 +7,7 @@ import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { AppProvider } from "@/providers/react-query";
+import PathChecker from "./PathChecker";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -50,6 +51,7 @@ export default async function RootLayout({
           <NextIntlClientProvider messages={messages}>
             <main className="max-w-[100vw] overflow-hidden">
               <Navbar />
+              <PathChecker />
               {children}
               <Toaster />
               <Footer />

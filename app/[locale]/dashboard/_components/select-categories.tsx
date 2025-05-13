@@ -40,7 +40,13 @@ export function SelectCategories({
           <SelectLabel>Categories</SelectLabel>
           {categories?.map((category) => (
             <SelectItem key={category.id} value={category.id}>
-              {category.name}
+              {locale === "en"
+                ? category.name
+                : locale === "tr"
+                ? category.name_tr
+                : locale === "ar"
+                ? category.name_ar
+                : category.name}
             </SelectItem>
           ))}
         </SelectGroup>
