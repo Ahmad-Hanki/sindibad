@@ -1,0 +1,27 @@
+name: Block Non-Admin Pushes to Main
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: read
+  checks: write
+
+jobs:
+  block-non-admins:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check admin status
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { data: perm } = await github.rest.repos.getCollaboratorPermissionLevel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              username: context.actor
+            });
+            if (perm.permission !== 'admin') {
+              core.setFailed(`🚫 ${context.actor} is not an admin! Use a PR instead.`);
+            }
