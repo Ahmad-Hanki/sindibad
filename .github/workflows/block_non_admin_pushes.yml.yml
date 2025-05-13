@@ -4,27 +4,24 @@ on:
   push:
     branches: [ main ]
 
+permissions:
+  contents: read
+  checks: write
+
 jobs:
-  check-permissions:
+  block-non-admins:
     runs-on: ubuntu-latest
     steps:
-      - name: Check if pusher is admin
-        id: check_admin
+      - name: Check admin status
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            try {
-              // Get the pusher's permission level
-              const { data: permission } = await github.rest.repos.getCollaboratorPermissionLevel({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                username: context.actor
-              });
-              
-              if (permission.permission !== 'admin') {
-                core.setFailed("❌ Only repository admins can push directly to main. Please create a pull request.");
-              }
-            } catch (error) {
-              core.setFailed("Error checking permissions: " + error.message);
+            const { data: perm } = await github.rest.repos.getCollaboratorPermissionLevel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              username: context.actor
+            });
+            if (perm.permission !== 'admin') {
+              core.setFailed(`🚫 ${context.actor} is not an admin! Use a PR instead.`);
             }
