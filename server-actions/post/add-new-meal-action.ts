@@ -13,8 +13,6 @@ export const addNewMealAction = async (
     const slug = formData.name
       .replace(/\s+/g, "-") 
       .toLowerCase(); 
-
-      
     const res = await prisma.product.create({
       data: {
         name: formData.name,
