@@ -32,5 +32,9 @@
 
     "contactData": "Contact Data",
     "copyRight": "© 2024 Sindibad. All rights reserved."
+  },
+  "dashboard": {
+    "buttonTextOne": "Dashboard",
+    "buttonTextTwo": "Orders"
   }
 }

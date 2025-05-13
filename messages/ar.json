@@ -31,5 +31,9 @@
     "s3": "عنا",
     "contactData": "بيانات التواصل",
     "copyRight": "جميع الحقوق محفوظة © 2023 السندباد"
+  },
+  "dashboard": {
+    "buttonTextOne": "لوحة التحكم",
+    "buttonTextTwo": "الطلبات "
   }
 }
