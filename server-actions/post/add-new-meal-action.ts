@@ -8,7 +8,6 @@ import { Product } from "@prisma/client";
 export const addNewMealAction = async (
   formData: FormSchemaInput
 ): Promise<Product> => {
-
   try {
     const slug = formData.name
       .replace(/\s+/g, "-") 
