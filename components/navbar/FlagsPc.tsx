@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 
-import ar from "@/public/images/ar.jpg";
+import ar from "@/public/images/ar.png";
 import en from "@/public/images/en.jpg";
 import tr from "@/public/images/tr.jpg";
 import { useLocale } from "next-intl";

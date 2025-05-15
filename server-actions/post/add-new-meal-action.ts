@@ -8,7 +8,7 @@ import { Product } from "@prisma/client";
 export const addNewMealAction = async (
   formData: FormSchemaInput
 ): Promise<Product> => {
-  
+  console.log(formData)
   try {
     const slug = formData.name
       .replace(/\s+/g, "-") 
@@ -16,6 +16,8 @@ export const addNewMealAction = async (
     const res = await prisma.product.create({
       data: {
         name: formData.name,
+        name_ar: formData.name_ar,
+        name_tr: formData.name_tr,
         slug,
         description: formData.description,
         description_ar: formData.description_ar,
@@ -24,8 +26,6 @@ export const addNewMealAction = async (
         price: formData.price,
         categoryId: formData.categoryId,
         mostPopular: formData.mostPopular,
-        name_ar: formData.name_ar,
-        name_tr: formData.name_tr,
       },
     });
     return res;
