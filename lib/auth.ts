@@ -7,7 +7,7 @@ import prisma from "./db";
 import { SignInValidateScheme } from "./auth-scheme";
 const adapter = PrismaAdapter(prisma);
 
-export const { handlers, signIn, signOut, auth } = NextAuth({
+export const { handlers, signIn, signOut, auth , } = NextAuth({
   adapter: adapter,
   providers: [
     Google,
@@ -16,7 +16,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         email: {},
         password: {},
 
-        
+
       },
       authorize: async (credentials) => {
         const validatedCredentials = SignInValidateScheme.parse(credentials);

@@ -21,11 +21,7 @@ const Page = async () => {
         action={async (formData: FormData) => {
           "use server";
 
-          //   await executeAction({
-          //     actionFn: async () => {
-          //       await signIn("credentials", formData);
-          //     },
-          //   });
+          await signIn("credentials", formData);
         }}
       >
         <Input

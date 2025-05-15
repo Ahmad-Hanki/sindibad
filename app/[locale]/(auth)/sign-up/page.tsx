@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-// import { signUp } from "@/lib/actions";
 import { auth } from "@/lib/auth";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -22,11 +21,11 @@ const Page = async () => {
         action={async (formData: FormData) => {
           "use server";
 
-          //   const res = await signUp(formData);
+            // const res = await signUp(formData);
 
-          //   if (res.success) {
-          //     redirect("/");
-          //   }
+            // if (res.success) {
+            //   redirect("/");
+            // }
         }}
       >
         <Input
