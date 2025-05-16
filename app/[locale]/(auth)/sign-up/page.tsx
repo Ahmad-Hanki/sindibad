@@ -18,15 +18,15 @@ const Page = async () => {
       {/* Email/Password Sign Up */}
       <form
         className="space-y-4"
-        action={async (formData: FormData) => {
-          "use server";
+        // action={async (formData: FormData) => {
+        //   "use server";
 
-            // const res = await signUp(formData);
+        //     const res = await signUp(formData);
 
-            // if (res.success) {
-            //   redirect("/");
-            // }
-        }}
+        //     if (res.success) {
+        //       redirect("/");
+        //     }
+        // }}
       >
         <Input
           name="email"
