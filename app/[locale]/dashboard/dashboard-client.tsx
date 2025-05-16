@@ -18,40 +18,46 @@ const DashboardClient = ({ locale }: { locale: string }) => {
         setOpen={setCategoryOpen}
         locale={locale}
       />
-      <div className="flex items-center justify-between w-full">
-        <h1 className="text-lg font-semibold flex-1 w-full ">
-          {locale == "en"
-            ? "Categories"
-            : locale == "ar"
-            ? "الفئات"
-            : "Kategoriler"}
-        </h1>
-        <Button
-          onClick={() => {
-            setCategoryOpen(true);
-          }}
-        >
-          <Plus size={25} />
-        </Button>
-      </div>
-      <CategoryTables />
-      <div className="flex items-center justify-between w-full mt-40">
-        <h1 className="text-lg font-semibold flex-1 w-full ">
-          {locale == "en"
-            ? "The Products"
-            : locale == "ar"
-            ? "المنتجات"
-            : "Ürünler"}
-        </h1>
-        <Button
-          onClick={() => {
-            setOpen(true);
-          }}
-        >
-          <Plus size={25} />
-        </Button>
-      </div>
-      <ProductsTables />
+      {/* Category Section */}
+      <section className="mb-20 mt-5">
+        <div className="flex items-center justify-between w-full">
+          <h1 className="text-lg font-semibold flex-1 w-full ">
+            {locale == "en"
+              ? "Categories"
+              : locale == "ar"
+              ? "الفئات"
+              : "Kategoriler"}
+          </h1>
+          <Button
+            onClick={() => {
+              setCategoryOpen(true);
+            }}
+          >
+            <Plus size={25} />
+          </Button>
+        </div>
+        <CategoryTables />
+      </section>
+      {/* Products Section */}
+      <section className="mb-24">
+        <div className="flex items-center justify-between w-full ">
+          <h1 className="text-lg font-semibold flex-1 w-full ">
+            {locale == "en"
+              ? "The Products"
+              : locale == "ar"
+              ? "المنتجات"
+              : "Ürünler"}
+          </h1>
+          <Button
+            onClick={() => {
+              setOpen(true);
+            }}
+          >
+            <Plus size={25} />
+          </Button>
+        </div>
+        <ProductsTables />
+      </section>
     </div>
   );
 };

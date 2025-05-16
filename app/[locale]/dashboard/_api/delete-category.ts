@@ -16,7 +16,7 @@ type UseDeleteCategoryOptions = {
   mutationConfig?: MutationConfig<typeof deleteCategory>;
 };
 
-export const useDeleteMeal = ({
+export const useDeleteCategory = ({
   mutationConfig,
 }: UseDeleteCategoryOptions = {}) => {
   const queryClient = useQueryClient();
