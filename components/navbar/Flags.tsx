@@ -1,5 +1,5 @@
 "use client";
-import ar from "@/public/images/ar.jpg";
+import ar from "@/public/images/ar.png";
 import en from "@/public/images/en.jpg";
 import tr from "@/public/images/tr.jpg";
 import Image from "next/image";
