@@ -34,6 +34,10 @@
   },
   "dashboard": {
     "buttonTextOne": "لوحة التحكم",
-    "buttonTextTwo": "الطلبات "
+    "buttonTextTwo": "الطلبات ",
+    "deleteConfirmation": "هل أنت متأكد أنك تريد حذف هذا العنصر؟",
+    "deleteConfirmationText": "سيؤدي هذا إلى حذف العنصر بشكل دائم.",
+    "deleteConfirmationConfirm": "تأكيد الحذف",
+    "deleteConfirmationCancel": "إلغاء"
   }
 }

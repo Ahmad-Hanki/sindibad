@@ -34,6 +34,10 @@
   },
   "dashboard": {
     "buttonTextOne": "Kontrol Paneli",
-    "buttonTextTwo": "Siparişler"
+    "buttonTextTwo": "Siparişler",
+    "deleteConfirmation": "Bu öğeyi silmek istediğinizden emin misiniz?",
+    "deleteConfirmationText": "Bu işlem öğeyi kalıcı olarak silecektir.",
+    "deleteConfirmationConfirm": "Silmeyi Onayla",
+    "deleteConfirmationCancel": "İptal"
   }
 }

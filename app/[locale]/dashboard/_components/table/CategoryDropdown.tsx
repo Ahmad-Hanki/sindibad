@@ -11,18 +11,20 @@ import { useLocale } from "next-intl";
 import { useState } from "react";
 import CategoryDialog from "../CategoryDialog";
 import { GetAllCategoriesResponseType } from "@/server-actions/get/get-all-categories";
+import { DeleteConfirm } from "./DeleteConfirm";
 import { useDeleteCategory } from "../../_api/delete-category";
 
 const DropDownActions = ({ data }: { data: GetAllCategoriesResponseType }) => {
   const locale = useLocale();
   const [open, setOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
 
   const { mutateAsync } = useDeleteCategory({
     mutationConfig: {
       onSuccess: () => {},
     },
   });
-
+  console.log(deleteOpen);
   return (
     <div>
       <CategoryDialog
@@ -30,6 +32,12 @@ const DropDownActions = ({ data }: { data: GetAllCategoriesResponseType }) => {
         locale={locale}
         open={open}
         initialData={data}
+      />
+      <DeleteConfirm
+        open={deleteOpen}
+        setOpen={setDeleteOpen}
+        data={{ id: data.id }}
+        local={locale}
       />
       <DropdownMenu>
         <DropdownMenuTrigger>
@@ -52,8 +60,8 @@ const DropDownActions = ({ data }: { data: GetAllCategoriesResponseType }) => {
             {locale == "en" ? "Edit" : locale == "tr" ? "Düzenle" : "تعديل"}{" "}
           </DropdownMenuItem>
           <DropdownMenuItem
-            onClick={async () => {
-              await mutateAsync({ CategoryId: data.id });
+            onClick={() => {
+              setDeleteOpen(true);
             }}
           >
             {locale == "en" ? "Delete" : locale == "tr" ? "Sil" : "حذف"}{" "}
