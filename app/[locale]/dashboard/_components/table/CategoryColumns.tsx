@@ -1,5 +1,4 @@
 import { ColumnDef } from "@tanstack/react-table";
-import Image from "next/image";
 import DropDownActions from "./CategoryDropdown";
 import { GetAllCategoriesResponseType } from "@/server-actions/get/get-all-categories";
 

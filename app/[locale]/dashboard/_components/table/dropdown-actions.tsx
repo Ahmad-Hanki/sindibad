@@ -12,10 +12,12 @@ import { useState } from "react";
 import ProductDialog from "../ProductDialog";
 import { GetAllProductsResponseType } from "@/server-actions/get/get-all-producats";
 import { useDeleteMeal } from "../../_api/delete-meal";
+import { DeleteConfirm } from "./DeleteConfirm";
 
 const DropDownActions = ({ data }: { data: GetAllProductsResponseType }) => {
   const locale = useLocale();
   const [open, setOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
 
   const { mutateAsync } = useDeleteMeal({
     mutationConfig: {
@@ -30,6 +32,12 @@ const DropDownActions = ({ data }: { data: GetAllProductsResponseType }) => {
         locale={locale}
         open={open}
         initialData={data}
+      />
+      <DeleteConfirm
+        open={deleteOpen}
+        setOpen={setDeleteOpen}
+        data={{ id: data.id }}
+        local={locale}
       />
       <DropdownMenu>
         <DropdownMenuTrigger>
@@ -52,8 +60,8 @@ const DropDownActions = ({ data }: { data: GetAllProductsResponseType }) => {
             {locale == "en" ? "Edit" : locale == "tr" ? "Düzenle" : "تعديل"}{" "}
           </DropdownMenuItem>
           <DropdownMenuItem
-            onClick={async () => {
-              await mutateAsync({ MealId: data.id });
+            onClick={() => {
+              setDeleteOpen(true);
             }}
           >
             {locale == "en" ? "Delete" : locale == "tr" ? "Sil" : "حذف"}{" "}
