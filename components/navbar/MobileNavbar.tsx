@@ -21,7 +21,6 @@ const MobileNavbar = ({ links, getInTouch, menuText }: MobileNavbarProps) => {
   const [open, setOpen] = useState(false);
   const locale = useLocale();
   const pathname = usePathname();
-  console.log(open);
 
   useEffect(() => {
     setOpen(false);

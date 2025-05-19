@@ -29,9 +29,9 @@ const UploadImage = ({
           setImage(result?.info?.secure_url ?? "");
           // widget.close();
         }}
-        onUploadAdded={() => console.log("Upload started!")}
-        onQueuesEnd={() => console.log("Queue finished!")}
-        onError={(error) => console.log("Error!", error)}
+        // onUploadAdded={() => console.log("Upload started!")}
+        // onQueuesEnd={() => console.log("Queue finished!")}
+        // onError={(error) => console.log("Error!", error)}
       >
         {({ open }) => {
           return (

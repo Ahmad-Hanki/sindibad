@@ -1,44 +1,46 @@
-import NextAuth from "next-auth";
+import NextAuth, { CredentialsSignin } from "next-auth";
 import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
-
+import { SignInResponse } from "next-auth/react";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "./db";
-import { SignInValidateScheme } from "./auth-scheme";
+import { signInScheme } from "@/app/[locale]/(auth)/_utils/auth-schemes";
+import SignInWithCredential from "@/app/[locale]/(auth)/_actions/sign-in-credential";
+import { redirect } from "next/navigation";
 const adapter = PrismaAdapter(prisma);
+export class InvalidLoginError extends CredentialsSignin {
+  // This can be changed, but only to another ErrorType (e.g., 'AccessDenied')
+  // static type = "CredentialsSignin"
+  code = "invalid_credentials";
+}
 
-export const { handlers, signIn, signOut, auth , } = NextAuth({
+export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: adapter,
   providers: [
     Google,
     Credentials({
       credentials: {
-        email: {},
+        email_or_username: {},
         password: {},
-
-
       },
       authorize: async (credentials) => {
-        const validatedCredentials = SignInValidateScheme.parse(credentials);
+        try {
+          const schema = signInScheme("");
 
-        if (!validatedCredentials) {
-          throw new Error("Invalid credentials");
+          const validatedCredentials = schema.parse(credentials);
+
+          const result = await SignInWithCredential({
+            value: validatedCredentials,
+          });
+
+          if (!result) {
+            return null;
+          }
+          // Return only the necessary user fields
+          return result;
+        } catch (error) {
+          return null;
         }
-
-        const user = await prisma.user.findUnique({
-          where: {
-            email: validatedCredentials.email as string,
-            // password: validatedCredentials.password as string,
-          },
-        });
-        if (!user) {
-          throw new Error("Invalid credentials");
-        } else if (
-          credentials.email === user.email
-          // credentials.password === user.password
-        ) {
-          return user;
-        } else throw new Error("Invalid credentials");
       },
     }),
   ],

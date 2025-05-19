@@ -1,15 +1,17 @@
 model User {
-  id            String          @id @default(cuid())
+  id            String    @id @default(cuid())
   name          String?
-  username      String?         @unique
-  email         String?         @unique
+  username      String?   @unique
+  email         String?   @unique
   emailVerified DateTime?
   image         String?
+  password      String?   @db.VarChar(255) // Nullable for OAuth users
+  salt          String?   @db.VarChar(255) // If using manual salting
   accounts      Account[]
   sessions      Session[]
-//   // Optional for WebAuthn support
-//   Authenticator Authenticator[]
- 
+  //   // Optional for WebAuthn support
+  //   Authenticator Authenticator[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

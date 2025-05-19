@@ -24,7 +24,6 @@ const DropDownActions = ({ data }: { data: GetAllCategoriesResponseType }) => {
       onSuccess: () => {},
     },
   });
-  console.log(deleteOpen);
   return (
     <div>
       <CategoryDialog

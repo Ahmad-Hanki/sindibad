@@ -8,7 +8,6 @@ import { Category } from "@prisma/client";
 export const addNewCategoryAction = async (
   formData: FormCategorySchemaInput
 ): Promise<Category> => {
-  console.log(formData);
   try {
     const slug = formData.name
       .replace(/\s+/g, "-") 

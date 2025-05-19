@@ -1,23 +1,16 @@
 import { Button } from "@/components/ui/button";
 
-import { signIn } from "@/lib/auth";
+import { signIn } from "next-auth/react";
 import { Google } from "@/public/icons/google";
 
 const GoogleSignIn = () => {
   return (
-    <form
-      action={async () => {
-        "use server";
-
-        const res = await signIn("google");
-        console.log(res);
-      }}
-    >
+    <div onClick={() => signIn("google")}>
       <Button className="w-full flex gap-3" variant="outline">
         <Google />
         Continue with Google
       </Button>
-    </form>
+    </div>
   );
 };
 
