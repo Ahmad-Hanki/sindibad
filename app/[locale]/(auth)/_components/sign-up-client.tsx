@@ -37,18 +37,21 @@ const SignUpClient = ({ locale }: { locale: string }) => {
 
   const { mutateAsync, isPending } = useSignUp({
     mutationConfig: {
-      onSuccess: (data) => {
-        toast({ title: "Signed up successfully" });
+      onSuccess: () => {
+        toast({
+          title:
+            locale == "en"
+              ? "Sign Up Success"
+              : locale == "ar"
+              ? "نجاح التسجيل"
+              : "Kayıt Başarılı",
+        });
         router.push("/");
       },
 
       onError: (error) => {
         console.log(error);
-        // error might be include
-        // email_exists
-        // username_exists
-        // unknown_error
-        // sign-in-failed
+
         const errorMessage: string = error.toString();
 
         if (errorMessage.includes("email_exists")) {

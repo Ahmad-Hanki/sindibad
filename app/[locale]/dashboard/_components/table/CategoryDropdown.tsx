@@ -12,18 +12,18 @@ import { useState } from "react";
 import CategoryDialog from "../CategoryDialog";
 import { GetAllCategoriesResponseType } from "@/server-actions/get/get-all-categories";
 import { DeleteConfirm } from "./DeleteConfirm";
-import { useDeleteCategory } from "../../_api/delete-category";
+// import { useDeleteCategory } from "../../_api/delete-category";
 
 const DropDownActions = ({ data }: { data: GetAllCategoriesResponseType }) => {
   const locale = useLocale();
   const [open, setOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
 
-  const { mutateAsync } = useDeleteCategory({
-    mutationConfig: {
-      onSuccess: () => {},
-    },
-  });
+  // const { mutateAsync } = useDeleteCategory({
+  //   mutationConfig: {
+  //     onSuccess: () => {},
+  //   },
+  // });
   return (
     <div>
       <CategoryDialog

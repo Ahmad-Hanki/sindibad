@@ -53,12 +53,12 @@ const SignUpWithCredential = async ({
     });
 
     return {
-        user,
-        success: true,
-        error: null,
-
-    }
+      user,
+      success: true,
+      error: null,
+    };
   } catch (error) {
+    console.error("Error signing up with credentials:", error);
     return {
       error: "An error occurred while signing in",
       success: false,
