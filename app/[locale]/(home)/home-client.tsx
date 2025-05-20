@@ -4,7 +4,7 @@ import Recommended from "./_components/Recommended";
 import Location from "./_components/Location";
 import ContactData from "./_components/ContactData";
 import { useTranslations } from "next-intl";
-
+// import { signOut } from "next-auth/react";
 
 const HomeClient = () => {
   const t = useTranslations("home");
@@ -15,11 +15,8 @@ const HomeClient = () => {
         description={t("headerDescription")}
         buttonText={t("headerButton")}
       />
-
       <Recommended recommended={t("recommended")} />
-
       <Location />
-
       <ContactData
         address={t("address")}
         phone={t("phone")}
