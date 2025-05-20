@@ -56,7 +56,7 @@ const ProductForm = ({
   const { mutateAsync: addNewMeal, isPending: AddPending } = useCreateMeal({
     mutationConfig: {
       onSuccess: () => {
-        toast({ title: "Meal added successfully",  });
+        toast({ title: "Meal added successfully" });
         setOpen(false);
       },
     },
