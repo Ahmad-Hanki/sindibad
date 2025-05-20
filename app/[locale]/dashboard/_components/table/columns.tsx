@@ -3,7 +3,6 @@ import Image from "next/image";
 import DropDownActions from "./dropdown-actions";
 import { GetAllProductsResponseType } from "@/server-actions/get/get-all-producats";
 
-
 export const enColumns: ColumnDef<GetAllProductsResponseType>[] = [
   {
     accessorKey: "name",

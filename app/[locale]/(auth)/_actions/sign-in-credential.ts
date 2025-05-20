@@ -1,7 +1,7 @@
 "use server";
 import prisma from "@/lib/db";
 import { SignInSchemeInput } from "../_utils/auth-schemes";
-import { compare } from "bcryptjs";
+import { compare } from "bcrypt";
 
 const SignInWithCredential = async ({
   value,
@@ -19,18 +19,32 @@ const SignInWithCredential = async ({
     });
 
     if (!user) {
-      throw new Error("User not found");
+      return {
+        error: "User not found",
+        success: false,
+      };
     }
 
     const passwordMatch = await compare(value.password, user.password!);
 
     if (!passwordMatch) {
-      throw new Error("Invalid password");
+      return {
+        error: "Invalid password",
+        success: false,
+      };
     }
 
-    return user;
+    return {
+      user,
+      success: true,
+      error: null,
+    };
   } catch (error) {
-    throw new Error("An error occurred during sign-in");
+    console.error("Error signing in with credentials:", error);
+    return {
+      error: "An error occurred while signing in",
+      success: false,
+    };
   }
 };
 

@@ -1,0 +1,6 @@
+
+echo "🛠️  Running build before commit..."
+npm run build || {
+  echo "❌ Build failed - commit aborted"
+  exit 1
+}

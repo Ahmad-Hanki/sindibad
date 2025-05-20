@@ -11,7 +11,7 @@ import { useLocale } from "next-intl";
 import { useState } from "react";
 import ProductDialog from "../ProductDialog";
 import { GetAllProductsResponseType } from "@/server-actions/get/get-all-producats";
-import { useDeleteMeal } from "../../_api/delete-meal";
+// import { useDeleteMeal } from "../../_api/delete-meal";
 import { DeleteConfirm } from "./DeleteConfirm";
 
 const DropDownActions = ({ data }: { data: GetAllProductsResponseType }) => {
@@ -19,11 +19,11 @@ const DropDownActions = ({ data }: { data: GetAllProductsResponseType }) => {
   const [open, setOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
 
-  const { mutateAsync } = useDeleteMeal({
-    mutationConfig: {
-      onSuccess: () => {},
-    },
-  });
+  // const { mutateAsync } = useDeleteMeal({
+  //   mutationConfig: {
+  //     onSuccess: () => {},
+  //   },
+  // });
 
   return (
     <div>

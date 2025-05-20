@@ -26,7 +26,6 @@ const ProductDialog = ({ open, locale, initialData, setOpen }: HeaderProps) => {
               setOpen={setOpen}
               locale={locale}
               initialData={initialData}
-              
             />
           </DialogContent>
         </div>
