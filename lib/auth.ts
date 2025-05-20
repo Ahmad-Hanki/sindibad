@@ -1,18 +1,16 @@
-import NextAuth, { CredentialsSignin } from "next-auth";
+import NextAuth, {
+  CredentialsSignin,
+  AuthError,
+  type DefaultSession,
+} from "next-auth";
 import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
-import { SignInResponse } from "next-auth/react";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "./db";
 import { signInScheme } from "@/app/[locale]/(auth)/_utils/auth-schemes";
 import SignInWithCredential from "@/app/[locale]/(auth)/_actions/sign-in-credential";
-import { redirect } from "next/navigation";
+
 const adapter = PrismaAdapter(prisma);
-export class InvalidLoginError extends CredentialsSignin {
-  // This can be changed, but only to another ErrorType (e.g., 'AccessDenied')
-  // static type = "CredentialsSignin"
-  code = "invalid_credentials";
-}
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: adapter,
@@ -33,49 +31,41 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             value: validatedCredentials,
           });
 
-          if (!result) {
-            return null;
+          if (!result.success && result.error) {
+            throw new AuthError(result.error);
           }
-          // Return only the necessary user fields
-          return result;
-        } catch (error) {
+
+          // Return the user object with all properties you need
+          if (result.user) {
+            return result.user; // ✅ return only the user object
+          }
           return null;
+        } catch (error) {
+          throw new AuthError(error as string | "Invalid credentials");
         }
       },
     }),
   ],
 
-  // callbacks: {
-  //   async jwt({ token, account }) {
-  //     if (account?.provider === "credentials") {
-  //       token.credentials = true;
-  //     }
-  //     return token;
-  //   },
-  // },
+  session: {
+    strategy: "database",
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+    updateAge: 24 * 60 * 60, // 24 hours
+  },
 
-  // jwt: {
-  //   encode: async function (params) {
-  //     if (params.token?.credentials) {
-  //       const sessionToken = uuid();
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        Object.assign(token, user);
+      }
+      return token;
+    },
 
-  //       if (!params.token.sub) {
-  //         throw new Error("No user ID found in token");
-  //       }
-
-  //       const createdSession = await adapter?.createSession?.({
-  //         sessionToken: sessionToken,
-  //         userId: params.token.sub,
-  //         expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // seven days
-  //       });
-
-  //       if (!createdSession) {
-  //         throw new Error("Failed to create session");
-  //       }
-
-  //       return sessionToken;
-  //     }
-  //     return defaultEncode(params);
-  //   },
-  // },
+    async session({ session, token }) {
+      if (session.user) {
+        Object.assign(session.user, token);
+      }
+      return session;
+    },
+  },
 });

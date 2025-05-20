@@ -17,10 +17,11 @@ import {
 import { useSignIn } from "../_api/sign-in-credential";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
+import { useRouter } from "@bprogress/next";
 
 const SignInClient = ({ locale }: { locale: string }) => {
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-
+  const [errorMessage, setErrorMessage] = useState<boolean>(false);
+  const router = useRouter();
   const form = useForm<SignInSchemeInput>({
     resolver: zodResolver(signInScheme(locale)),
     defaultValues: {
@@ -31,12 +32,17 @@ const SignInClient = ({ locale }: { locale: string }) => {
 
   const { mutate, isPending } = useSignIn({
     mutationConfig: {
-      onSuccess: (data) => {
-        console.log(data);
+      onSuccess: () => {
+        router.replace("/");
       },
-      onError: (error) => {
-        setErrorMessage(error.message || "An unknown error occurred");
-        console.log(error);
+      onError: () => {
+        setErrorMessage(true);
+        form.setError("email_or_username", {
+          message: "",
+        });
+        form.setError("password", {
+          message: "",
+        });
       },
     },
   });
@@ -93,6 +99,16 @@ const SignInClient = ({ locale }: { locale: string }) => {
         <Button disabled={isPending} className="w-full" type="submit">
           {isPending ? <Loader2 className="animate-spin" /> : "Sign In"}
         </Button>
+        {errorMessage && (
+          <div className="text-red-500 text-sm text-center">
+            {/* its the english name */}
+            {locale == "en"
+              ? "Invalid email or password"
+              : locale == "ar"
+              ? "البريد الإلكتروني أو كلمة المرور غير صحيحة"
+              : "Geçersiz e-posta veya şifre"}
+          </div>
+        )}
         <div className="relative">
           <div className="absolute inset-0 flex items-center">
             <span className="w-full border-t" />
