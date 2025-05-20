@@ -1,0 +1,11 @@
+model Orders {
+  id               String      @id @default(uuid())
+  orderItems       OrderItem[]
+  note             String?
+  totalAmount      Float
+  customerName     String
+  customerPhone    Int
+  customerLocation String
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+}

@@ -5,7 +5,6 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import * as React from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { ProgressProvider } from "@bprogress/next/app";
-
 import { queryConfig } from "../lib/react-query";
 import { MainErrorFallback } from "../components/error/index";
 type AppProviderProps = {
