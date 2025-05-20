@@ -1,7 +1,7 @@
 "use server";
 import prisma from "@/lib/db";
 import { SignInSchemeInput } from "../_utils/auth-schemes";
-import { compare } from "bcrypt";
+import { compare } from "bcryptjs";
 
 const SignInWithCredential = async ({
   value,
