@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import Cart from "../cart/Cart";
 import { User } from "lucide-react";
 
+
 interface PcNavbarProps {
   links: string[];
   choseALanguage: string;
@@ -17,7 +18,6 @@ interface PcNavbarProps {
 
 const PcNavbar = ({ links, choseALanguage }: PcNavbarProps) => {
   const locale = useLocale();
-
   const pathname = usePathname();
 
   const getOnlyPathname = (): string => {
