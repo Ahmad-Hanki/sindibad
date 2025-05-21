@@ -50,8 +50,6 @@ const SignUpClient = ({ locale }: { locale: string }) => {
       },
 
       onError: (error) => {
-        console.log(error);
-
         const errorMessage: string = error.toString();
 
         if (errorMessage.includes("email_exists")) {
