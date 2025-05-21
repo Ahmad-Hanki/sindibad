@@ -5,7 +5,6 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "./db";
 import { signInScheme } from "@/app/[locale]/(auth)/_utils/auth-schemes";
 import SignInWithCredential from "@/app/[locale]/(auth)/_actions/sign-in-credential";
-import { generateUniqueUsername } from "@/server-actions/generate/generateUniqueUsername";
 
 const adapter = PrismaAdapter(prisma);
 
@@ -35,16 +34,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
           if (result.user) {
             return {
-              id: result.user.id, // MUST be string
-              name: result.user.name,
-              email: result.user.email,
-              image: result.user.image,
-              username: result.user.username,
-              admin: result.user.admin,
-              createdAt: result.user.createdAt,
-              updatedAt: result.user.updatedAt,
-              emailVerified: result.user.emailVerified,
-              password: "",
+              id: result.user.id,
             };
           }
           return null;
@@ -57,26 +47,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
   callbacks: {
     async jwt({ token, user }) {
-      if (user) {
-        // For Google OAuth users, if username is missing, generate & save it
-        if (!user.username && user.email) {
-          const uniqueUsername = await generateUniqueUsername(user.email);
-          await prisma.user.update({
-            where: { id: user.id },
-            data: { username: uniqueUsername },
-          });
-          // Assign username to user object so Object.assign picks it up
-          user.username = uniqueUsername;
-        }
-        // Merge user fields generically into token
-        Object.assign(token, user);
+      if (user?.id) {
+        token.id = user.id; // Only store id
       }
       return token;
     },
-
     async session({ session, token }) {
-      if (session.user) {
-        Object.assign(session.user, token);
+      if (session.user && token?.id) {
+        session.user.id = token.id as string; 
       }
       return session;
     },

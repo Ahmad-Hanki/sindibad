@@ -1,18 +1,18 @@
 model Product {
-  id             String  @id @default(uuid())
+  id             String     @id @default(uuid())
   name           String
   name_ar        String?
   name_tr        String?
   description    String
   description_ar String?
   description_tr String?
-  slug           String  @unique
+  slug           String     @unique
   price          Float
-  image          String   @db.VarChar(1000)
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  image          String     @db.VarChar(1000)
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
   categoryId     String
-  mostPopular    Boolean  @default(false)
-  category       Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  orderItems     OrderItem[]
+  mostPopular    Boolean    @default(false)
+  category       Category   @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  CartItem       CartItem[]
 }

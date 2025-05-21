@@ -8,6 +8,8 @@ import Footer from "@/components/footer/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { AppProvider } from "@/providers/react-query";
 import PathChecker from "./PathChecker";
+import { preloadLayout } from "@/auth/preload-data";
+import { HydrationBoundary } from "@tanstack/react-query";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -42,6 +44,7 @@ export default async function RootLayout({
   params: { locale: string };
 }>) {
   const messages = await getMessages();
+  const { dehydratedState } = await preloadLayout();
 
   return (
     <html dir={locale == "ar" ? "rtl" : "ltr"} lang={locale}>
@@ -51,11 +54,13 @@ export default async function RootLayout({
         <AppProvider>
           <NextIntlClientProvider messages={messages}>
             <main className="max-w-[100vw] overflow-hidden">
-              <Navbar />
-              <PathChecker />
-              {children}
-              <Toaster />
-              <Footer />
+              <HydrationBoundary state={dehydratedState}>
+                <Navbar />
+                <PathChecker />
+                {children}
+                <Toaster />
+                <Footer />
+              </HydrationBoundary>
             </main>
           </NextIntlClientProvider>
         </AppProvider>

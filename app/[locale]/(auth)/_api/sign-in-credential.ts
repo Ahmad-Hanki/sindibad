@@ -1,7 +1,8 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { MutationConfig } from "@/lib/react-query";
 import { SignInSchemeInput } from "../_utils/auth-schemes";
 import { signIn as Sn } from "next-auth/react";
+import { authUserQueryOptions } from "@/auth/get-user";
 
 export const signIn = async ({ data }: { data: SignInSchemeInput }) => {
   const result = await Sn("credentials", {
@@ -9,7 +10,6 @@ export const signIn = async ({ data }: { data: SignInSchemeInput }) => {
     redirect: false,
   });
   if (result?.error) {
-    console.log(result);
     throw new Error();
   }
   return result;
@@ -21,9 +21,13 @@ type UseSignInOptions = {
 
 export const useSignIn = ({ mutationConfig }: UseSignInOptions = {}) => {
   const { onSuccess, ...restConfig } = mutationConfig || {};
+  const queryClient = useQueryClient();
 
   return useMutation({
     onSuccess: (...args) => {
+      queryClient.invalidateQueries({
+        queryKey: authUserQueryOptions().queryKey,
+      });
       onSuccess?.(...args);
     },
     ...restConfig,
