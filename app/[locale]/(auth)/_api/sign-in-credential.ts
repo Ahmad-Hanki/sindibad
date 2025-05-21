@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { MutationConfig } from "@/lib/react-query";
 import { SignInSchemeInput } from "../_utils/auth-schemes";
 import { signIn as Sn } from "next-auth/react";
-import { authUserQueryOptions } from "@/utils/get-user";
+import { authUserQueryOptions } from "@/auth/get-user";
 
 export const signIn = async ({ data }: { data: SignInSchemeInput }) => {
   const result = await Sn("credentials", {

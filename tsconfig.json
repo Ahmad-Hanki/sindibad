@@ -28,8 +28,7 @@
     ".next/types/**/*.ts",
     "providers/react-query.tsx",
     "app/[locale]/(home)/home-client.tsx",
-    "app/[locale]/dashboard/_components/select-categories.tsx",
-    "next-auth.d.ts"
+    "app/[locale]/dashboard/_components/select-categories.tsx"
   ],
   "exclude": ["node_modules"]
 }

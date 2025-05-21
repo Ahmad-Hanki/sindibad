@@ -3,7 +3,7 @@ import { MutationConfig } from "@/lib/react-query";
 import { SignUpSchemeInput } from "../_utils/auth-schemes";
 import { signIn as Sn } from "next-auth/react";
 import SignUpWithCredential from "../_actions/sign-up-credential";
-import { authUserQueryOptions } from "@/utils/get-user";
+import { authUserQueryOptions } from "@/auth/get-user";
 
 export const signUp = async ({ data }: { data: SignUpSchemeInput }) => {
   const result = await SignUpWithCredential({ value: data });
