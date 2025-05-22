@@ -1,6 +1,6 @@
 "use client";
 
-import { useUser } from "@/auth/get-user";
+import { useUser } from "@/server-actions/auth/get-user";
 import {
   Dialog,
   DialogContent,
@@ -46,7 +46,7 @@ const Cart = () => {
                 {count}
               </span>
             </div>
-          ):null}
+          ) : null}
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>

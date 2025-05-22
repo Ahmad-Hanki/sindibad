@@ -4,7 +4,7 @@ import Credentials from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "./db";
 import { signInScheme } from "@/app/[locale]/(auth)/_utils/auth-schemes";
-import SignInWithCredential from "@/app/[locale]/(auth)/_actions/sign-in-credential";
+import SignInWithCredential from "@/server-actions/auth/sign-in-credential";
 
 const adapter = PrismaAdapter(prisma);
 
@@ -54,7 +54,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     async session({ session, token }) {
       if (session.user && token?.id) {
-        session.user.id = token.id as string; 
+        session.user.id = token.id as string;
       }
       return session;
     },

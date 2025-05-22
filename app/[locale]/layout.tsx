@@ -8,7 +8,7 @@ import Footer from "@/components/footer/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { AppProvider } from "@/providers/react-query";
 import PathChecker from "./PathChecker";
-import { preloadLayout } from "@/auth/preload-data";
+import { preloadLayout } from "@/server-actions/auth/preload-data";
 import { HydrationBoundary } from "@tanstack/react-query";
 
 const geistSans = localFont({

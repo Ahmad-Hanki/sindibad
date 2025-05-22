@@ -1,7 +1,7 @@
 "use server";
 
 import prisma from "@/lib/db";
-import { SignUpSchemeInput } from "../_utils/auth-schemes";
+import { SignUpSchemeInput } from "../../app/[locale]/(auth)/_utils/auth-schemes";
 import { hash } from "bcryptjs";
 
 const SignUpWithCredential = async ({
