@@ -49,6 +49,9 @@ const SignUpWithCredential = async ({
         username: value.username,
         password: hashedPassword,
         name: value.name,
+        cart: {
+          create: {},
+        },
       },
     });
 

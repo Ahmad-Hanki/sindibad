@@ -59,4 +59,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return session;
     },
   },
+
+  events: {
+    createUser: async ({ user }) => {
+      const res = await prisma.cart.create({
+        data: {
+          userId: user.id!,
+        },
+      });
+      console.log(res);
+    },
+  },
 });

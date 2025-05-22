@@ -1,7 +1,7 @@
 import { queryOptions, useQuery } from "@tanstack/react-query";
 
 import { QueryConfig } from "@/lib/react-query";
-import getProductCountAction from "./get-product-count-action";
+import getProductCountAction from "../../../server-actions/get/get-product-count-action";
 
 export const getCartCount = async ({ userId }: { userId: string }) => {
   return await getProductCountAction(userId);

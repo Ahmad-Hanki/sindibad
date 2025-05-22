@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -10,6 +9,11 @@ import {
 import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
 import { useMostPopular } from "../_api/get-most-popular";
+import { Button } from "@/components/ui/button";
+import { useUser } from "@/server-actions/auth/get-user";
+import Link from "next/link";
+import { useAddItemToCart } from "../_api/post-add-to-cart";
+import { Loader2 } from "lucide-react";
 
 interface RecommendedProps {
   recommended: string;
@@ -19,6 +23,13 @@ interface RecommendedProps {
 
 const Recommended = ({ recommended }: RecommendedProps) => {
   const { data: list } = useMostPopular({});
+  const { data: userData } = useUser({});
+
+  const { mutate, isPending } = useAddItemToCart({
+    userId: userData?.id ?? "",
+
+    mutationConfig: {},
+  });
 
   return (
     <div className="mt-[calc(100vh-112px)] py-20">
@@ -57,10 +68,29 @@ const Recommended = ({ recommended }: RecommendedProps) => {
                           </div>
                         </div>
 
-                        {/* tetx */}
-
                         <div className="absolute h-[95%] w-[70%] z-10 flex justify-start items-end">
                           <p className="text-xl font-semibold">{item.name}</p>
+                          {userData?.id ? (
+                            <Button
+                              disabled={isPending}
+                              onClick={() => {
+                                mutate({
+                                  productId: item.id,
+                                  userId: userData.id,
+                                });
+                              }}
+                            >
+                              {isPending ? (
+                                <Loader2 className="animate-spin" />
+                              ) : (
+                                "Add to cart"
+                              )}
+                            </Button>
+                          ) : (
+                            <Link href={"/sign-in"}>
+                              <Button>Add to cart</Button>
+                            </Link>
+                          )}
                         </div>
                       </div>
                     </CardContent>

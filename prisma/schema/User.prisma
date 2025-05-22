@@ -9,7 +9,7 @@ model User {
   admin         Boolean   @default(false)
   accounts      Account[]
   sessions      Session[]
-  Cart          Cart?
+  cart          Cart?
 
   //   // Optional for WebAuthn support
   //   Authenticator Authenticator[]

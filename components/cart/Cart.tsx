@@ -12,7 +12,7 @@ import {
 import { cn } from "@/lib/utils";
 import { ShoppingBasketIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { useCartCount } from "../navbar/_utils/get-product-count";
+import { useCartCount } from "../navbar/_api/get-product-count";
 
 const Cart = () => {
   const pathname = usePathname(); // Get the current pathname
