@@ -1,19 +1,19 @@
-import { useUser } from "@/server-actions/auth/get-user";
 import { useAddItemToCart } from "../_api/post-add-to-cart";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
-import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
-import { useState } from "react";
 import { GetAllProductsResponseType } from "@/server-actions/get/get-all-producats";
 
 function ProductShow({
   item,
   userData,
+  locale,
 }: {
   item: GetAllProductsResponseType;
   userData: any;
+  locale: string;
 }) {
   const { mutate, isPending } = useAddItemToCart({
     userId: userData?.id ?? "",
@@ -23,23 +23,55 @@ function ProductShow({
 
   return (
     <>
-      {item.mostPopular == true && (
-        <div className="h-full relative flex justify-center items-center">
-          <div className="absolute w-[90%] bg-primary/70 h-[30%] rounded-full -z-0" />
-
-          <div className="absolute w-full  z-30 flex justify-center items-center">
-            <div className="w-[70%] aspect-square relative overflow-hidden rounded-2xl  ">
-              <Image
-                src={item.image}
-                alt={item.name}
-                fill
-                className=" object-center transition-all duration-500 hover:scale-110"
-              />
-            </div>
+      <div className="flex flex-col space-y-2 justify-center items-center p-5">
+        {/*image section*/}
+        <div className="w-full flex justify-center items-center">
+          <div className="w-[80%] aspect-square relative overflow-hidden rounded-2xl  ">
+            <Image
+              src={item.image}
+              alt={item.name}
+              fill
+              className=" object-center transition-all duration-500 hover:scale-110 object-cover "
+            />
           </div>
-
-          <div className="absolute h-[95%] w-[70%] z-10 flex justify-start items-end">
-            <p className="text-xl font-semibold">{item.name}</p>
+        </div>
+        {/*text section*/}
+        <section className="flex flex-col space-y-4 w-[80%]">
+          {/*name section*/}
+          <div
+            className={` ${
+              locale == "ar" ? " justify-start " : " justify-end "
+            } " flex items-center  "`}
+          >
+            <p className="text-xl font-semibold">
+              {locale == "en"
+                ? item.name
+                : locale == "ar"
+                ? item.name_ar
+                : item.name_tr}
+            </p>
+          </div>
+          {/*description section*/}
+          <div
+            className={` ${
+              locale == "ar" ? " justify-start " : " justify-end "
+            } " flex items-end "`}
+          >
+            <p className="text-lg ">
+              {locale == "en"
+                ? item.description
+                : locale == "ar"
+                ? item.description_ar
+                : item.description_tr}
+            </p>
+          </div>
+          {/*price and button section*/}
+          <div
+            className={` ${
+              locale == "ar" ? " justify-start " : " justify-end "
+            } " flex items-center justify-between "`}
+          >
+            <p className="text-lg font-semibold">{item.price}TL</p>
             {userData?.id ? (
               <Button
                 disabled={isPending}
@@ -53,17 +85,19 @@ function ProductShow({
                 {isPending ? (
                   <Loader2 className="animate-spin" />
                 ) : (
-                  "Add to cart"
+                  <ShoppingCart className="w-8 h-9 py-1" />
                 )}
               </Button>
             ) : (
               <Link href={"/sign-in"}>
-                <Button>Add to cart</Button>
+                <Button>
+                  <ShoppingCart className="w-8 h-9 py-1" />
+                </Button>
               </Link>
             )}
           </div>
-        </div>
-      )}
+        </section>
+      </div>
     </>
   );
 }

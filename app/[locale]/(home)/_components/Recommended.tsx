@@ -13,11 +13,12 @@ import ProductShow from "./ProductShow";
 
 interface RecommendedProps {
   recommended: string;
+  locale: string;
 }
 
 // need to be reworked
 
-const Recommended = ({ recommended }: RecommendedProps) => {
+const Recommended = ({ recommended, locale }: RecommendedProps) => {
   const { data: list } = useAllProducts({});
   const { data: userData } = useUser({});
 
@@ -46,7 +47,13 @@ const Recommended = ({ recommended }: RecommendedProps) => {
                 <div className="p-1">
                   <Card className="border-primary border-4 rounded-2xl ">
                     <CardContent className="aspect-square p-0">
-                      <ProductShow item={item} userData={userData} />
+                      {item.mostPopular === true && (
+                        <ProductShow
+                          locale={locale}
+                          item={item}
+                          userData={userData}
+                        />
+                      )}
                     </CardContent>
                   </Card>
                 </div>
