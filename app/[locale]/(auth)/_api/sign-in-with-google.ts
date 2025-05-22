@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { MutationConfig } from "@/lib/react-query";
 import { signIn } from "next-auth/react";
-import { authUserQueryOptions } from "@/auth/get-user";
+import { authUserQueryOptions } from "@/server-actions/auth/get-user";
 
 export const signInWithGoogle = async () => {
   return await signIn("google");
