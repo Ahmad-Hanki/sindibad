@@ -10,6 +10,7 @@ const HomeClient = () => {
   const t = useTranslations("home");
   return (
     <div>
+  
       <Hero
         title={t("headerTitle")}
         description={t("headerDescription")}
