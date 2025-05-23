@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { useAllProducts } from "../../dashboard/_api/get-all-products";
-import { useUser } from "@/server-actions/auth/get-user";
 import ProductShow from "./ProductShow";
 
 interface RecommendedProps {
@@ -20,7 +19,6 @@ interface RecommendedProps {
 
 const Recommended = ({ recommended, locale }: RecommendedProps) => {
   const { data: list } = useAllProducts({});
-  const { data: userData } = useUser({});
 
   console.log(list);
 
@@ -51,7 +49,6 @@ const Recommended = ({ recommended, locale }: RecommendedProps) => {
                         <ProductShow
                           locale={locale}
                           item={item}
-                          userData={userData}
                         />
                       )}
                     </CardContent>

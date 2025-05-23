@@ -5,16 +5,17 @@ import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { GetAllProductsResponseType } from "@/server-actions/get/get-all-producats";
+import { useUser } from "@/server-actions/auth/get-user";
 
 function ProductShow({
   item,
-  userData,
   locale,
 }: {
   item: GetAllProductsResponseType;
-  userData: any;
   locale: string;
 }) {
+  const { data: userData } = useUser({});
+
   const { mutate, isPending } = useAddItemToCart({
     userId: userData?.id ?? "",
 

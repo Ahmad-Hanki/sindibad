@@ -2,12 +2,10 @@
 import ProductShow from "../(home)/_components/ProductShow";
 import { useAllCategory } from "../dashboard/_api/get-all-categories";
 import { useAllProducts } from "../dashboard/_api/get-all-products";
-import { useUser } from "@/server-actions/auth/get-user";
 
 function MenuClient({ locale }: { locale: string }) {
   const { data } = useAllCategory({});
   const { data: products } = useAllProducts({});
-  const { data: userData } = useUser({});
 
   function filteredProducts(categoryId: string) {
     return products?.filter((product) => product.categoryId === categoryId);
@@ -38,7 +36,6 @@ function MenuClient({ locale }: { locale: string }) {
                   <ProductShow
                     locale={locale}
                     item={product}
-                    userData={userData}
                   />
                 </div>
               ))}
