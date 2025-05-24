@@ -1,7 +1,5 @@
 "use server";
-
 import prisma from "@/lib/db";
-
 export const getMostPopularProductsAction = async () => {
   try {
     const res = await prisma.product.findMany({

@@ -6,30 +6,21 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
-import { useMostPopular } from "../_api/get-most-popular";
-import { Button } from "@/components/ui/button";
-import { useUser } from "@/server-actions/auth/get-user";
-import Link from "next/link";
-import { useAddItemToCart } from "../_api/post-add-to-cart";
-import { Loader2 } from "lucide-react";
+import { useAllProducts } from "../../dashboard/_api/get-all-products";
+import ProductShow from "./ProductShow";
 
 interface RecommendedProps {
   recommended: string;
+  locale: string;
 }
 
 // need to be reworked
 
-const Recommended = ({ recommended }: RecommendedProps) => {
-  const { data: list } = useMostPopular({});
-  const { data: userData } = useUser({});
+const Recommended = ({ recommended, locale }: RecommendedProps) => {
+  const { data: list } = useAllProducts({});
 
-  const { mutate, isPending } = useAddItemToCart({
-    userId: userData?.id ?? "",
-
-    mutationConfig: {},
-  });
+  console.log(list);
 
   return (
     <div className="mt-[calc(100vh-112px)] py-20">
@@ -54,45 +45,12 @@ const Recommended = ({ recommended }: RecommendedProps) => {
                 <div className="p-1">
                   <Card className="border-primary border-4 rounded-2xl ">
                     <CardContent className="aspect-square p-0">
-                      <div className="h-full relative flex justify-center items-center">
-                        <div className="absolute w-[90%] bg-primary/70 h-[30%] rounded-full -z-0" />
-
-                        <div className="absolute w-full  z-30 flex justify-center items-center">
-                          <div className="w-[70%] aspect-square relative overflow-hidden rounded-2xl  ">
-                            <Image
-                              src={item.image}
-                              alt={item.name}
-                              fill
-                              className=" object-center transition-all duration-500 hover:scale-110"
-                            />
-                          </div>
-                        </div>
-
-                        <div className="absolute h-[95%] w-[70%] z-10 flex justify-start items-end">
-                          <p className="text-xl font-semibold">{item.name}</p>
-                          {userData?.id ? (
-                            <Button
-                              disabled={isPending}
-                              onClick={() => {
-                                mutate({
-                                  productId: item.id,
-                                  userId: userData.id,
-                                });
-                              }}
-                            >
-                              {isPending ? (
-                                <Loader2 className="animate-spin" />
-                              ) : (
-                                "Add to cart"
-                              )}
-                            </Button>
-                          ) : (
-                            <Link href={"/sign-in"}>
-                              <Button>Add to cart</Button>
-                            </Link>
-                          )}
-                        </div>
-                      </div>
+                      {item.mostPopular === true && (
+                        <ProductShow
+                          locale={locale}
+                          item={item}
+                        />
+                      )}
                     </CardContent>
                   </Card>
                 </div>

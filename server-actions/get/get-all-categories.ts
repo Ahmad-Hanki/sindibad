@@ -11,7 +11,6 @@ export const getAllCategoryAction = async () => {
       name: category.name,
       name_ar: category.name_ar,
       name_tr: category.name_tr,
-     
       slug: category.slug,
     }));
     return formatted;

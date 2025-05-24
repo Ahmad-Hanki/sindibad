@@ -6,7 +6,7 @@ import ContactData from "./_components/ContactData";
 import { useTranslations } from "next-intl";
 // import { signOut } from "next-auth/react";
 
-const HomeClient = () => {
+const HomeClient = ({ locale }: { locale: string }) => {
   const t = useTranslations("home");
   return (
     <div>
@@ -15,7 +15,7 @@ const HomeClient = () => {
         description={t("headerDescription")}
         buttonText={t("headerButton")}
       />
-      <Recommended recommended={t("recommended")} />
+      <Recommended recommended={t("recommended")} locale={locale} />
       <Location />
       <ContactData
         address={t("address")}
