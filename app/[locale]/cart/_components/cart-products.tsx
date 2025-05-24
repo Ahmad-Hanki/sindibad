@@ -29,7 +29,7 @@ const CartProducts = ({ userId }: { userId: string }) => {
       {data?.cartItems.map((item) => {
         const price = item.product.price * item.quantity;
         return (
-          <Card>
+          <Card key={item.id}> 
             <CardContent className="p-4">
               <div className="flex items-center gap-3 ">
                 <div className="relative overflow-hidden aspect-square w-16">
