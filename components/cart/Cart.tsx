@@ -31,11 +31,11 @@ const Cart = () => {
   return (
     <div>
       <Dialog>
-        <DialogTrigger className="relative h-fit">
+        <DialogTrigger className="relative h-fit mt-2">
           <ShoppingBasketIcon
             className={cn(
               getOnlyPathname() == "/" && "text-white",
-              "transition-all duration-200  hover:text-primary/70 w-9 h-9 lg:w-8 lg:h-8"
+              "transition-all duration-200   hover:text-primary/70 w-9 h-9 lg:w-8 lg:h-8"
             )}
           />
 

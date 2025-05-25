@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { GetAllProductsResponseType } from "@/server-actions/get/get-all-producats";
 import { useUser } from "@/server-actions/auth/get-user";
+import Images from "@/components/ui/images";
 
 function ProductShow({
   item,
@@ -21,28 +22,23 @@ function ProductShow({
 
     mutationConfig: {},
   });
-
   return (
     <>
-      <div className="flex flex-col space-y-2 justify-center items-center p-5">
+      <div className="flex flex-col  justify-center items-center ">
         {/*image section*/}
-        <div className="w-full flex justify-center items-center">
-          <div className="w-[80%] aspect-square relative overflow-hidden rounded-2xl  ">
-            <Image
-              src={item.image}
-              alt={item.name}
-              fill
-              className=" object-center transition-all duration-500 hover:scale-110 object-cover "
-            />
-          </div>
-        </div>
-        {/*text section*/}
-        <section className="flex flex-col space-y-4 w-[80%]">
+        <div className="relative w-full ">
+          <Images
+            url={item.image}
+            addClass=" transition-all duration-500 hover:scale-110 object-cover h-[250px] w-full "
+            clas=" object-cover "
+          />
           {/*name section*/}
           <div
             className={` ${
-              locale == "ar" ? " justify-start " : " justify-end "
-            } " flex items-center  "`}
+              locale == "ar"
+                ? " justify-start right-5 "
+                : " justify-end left-5 "
+            } " flex items-center absolute -bottom-5 bg-primary text-white px-12 py-2  "`}
           >
             <p className="text-xl font-semibold">
               {locale == "en"
@@ -52,11 +48,15 @@ function ProductShow({
                 : item.name_tr}
             </p>
           </div>
+        </div>
+
+        {/*text section*/}
+        <section className="flex flex-col space-y-4 p-4 bg-secondary w-full ">
           {/*description section*/}
           <div
             className={` ${
-              locale == "ar" ? " justify-start " : " justify-end "
-            } " flex items-end "`}
+              locale == "ar" ? "  " : " "
+            } " flex items-end mt-5 text-white font-semibold  justify-start "`}
           >
             <p className="text-lg ">
               {locale == "en"
@@ -72,9 +72,12 @@ function ProductShow({
               locale == "ar" ? " justify-start " : " justify-end "
             } " flex items-center justify-between "`}
           >
-            <p className="text-lg font-semibold">{item.price}TL</p>
+            <p className="text-lg font-semibold text-white border border-primary rounded-full px-5 py-1">
+              {item.price}TL
+            </p>
             {userData?.id ? (
               <Button
+                className="rounded-full py-7 px-2"
                 disabled={isPending}
                 onClick={() => {
                   mutate({
@@ -86,13 +89,13 @@ function ProductShow({
                 {isPending ? (
                   <Loader2 className="animate-spin" />
                 ) : (
-                  <ShoppingCart className="w-8 h-9 py-1" />
+                  <ShoppingCart className="w-9 h-9 py-1" />
                 )}
               </Button>
             ) : (
               <Link href={"/sign-in"}>
                 <Button>
-                  <ShoppingCart className="w-8 h-9 py-1" />
+                  <ShoppingCart className="w-9 h-9 py-1" />
                 </Button>
               </Link>
             )}
