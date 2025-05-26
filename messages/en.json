@@ -40,5 +40,13 @@
     "deleteConfirmationText": "This will permanently delete the item.",
     "deleteConfirmationConfirm": "Confirm Deletion",
     "deleteConfirmationCancel": "Cancel"
+  },
+  "cart": {
+    "headerTitle": "Shopping Cart",
+    "items": "Items",
+    "quantity": "Quantity",
+    "price": "Price",
+    "checkout": "Checkout",
+    "continueShopping": "Continue Shopping"
   }
 }

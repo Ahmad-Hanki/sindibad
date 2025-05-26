@@ -1,7 +1,9 @@
 import { useCartCount } from "@/components/navbar/_api/get-product-count";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { useTranslations } from "next-intl";
 
 const CartHeader = ({ userId }: { userId: string }) => {
+  const t = useTranslations("Cart");
   const { data: count } = useCartCount({
     userId: userId ?? "",
     queryConfig: {
@@ -11,7 +13,7 @@ const CartHeader = ({ userId }: { userId: string }) => {
   return (
     <Card className="p-3">
       <CardHeader>
-        <CardTitle>Sepetim ({count} Ürün)</CardTitle>
+        <CardTitle>{t("headerTitle")} ({count} {t("item")})</CardTitle>
       </CardHeader>{" "}
     </Card>
   );
