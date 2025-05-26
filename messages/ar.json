@@ -40,10 +40,12 @@
     "deleteConfirmationConfirm": "تأكيد الحذف",
     "deleteConfirmationCancel": "إلغاء"
   },
-  "cart":{
+  "cart": {
     "headerTitle": "عربة التسوق",
-    "items": "العناصر",
+    "items": "عناصر",
     "quantity": "الكمية",
+    "subtotal": "ملخص الطلب",
+    "total": "المجموع",
     "price": "السعر",
     "checkout": "الدفع",
     "continueShopping": "متابعة التسوق"

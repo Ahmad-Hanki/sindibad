@@ -41,9 +41,11 @@
     "deleteConfirmationCancel": "İptal"
   },
   "cart": {
-    "headerTitle": "Alışveriş Sepeti",
+    "headerTitle": "Sepetim",
     "items": "Ürünler",
     "quantity": "Adet",
+    "subtotal": "Sipariş Özeti",
+    "total": "Toplam",
     "price": "Fiyat",
     "checkout": "Ödeme Yap",
     "continueShopping": "Alışverişe Devam Et"
