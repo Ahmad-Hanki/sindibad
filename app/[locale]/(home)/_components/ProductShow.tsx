@@ -2,11 +2,10 @@ import { useAddItemToCart } from "../_api/post-add-to-cart";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { ShoppingCart } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { GetAllProductsResponseType } from "@/server-actions/get/get-all-producats";
 import { useUser } from "@/server-actions/auth/get-user";
-import Images from "@/components/ui/images";
+import Images from "@/components/ui/Images";
 
 function ProductShow({
   item,
