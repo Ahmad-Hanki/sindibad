@@ -1,6 +1,7 @@
 "use server";
 
 import prisma from "@/lib/db";
+import { Prisma } from "@prisma/client";
 
 const getCartData = async (userId: string) => {
   try {
@@ -25,3 +26,9 @@ const getCartData = async (userId: string) => {
 };
 
 export default getCartData;
+
+export type CartItemWithProductType = Prisma.CartItemGetPayload<{
+  include: {
+    product: true;
+  };
+}>;
