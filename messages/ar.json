@@ -39,5 +39,15 @@
     "deleteConfirmationText": "سيؤدي هذا إلى حذف العنصر بشكل دائم.",
     "deleteConfirmationConfirm": "تأكيد الحذف",
     "deleteConfirmationCancel": "إلغاء"
+  },
+  "cart": {
+    "headerTitle": "عربة التسوق",
+    "items": "عناصر",
+    "quantity": "الكمية",
+    "subtotal": "ملخص الطلب",
+    "total": "المجموع",
+    "price": "السعر",
+    "checkout": "الدفع",
+    "continueShopping": "متابعة التسوق"
   }
 }

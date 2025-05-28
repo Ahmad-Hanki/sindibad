@@ -39,5 +39,15 @@
     "deleteConfirmationText": "Bu işlem öğeyi kalıcı olarak silecektir.",
     "deleteConfirmationConfirm": "Silmeyi Onayla",
     "deleteConfirmationCancel": "İptal"
+  },
+  "cart": {
+    "headerTitle": "Sepetim",
+    "items": "Ürünler",
+    "quantity": "Adet",
+    "subtotal": "Sipariş Özeti",
+    "total": "Toplam",
+    "price": "Fiyat",
+    "checkout": "Ödeme Yap",
+    "continueShopping": "Alışverişe Devam Et"
   }
 }
