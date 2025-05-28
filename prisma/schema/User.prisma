@@ -3,6 +3,8 @@ model User {
   name          String?
   username      String?   @unique
   email         String?   @unique
+  phone         String?   @unique
+  address       String?
   emailVerified DateTime?
   image         String?
   password      String?   @db.VarChar(255) // Nullable for OAuth users
@@ -10,6 +12,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   cart          Cart?
+  Order         Order[]
 
   //   // Optional for WebAuthn support
   //   Authenticator Authenticator[]

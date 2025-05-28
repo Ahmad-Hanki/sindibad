@@ -48,6 +48,7 @@
     "total": "المجموع",
     "price": "السعر",
     "checkout": "الدفع",
+    "payOnDelivery": "الدفع عند الاستلام",
     "continueShopping": "متابعة التسوق"
   }
 }

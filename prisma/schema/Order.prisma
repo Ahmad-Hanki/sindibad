@@ -1,0 +1,29 @@
+model Order {
+  id            String      @id @default(cuid())
+  status        OrderStatus @default(PENDING)
+  refundRequest Boolean     @default(false)
+  total         Float
+  shippingFee   Float?      @default(0.0)
+  discount      Float?      @default(0.0)
+  freeShipping  Boolean     @default(false)
+  paymentMethod PaymentMethod
+
+  userId     String
+  user       User        @relation(fields: [userId], references: [id])
+  orderItems OrderItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  DELIVERED
+  CANCELED
+}
+
+enum PaymentMethod {
+  CASH_ON_DELIVERY
+  CREDIT_CARD
+}

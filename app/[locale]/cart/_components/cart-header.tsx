@@ -1,12 +1,15 @@
 import { useCartCount } from "@/components/navbar/_api/get-product-count";
+import { useUser } from "@/server-actions/auth/get-user";
 import { useTranslations } from "next-intl";
 
-const CartHeader = ({ userId }: { userId: string }) => {
+const CartHeader = () => {
+  const { data: userData } = useUser({});
+
   const t = useTranslations("cart");
   const { data: count } = useCartCount({
-    userId: userId ?? "",
+    userId: userData?.id ?? "",
     queryConfig: {
-      enabled: !!userId,
+      enabled: !!userData?.id,
     },
   });
   return (

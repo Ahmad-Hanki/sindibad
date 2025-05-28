@@ -48,6 +48,7 @@
     "total": "Toplam",
     "price": "Fiyat",
     "checkout": "Ödeme Yap",
+    "payOnDelivery": "Kapıda Ödeme",
     "continueShopping": "Alışverişe Devam Et"
   }
 }

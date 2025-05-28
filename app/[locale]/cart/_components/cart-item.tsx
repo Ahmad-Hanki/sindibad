@@ -6,23 +6,20 @@ import Image from "next/image";
 import { useAddOneQuantity } from "../_api/add-one-quantity-data";
 import { useDeleteOneQuantity } from "../_api/delete-one-quantity-data";
 import { useRemoveOneItem } from "../_api/remove-one-item-data";
+import { useUser } from "@/server-actions/auth/get-user";
 
-const CartItem = ({
-  item,
-  userId,
-}: {
-  item: CartItemWithProductType;
-  userId: string;
-}) => {
+const CartItem = ({ item }: { item: CartItemWithProductType }) => {
+  const { data: userData } = useUser({});
+
   const price = item.product.price * item.quantity;
   const t = useTranslations("cart");
 
   const { mutate: addOneQuantity, isPending: isAddOneQuantityPending } =
-    useAddOneQuantity({ userId });
+    useAddOneQuantity({ userId: userData?.id ?? "" });
   const { mutate: deleteOneQuantity, isPending: isDeleteOneQuantityPending } =
-    useDeleteOneQuantity({ userId });
+    useDeleteOneQuantity({ userId: userData?.id ?? "" });
   const { mutate: removeOneItem, isPending: isRemoveOneItemPending } =
-    useRemoveOneItem({ userId });
+    useRemoveOneItem({ userId: userData?.id ?? "" });
 
   return (
     <section key={item.id}>

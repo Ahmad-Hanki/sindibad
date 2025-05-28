@@ -49,6 +49,7 @@
     "total": "Total",
     "price": "Price",
     "checkout": "Checkout",
+    "payOnDelivery": "Pay on Delivery",
     "continueShopping": "Continue Shopping"
   }
 }

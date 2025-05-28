@@ -3,15 +3,15 @@ import { useAllCartData } from "../_api/get-cart-data";
 import { Card } from "@/components/ui/card";
 import CartItem from "./cart-item";
 import RightSidePayment from "./right-side-payment";
+import { useUser } from "@/server-actions/auth/get-user";
 
-const CartProducts = ({ userId }: { userId: string }) => {
+const CartProducts = () => {
+  const { data: userData } = useUser({});
   const { data } = useAllCartData({
-    userId: userId,
-    queryConfig: { enabled: !!userId },
+    userId: userData?.id ?? "",
+    queryConfig: { enabled: !!userData?.id },
   });
-  const price = data?.cartItems.reduce((acc, item) => {
-    return acc + item.product.price * item.quantity;
-  }, 0);
+
   if (data?.cartItems.length === 0) {
     return (
       <Card className="flex flex-col items-center justify-center h-full">
@@ -29,11 +29,11 @@ const CartProducts = ({ userId }: { userId: string }) => {
       {/* Left Side Section */}
       <div className="w-full">
         {data?.cartItems.map((item) => {
-          return <CartItem key={item.id} item={item} userId={userId}/>;
+          return <CartItem key={item.id} item={item} />;
         })}
       </div>
       {/* Right Side Section */}
-      {price && <RightSidePayment price={price} />}
+      {data  && <RightSidePayment cartData={data} />}
     </div>
   );
 };
