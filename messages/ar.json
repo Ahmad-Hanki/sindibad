@@ -33,8 +33,9 @@
     "copyRight": "جميع الحقوق محفوظة © 2023 السندباد"
   },
   "dashboard": {
-    "buttonTextOne": "لوحة التحكم",
-    "buttonTextTwo": "الطلبات ",
+    "buttonTextOne": " الفئات",
+    "buttonTextTwo": "المنتجات ",
+    "buttonTextThree": "الطلبات",
     "deleteConfirmation": "هل أنت متأكد أنك تريد حذف هذا العنصر؟",
     "deleteConfirmationText": "سيؤدي هذا إلى حذف العنصر بشكل دائم.",
     "deleteConfirmationConfirm": "تأكيد الحذف",
