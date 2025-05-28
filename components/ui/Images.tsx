@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import Image, { StaticImageData } from "next/image";
 type ImageProps = {
   url: string | StaticImageData;
@@ -7,16 +8,13 @@ type ImageProps = {
 
 function Images({ url, addClass, clas }: ImageProps) {
   return (
-    <div
-      className={` ${addClass}
-    } " aspect-square relative overflow-hidden "`}
-    >
+    <div className={cn("aspect-square relative overflow-hidden", addClass)}>
       <Image
         fill
         alt={url.toString()}
         priority
         src={url}
-        className={` ${clas} `}
+        className={clas}
         unoptimized
       />
     </div>

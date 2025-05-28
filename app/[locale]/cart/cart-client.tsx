@@ -7,11 +7,13 @@ import CartProducts from "./_components/cart-products";
 
 const CartClient = () => {
   const { data: userData } = useUser({});
- 
+
   return (
     <Container>
       <CartHeader userId={userData!.id} />
+      {/* todo: add the delete all cart ui */}
       <CartProducts userId={userData!.id} />
+      
     </Container>
   );
 };
