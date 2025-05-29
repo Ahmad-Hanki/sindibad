@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
-
 function NavBar() {
   const t = useTranslations("dashboard");
   const navTexts = [
@@ -11,6 +10,10 @@ function NavBar() {
     },
     {
       text: t("buttonTextTwo"),
+      url: "/dashboard/products",
+    },
+    {
+      text: t("buttonTextThree"),
       url: "/dashboard/orders",
     },
   ];

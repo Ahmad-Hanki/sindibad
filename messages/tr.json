@@ -33,8 +33,9 @@
     "copyRight": "Tüm Hakları Saklıdır © 2023 Sindibad"
   },
   "dashboard": {
-    "buttonTextOne": "Kontrol Paneli",
-    "buttonTextTwo": "Siparişler",
+    "buttonTextOne": "Kategoriler",
+    "buttonTextTwo": "Ürünler",
+    "buttonTextThree": "Siparişler",
     "deleteConfirmation": "Bu öğeyi silmek istediğinizden emin misiniz?",
     "deleteConfirmationText": "Bu işlem öğeyi kalıcı olarak silecektir.",
     "deleteConfirmationConfirm": "Silmeyi Onayla",
