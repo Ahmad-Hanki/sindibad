@@ -12,6 +12,8 @@ export const orderWithCreditCard = async ({
   userName,
   userAddress,
   userPhone,
+  shipping_fee,
+  randomId,
 }: {
   cartData: CartDataType;
   email: string;
@@ -19,6 +21,8 @@ export const orderWithCreditCard = async ({
   userName: string;
   userPhone: string;
   userAddress: string;
+  shipping_fee?: number;
+  randomId: string;
 }) => {
   const basketData = cartData.cartItems.map((item) => ({
     name: item.product.name,
@@ -26,16 +30,21 @@ export const orderWithCreditCard = async ({
     quantity: item.quantity,
   }));
   try {
-    const res = await CreatePaytrToken(cartData, {
-      data: {
-        email: email,
-        payment_amount: price,
-        user_basket: basketData,
-        user_name: userName,
-        user_address: userAddress,
-        user_phone: userPhone,
+    const res = await CreatePaytrToken(
+      cartData,
+      {
+        data: {
+          email: email,
+          payment_amount: price,
+          user_basket: basketData,
+          user_name: userName,
+          user_address: userAddress,
+          user_phone: userPhone,
+          shipping_fee,
+        },
       },
-    });
+      randomId
+    );
 
     if (res.status == "success") {
       return res;

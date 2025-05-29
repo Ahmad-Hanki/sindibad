@@ -33,15 +33,23 @@ export type PaytrDataType = {
     test_mode?: "0" | "1"; // 1 for test mode, 0 for live mode (defaults to 0)
     debug_on?: number; // 1 to display errors for debugging purposes
     timeout_limit?: number;
+    shipping_fee?: number; // Shipping fee in cents (optional)
   };
   // Time limit for payment completion in minutes (defaults to 30 if not sent)
 };
 
 const CreatePaytrToken = async (
   cartData: CartDataType,
-  { data }: PaytrDataType
+  { data }: PaytrDataType,
+  randomId: string
 ) => {
-  const res = await CreateOrderAction(cartData, data.payment_amount);
+  const res = await CreateOrderAction(
+    cartData,
+    data.payment_amount,
+    "CREDIT_CARD",
+    data.shipping_fee,
+    randomId
+  );
 
   if (!res) {
     return false;
@@ -83,7 +91,6 @@ const CreatePaytrToken = async (
     .digest("base64");
 
   data.paytr_token = paytrToken;
-  console.log("PayTR Token Data:", data);
   try {
     // Send the request to PayTR API
     const response = await axios.post(

@@ -6,7 +6,12 @@ import { CreditCard, Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useOrderWithCreditCard } from "../_api/order-with-credit-card";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRef } from "react";
+import CreateOrderImage, { CreateOrderImageRef } from "./create-order-image";
+import { useUploadImageToCloudinary } from "../_api/upload-image-to-cloudinary";
+import { useRouter } from "@bprogress/next";
+import { generateId } from "@/lib/idGenerater";
+
 const RightSidePayment = ({ cartData }: { cartData: CartDataType }) => {
   const { data: userData } = useUser({});
   const router = useRouter();
@@ -15,6 +20,21 @@ const RightSidePayment = ({ cartData }: { cartData: CartDataType }) => {
   const price = cartData?.cartItems.reduce((acc, item) => {
     return acc + item.product.price * item.quantity;
   }, 0);
+  const shipping_fee = price >= 200 ? 0 : 20; // Example shipping fee logic
+
+  const orderImageRef = useRef<CreateOrderImageRef>(null);
+
+  const randomId = generateId().toLocaleUpperCase();
+
+  const handleGenerateAndSend = async () => {
+    await payOnDelivery({
+      imageRef: orderImageRef,
+      cartData,
+      price,
+      randomId,
+      shipping_fee,
+    });
+  };
 
   const { mutate: payWithCreditCard, isPending: creditCardPending } =
     useOrderWithCreditCard({
@@ -26,6 +46,33 @@ const RightSidePayment = ({ cartData }: { cartData: CartDataType }) => {
           }
         },
         onError: (error) => {
+          setPaymentError(
+            error instanceof Error
+              ? error.message
+              : "Ödeme işlemi başarısız oldu. Lütfen tekrar deneyin."
+          );
+        },
+      },
+    });
+  const { mutateAsync: payOnDelivery, isPending: payWithDeliveryPending } =
+    useUploadImageToCloudinary({
+      userId: userData!.id!,
+      mutationConfig: {
+        onSuccess: (result) => {
+          const phoneNumber = "+905349277744"; // Your restaurant's WhatsApp number
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          const imageUrl = result.secure_url; // Cloudinary image URL
+          const message = `Sipariş onayı\nSipariş detayları: ${imageUrl}`;
+          const encodedMessage = encodeURIComponent(message);
+
+          window.open(
+            `https://wa.me/${phoneNumber}?text=${encodedMessage}`,
+            "_blank"
+          );
+        },
+        onError: (error) => {
+          console.error("Upload failed:", error);
           setPaymentError(
             error instanceof Error
               ? error.message
@@ -52,10 +99,12 @@ const RightSidePayment = ({ cartData }: { cartData: CartDataType }) => {
               payWithCreditCard({
                 cartData: cartData,
                 email: userData!.email!,
-                price: price!,
+                price,
+                randomId,
                 userName: userData!.name!,
                 userAddress: userData!.address!,
                 userPhone: userData!.phone!,
+                shipping_fee,
               });
             }}
             className="w-full py-6 rounded-sm text-xl"
@@ -67,12 +116,29 @@ const RightSidePayment = ({ cartData }: { cartData: CartDataType }) => {
             )}{" "}
             <CreditCard className="inline w-5 h-5 ml-2" />
           </Button>
-          <Button className="w-full py-6 rounded-sm text-xl bg-blue-400">
-            {t("payOnDelivery")} <PaymentIcon className="inline w-5 h-5 ml-2" />
+          <Button
+            disabled={payWithDeliveryPending}
+            onClick={handleGenerateAndSend}
+            className="w-full py-6 rounded-sm text-xl bg-blue-400"
+          >
+            {payWithDeliveryPending ? (
+              <Loader2 className="animate-spin w-4" />
+            ) : (
+              t("payOnDelivery")
+            )}{" "}
+            <PaymentIcon className="inline w-5 h-5 ml-2" />{" "}
           </Button>
         </div>
         {paymentError && <p className="text-red-500 mt-4">{paymentError}</p>}
       </section>
+
+      {/* Invisible component */}
+      <CreateOrderImage
+        ref={orderImageRef}
+        price={price}
+        shippingFee={shipping_fee}
+        randomId={randomId}
+      />
     </div>
   );
 };

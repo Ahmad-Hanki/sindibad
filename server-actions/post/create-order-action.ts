@@ -1,16 +1,21 @@
 "use server";
 import prisma from "@/lib/db";
 import { CartDataType } from "../get/get-cart-data-action";
+import { PaymentMethod } from "@prisma/client";
 
 export const CreateOrderAction = async (
   cartData: CartDataType,
-  price: number
+  price: number,
+  paymentMethod: PaymentMethod,
+  shippingFee: number = 0,
+  randomId: string,
+  orderImage?: string
 ) => {
   try {
     const order = await prisma.order.create({
       data: {
         userId: cartData.userId,
-        total: price,
+        total: price + shippingFee, 
         orderItems: {
           create: cartData.cartItems.map((item) => ({
             productId: item.product.id,
@@ -19,11 +24,13 @@ export const CreateOrderAction = async (
         },
         discount: 0, // Assuming no discount for now, adjust as needed
 
-        paymentMethod: "CREDIT_CARD", // Assuming payment method is Credit Card, adjust as needed
+        paymentMethod: paymentMethod, // Assuming payment method is Credit Card, adjust as needed
         status: "PENDING", // Assuming initial status is PENDING, adjust as needed
 
-        shippingFee: 0, // Assuming no shipping fee for now, adjust as needed
-        freeShipping: true, // change this to your actual order items structure
+        shippingFee, // Assuming no shipping fee for now, adjust as needed
+        freeShipping: shippingFee == 0 ? true : false, // change this to your actual order items structure
+        orderImage,
+        randomId,
       },
     });
 

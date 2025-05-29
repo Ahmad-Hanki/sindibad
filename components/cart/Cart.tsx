@@ -32,7 +32,6 @@ const Cart = () => {
           )}
         />
 
-        {/* TODO: motion */}
         {!isFetching && count && count > 0 ? (
           <div className="absolute -top-3 right-0">
             <span className="text-xs bg-primary text-white rounded-full px-1 py-0.5">
