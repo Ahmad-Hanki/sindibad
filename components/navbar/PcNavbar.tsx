@@ -9,7 +9,7 @@ import FlagsPc from "./FlagsPc";
 import { cn } from "@/lib/utils";
 import Cart from "../cart/Cart";
 import { User } from "lucide-react";
-
+import { useUser } from "@/server-actions/auth/get-user";
 
 interface PcNavbarProps {
   links: string[];
@@ -19,6 +19,7 @@ interface PcNavbarProps {
 const PcNavbar = ({ links, choseALanguage }: PcNavbarProps) => {
   const locale = useLocale();
   const pathname = usePathname();
+  const { data: userData } = useUser({});
 
   const getOnlyPathname = (): string => {
     // Replace the current locale part (whether 'en', 'ar', or 'tr') with the new locale
@@ -96,7 +97,15 @@ const PcNavbar = ({ links, choseALanguage }: PcNavbarProps) => {
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-4 mx-9">
             <Cart />
-            <Link href={"/dashboard"}>
+            <Link
+              href={
+                userData
+                  ? userData?.admin
+                    ? "/dashboard"
+                    : "/profile"
+                  : "/sign-in"
+              }
+            >
               <User
                 className={cn(
                   "transition-all duration-200  hover:text-primary/70 w-9 h-9 lg:w-8 lg:h-8",

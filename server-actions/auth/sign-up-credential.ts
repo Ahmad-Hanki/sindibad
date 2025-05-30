@@ -25,16 +25,16 @@ const SignUpWithCredential = async ({
       };
     }
 
-    const userName = await prisma.user.findFirst({
+    const phone = await prisma.user.findFirst({
       where: {
-        username: value.username,
+        phone: value.phone,
       },
     });
 
-    if (userName) {
+    if (phone) {
       return {
-        error: "Username already exists",
-        code: "username_exists",
+        error: "Phone exists",
+        code: "phone_exists",
         success: false,
         email: "",
         password: "",
@@ -46,7 +46,7 @@ const SignUpWithCredential = async ({
     const user = await prisma.user.create({
       data: {
         email: value.email,
-        username: value.username,
+        phone: value.phone,
         password: hashedPassword,
         name: value.name,
         cart: {

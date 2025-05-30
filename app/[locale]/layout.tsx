@@ -53,11 +53,11 @@ export default async function RootLayout({
       >
         <AppProvider>
           <NextIntlClientProvider messages={messages}>
-            <main className="max-w-[100vw] overflow-hidden">
+            <main className="max-w-[100vw] overflow-hidden ">
               <HydrationBoundary state={dehydratedState}>
                 <Navbar />
                 <PathChecker />
-                {children}
+                <div className="min-h-screen"> {children}</div>
                 <Toaster />
                 <Footer />
               </HydrationBoundary>

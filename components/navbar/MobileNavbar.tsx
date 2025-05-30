@@ -11,6 +11,7 @@ import Flags from "./Flags";
 import Cart from "../cart/Cart";
 import { User } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useUser } from "@/server-actions/auth/get-user";
 interface MobileNavbarProps {
   links: string[];
   menuText: string;
@@ -76,6 +77,7 @@ const MobileNavbar = ({ links, getInTouch, menuText }: MobileNavbarProps) => {
   };
 
   const pn = getOnlyPathname();
+  const { data: userData } = useUser({});
 
   return (
     <div>
@@ -86,14 +88,24 @@ const MobileNavbar = ({ links, getInTouch, menuText }: MobileNavbarProps) => {
 
         <div className="z-[100] flex gap-4 items-center">
           {!open && <Cart />}
-          {!open && <Link href={"/dashboard"}>
+          {!open && (
+            <Link
+              href={
+                userData
+                  ? userData?.admin
+                    ? "/dashboard"
+                    : "/profile"
+                  : "/sign-in"
+              }
+            >
               <User
                 className={cn(
                   "transition-all duration-200  hover:text-primary/70 w-9 h-9 lg:w-8 lg:h-8",
                   getOnlyPathname() == "/" && "text-white"
                 )}
               />
-            </Link>}
+            </Link>
+          )}
           <Hamburger
             toggled={open}
             onToggle={() => setOpen((prev) => !prev)}
