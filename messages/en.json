@@ -52,5 +52,13 @@
     "checkout": "Checkout",
     "payOnDelivery": "Pay on Delivery",
     "continueShopping": "Continue Shopping"
+  },
+  "profile": {
+    "headerTitle":"My Orders",
+    "logoutTitle": "Logout",
+    "headerTitleOne":"Account Information",
+    "headerTextOne":"Account Settings",
+    "headerTitleTwo":"My Order Information",
+    "headerTextTwo":"My Orders"
   }
 }

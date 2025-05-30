@@ -6,9 +6,11 @@ import { useUser } from "@/server-actions/auth/get-user";
 import { LogOut } from "lucide-react";
 import AccountSetting from "./_components/AccountSetting";
 import MyOrders from "./_components/MyOrders";
+import { useTranslations } from "next-intl";
 
 const ProfileClient = () => {
   // const [open, setOpen] = useState(false);
+  const t = useTranslations("profile");
   const [section, setSection] = useState("account");
   const user = useUser({});
 
@@ -30,33 +32,33 @@ const ProfileClient = () => {
               className="w-fit border-none text-red-600 px-0 group"
             >
               <LogOut className="mr-2 text-red-600 w-5 group-hover:text-black transition-colors duration-200" />
-              Log out
+              {t("logoutTitle")}
             </Button>
           </div>
           {/* Account settings */}
           <div className="mt-10">
             <h2 className=" text-black text-xl font-semibold">
-              Account settings
+              {t("headerTitleOne")}
             </h2>
             <Button
               onClick={() => setSection("account")}
               variant={"ghost"}
               className="text-black text-md mt-2 px-0"
             >
-              Account settings
+              {t("headerTextOne")}
             </Button>
           </div>
           {/* Orders data */}
           <div className="mt-10">
             <h2 className=" text-black text-xl font-semibold">
-              My Order Information
+              {t("headerTitleTwo")}
             </h2>
             <Button
               onClick={() => setSection("orders")}
               variant={"ghost"}
               className="text-black text-md mt-2 px-0"
             >
-              My Orders
+              {t("headerTextTwo")}
             </Button>
           </div>
         </div>
