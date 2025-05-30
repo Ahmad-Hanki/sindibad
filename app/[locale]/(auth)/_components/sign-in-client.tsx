@@ -25,7 +25,7 @@ const SignInClient = ({ locale }: { locale: string }) => {
   const form = useForm<SignInSchemeInput>({
     resolver: zodResolver(signInScheme(locale)),
     defaultValues: {
-      email_or_username: "",
+      email_or_phone: "",
       password: "",
     },
   });
@@ -37,7 +37,7 @@ const SignInClient = ({ locale }: { locale: string }) => {
       },
       onError: () => {
         setErrorMessage(true);
-        form.setError("email_or_username", {
+        form.setError("email_or_phone", {
           message: "",
         });
         form.setError("password", {
@@ -58,16 +58,16 @@ const SignInClient = ({ locale }: { locale: string }) => {
         {/* Email/Password Sign In */}
         <FormField
           control={form.control}
-          name="email_or_username"
+          name="email_or_phone"
           render={({ field }) => (
             <FormItem>
               <FormLabel>
                 {/* its the english name */}
                 {locale == "en"
-                  ? "Email or Username"
+                  ? "Email or Phone"
                   : locale == "ar"
-                  ? "البريد الإلكتروني أو اسم المستخدم"
-                  : "E-posta veya Kullanıcı Adı"}
+                  ? "البريد الإلكتروني أو الهاتف"
+                  : "E-posta veya Telefon"}
               </FormLabel>
               <FormControl>
                 <Input {...field} />

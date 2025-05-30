@@ -19,6 +19,7 @@ import { useState } from "react";
 import { useRouter } from "@bprogress/next";
 import { useSignUp } from "../_api/sign-up-credential";
 import { useToast } from "@/hooks/use-toast";
+import { PhoneInput } from "@/components/ui/phone-input";
 
 const SignUpClient = ({ locale }: { locale: string }) => {
   const [errorMessage, setErrorMessage] = useState<string>("");
@@ -31,7 +32,7 @@ const SignUpClient = ({ locale }: { locale: string }) => {
       name: "",
       email: "",
       password: "",
-      username: "",
+      phone: "",
     },
   });
 
@@ -68,21 +69,21 @@ const SignUpClient = ({ locale }: { locale: string }) => {
                 ? "البريد الإلكتروني موجود بالفعل"
                 : "E-posta zaten mevcut",
           });
-        } else if (errorMessage.includes("username_exists")) {
+        } else if (errorMessage.includes("phone_exists")) {
           setErrorMessage(
             locale == "en"
-              ? "Username already exists"
+              ? "Phone already exists"
               : locale == "ar"
-              ? "اسم المستخدم موجود بالفعل"
-              : "Kullanıcı adı zaten mevcut"
+              ? "الرقم موجود بالفعل"
+              : "Telefon zaten mevcut"
           );
-          form.setError("username", {
+          form.setError("phone", {
             message:
               locale == "en"
-                ? "Username already exists"
+                ? "Phone already exists"
                 : locale == "ar"
-                ? "اسم المستخدم موجود بالفعل"
-                : "Kullanıcı adı zaten mevcut",
+                ? " الهاتف موجود بالفعل"
+                : "Telefon zaten mevcut",
           });
         } else if (errorMessage.includes("sign-in-failed")) {
           setErrorMessage(
@@ -106,13 +107,20 @@ const SignUpClient = ({ locale }: { locale: string }) => {
   });
 
   async function onSubmit(values: SignUpSchemeInput) {
-    await mutateAsync({ data: values });
+    const formattedData = {
+      ...values,
+      phone: values.phone?.startsWith("+90")
+        ? values.phone.slice(3)
+        : values.phone,
+    };
+
+    await mutateAsync({ data: formattedData });
   }
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         {" "}
-        <h1 className="text-2xl font-bold text-center mb-6">Sign In</h1>
+        <h1 className="text-2xl font-bold text-center mb-6">Sign Up</h1>
         {/* Email/Password Sign In */}
         <FormField
           control={form.control}
@@ -136,19 +144,22 @@ const SignUpClient = ({ locale }: { locale: string }) => {
         />
         <FormField
           control={form.control}
-          name="username"
+          name="phone"
           render={({ field }) => (
             <FormItem>
               <FormLabel>
                 {/* its the english name */}
                 {locale == "en"
-                  ? "Username"
+                  ? "Phone"
                   : locale == "ar"
-                  ? "اسم المستخدم"
-                  : "Kullanıcı adı"}
+                  ? "الهاتف"
+                  : "Telefon"}
               </FormLabel>
               <FormControl>
-                <Input {...field} />
+                <PhoneInput
+                  defaultCountry="TR"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -191,7 +202,7 @@ const SignUpClient = ({ locale }: { locale: string }) => {
           )}
         />
         <Button disabled={isPending} className="w-full" type="submit">
-          {isPending ? <Loader2 className="animate-spin" /> : "Sign In"}
+          {isPending ? <Loader2 className="animate-spin" /> : "Sign Up"}
         </Button>
         {errorMessage && (
           <div className="text-red-500 text-sm text-center">{errorMessage}</div>

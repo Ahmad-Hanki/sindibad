@@ -12,8 +12,8 @@ const SignInWithCredential = async ({
     const user = await prisma.user.findFirst({
       where: {
         OR: [
-          { email: value.email_or_username },
-          { username: value.email_or_username },
+          { email: value.email_or_phone },
+          { phone: value.email_or_phone },
         ],
       },
     });

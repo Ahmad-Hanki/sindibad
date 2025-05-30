@@ -17,7 +17,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     Google,
     Credentials({
       credentials: {
-        email_or_username: {},
+        email_or_phone: {},
         password: {},
       },
       authorize: async (credentials) => {
