@@ -4,10 +4,8 @@ import UserForm from "../user-form";
 
 const DialogUserData = ({
   open,
-  setOpen,
 }: {
   open: boolean;
-  setOpen: Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
     <div>
@@ -18,7 +16,7 @@ const DialogUserData = ({
           )}
           <div>
             <DialogContent className="max-w-[550px] max-h-[600px] overflow-y-auto">
-              <UserForm setOpen={setOpen} />
+              <UserForm />
             </DialogContent>
           </div>
         </Dialog>
