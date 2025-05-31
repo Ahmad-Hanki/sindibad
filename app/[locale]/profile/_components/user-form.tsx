@@ -1,10 +1,8 @@
 "use client";
 
 import SubmitButton from "@/components/SubmitButton";
-import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Dispatch } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -23,11 +21,7 @@ import { useUser } from "@/server-actions/auth/get-user";
 import { PhoneInput } from "@/components/ui/phone-input";
 import { useLocale } from "next-intl";
 import { useUpdateUserData } from "../_api/edit-user-data";
-const UserForm = ({
-  setOpen,
-}: {
-  setOpen: Dispatch<React.SetStateAction<boolean>>;
-}) => {
+const UserForm = () => {
   const { data } = useUser({});
   const locale = useLocale();
   const form = useForm<UserFormSchemaInput>({
@@ -55,7 +49,7 @@ const UserForm = ({
               ? "تم تحديث بيانات المستخدم بنجاح"
               : "Kullanıcı verileri başarıyla güncellendi",
         });
-        setOpen(false);
+        // setOpen(false);
       },
 
       onError: (error) => {
@@ -167,7 +161,7 @@ const UserForm = ({
         {/* select section */}
         <div>
           <DialogFooter className="flex justify-between items-center gap-4">
-            <Button
+            {/* <Button
               onClick={() => {
                 setOpen(false);
               }}
@@ -175,7 +169,7 @@ const UserForm = ({
               variant="secondary"
             >
               {locale == "en" ? "Cancel" : locale == "ar" ? "الغاء" : "İptal"}
-            </Button>
+            </Button> */}
 
             <SubmitButton
               type="submit"

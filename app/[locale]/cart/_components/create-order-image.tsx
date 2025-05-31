@@ -118,7 +118,6 @@ const CreateOrderImage = forwardRef<CreateOrderImageRef, CreateOrderImageProps>(
                       </TableCell>
                     </TableRow>
                   ))}
-
                   <TableRow>
                     <TableCell className="font-medium">
                       {(data?.cartItems?.length ?? 0) + 1}

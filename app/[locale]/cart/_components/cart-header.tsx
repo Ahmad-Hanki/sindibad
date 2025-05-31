@@ -1,7 +1,6 @@
 import { useCartCount } from "@/components/navbar/_api/get-product-count";
 import { useUser } from "@/server-actions/auth/get-user";
 import { useTranslations } from "next-intl";
-
 const CartHeader = () => {
   const { data: userData } = useUser({});
 
