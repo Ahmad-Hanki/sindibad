@@ -7,12 +7,23 @@ import { LogOut } from "lucide-react";
 import AccountSetting from "./_components/AccountSetting";
 import MyOrders from "./_components/MyOrders";
 import { useTranslations } from "next-intl";
+import { useSignOut } from "./_api/sign-out-api";
+import { useRouter } from "@bprogress/next";
 
 const ProfileClient = () => {
   // const [open, setOpen] = useState(false);
   const t = useTranslations("profile");
   const [section, setSection] = useState("account");
   const user = useUser({});
+  const { push } = useRouter();
+
+  const { mutate } = useSignOut({
+    mutationConfig: {
+      onSuccess: () => {
+        push("/");
+      },
+    },
+  });
 
   return (
     <div className="border-t-2 border-primary">
@@ -28,6 +39,9 @@ const ProfileClient = () => {
           <div>
             <h2 className=" text-black text-xl">{user.data?.name}</h2>
             <Button
+              onClick={() => {
+                mutate(undefined);
+              }}
               variant="ghost"
               className="w-fit border-none text-red-600 px-0 group"
             >

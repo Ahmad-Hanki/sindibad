@@ -22,7 +22,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
       authorize: async (credentials) => {
         try {
-          const schema = signInScheme("");
+          const schema = signInScheme("en");
           const validatedCredentials = schema.parse(credentials);
           const result = await SignInWithCredential({
             value: validatedCredentials,
@@ -62,12 +62,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
   events: {
     createUser: async ({ user }) => {
-      const res = await prisma.cart.create({
+      await prisma.cart.create({
         data: {
           userId: user.id!,
         },
       });
-      console.log(res);
     },
   },
 });
