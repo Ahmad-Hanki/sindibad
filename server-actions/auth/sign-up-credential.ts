@@ -3,6 +3,7 @@
 import prisma from "@/lib/db";
 import { SignUpSchemeInput } from "../../app/[locale]/(auth)/_utils/auth-schemes";
 import { hash } from "bcryptjs";
+import { Prisma } from "@prisma/client";
 
 const SignUpWithCredential = async ({
   value,
@@ -10,37 +11,6 @@ const SignUpWithCredential = async ({
   value: SignUpSchemeInput;
 }) => {
   try {
-    const email = await prisma.user.findFirst({
-      where: {
-        email: value.email,
-      },
-    });
-    if (email) {
-      return {
-        error: "Email already exists",
-        code: "email_exists",
-        success: false,
-        email: "",
-        password: "",
-      };
-    }
-
-    const phone = await prisma.user.findFirst({
-      where: {
-        phone: value.phone,
-      },
-    });
-
-    if (phone) {
-      return {
-        error: "Phone exists",
-        code: "phone_exists",
-        success: false,
-        email: "",
-        password: "",
-      };
-    }
-
     const hashedPassword = await hash(value.password, 10); // 10 is the salt rounds
 
     const user = await prisma.user.create({
@@ -61,14 +31,30 @@ const SignUpWithCredential = async ({
       error: null,
     };
   } catch (error) {
-    console.error("Error signing up with credentials:", error);
-    return {
-      error: "An error occurred while signing in",
-      success: false,
-      code: "unknown_error",
-      email: "",
-      password: "",
-    };
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      // Unique constraint failed
+      if (error.code === "P2002") {
+        const target = (error.meta?.target as string[]) || [];
+        if (target.includes("email")) {
+          return {
+            error: "Email already exists",
+            code: "email_exists",
+            success: false,
+
+          };
+        }
+        if (target.includes("phone")) {
+          return {
+            error: "Phone exists",
+            code: "phone_exists",
+            success: false,
+
+          };
+        }
+      }
+    }
+
+    return { success: false, error: "Failed to sign up." };
   }
 };
 
