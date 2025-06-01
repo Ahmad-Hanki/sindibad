@@ -1,7 +1,6 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import CategoryTables from "../categories/_components/CategoryTables";
 import OrderTable from "./_components/order-table";
 
 const OrderClient = () => {
