@@ -66,5 +66,8 @@
   },
   "dashboardCategory": {
     "headerTitle": "Categories"
+  },
+  "dashboardOrder": {
+    "headerTitle": "Orders"
   }
 }

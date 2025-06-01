@@ -65,5 +65,8 @@
   },
   "dashboardCategory": {
     "headerTitle": "Kategoriler"
+  },
+  "dashboardOrder": {
+    "headerTitle": "Siparişler"
   }
 }

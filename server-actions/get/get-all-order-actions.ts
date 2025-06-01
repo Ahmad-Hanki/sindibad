@@ -5,6 +5,9 @@ import prisma from "@/lib/db";
 const GetAllOrderDataAction = async () => {
   try {
     const orders = await prisma.order.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
       include: {
         user: {
           select: {
@@ -34,6 +37,7 @@ const GetAllOrderDataAction = async () => {
 
     return orders.map((order) => ({
       userId: order.userId,
+      orderId: order.id,
       userAddress: order.user.address,
       userName: order.user.name,
       userEmail: order.user.email,
@@ -56,11 +60,13 @@ const GetAllOrderDataAction = async () => {
     }));
   } catch (error) {
     console.error("Error in GetAllOrderData:", error);
-    return [];
+    throw new Error("Failed to fetch order data");
   }
 };
 
 export default GetAllOrderDataAction;
 
-export type GetAllOrdersResponseType = Awaited<ReturnType<typeof GetAllOrderDataAction>>[number];
-// export type GetAllOrdersResponseType = Awaited<ReturnType<typeof GetAllOrderDataAction>>; all 
+export type GetAllOrdersResponseType = Awaited<
+  ReturnType<typeof GetAllOrderDataAction>
+>[number];
+// export type GetAllOrdersResponseType = Awaited<ReturnType<typeof GetAllOrderDataAction>>; all

@@ -8,10 +8,16 @@ const ProductsTables = () => {
   const columns =
     locale === "en" ? enColumns : locale === "ar" ? arColumns : trColumns;
   const { data } = useAllProducts({});
+  const searchTableName =
+    locale === "en" ? "name" : locale === "ar" ? "name_ar" : "name_tr";
 
   return (
     <div>
-      <DataTable columns={columns} data={data ?? []} />
+      <DataTable
+        columns={columns}
+        data={data ?? []}
+        searchTableName={searchTableName}
+      />
     </div>
   );
 };

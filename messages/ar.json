@@ -65,5 +65,8 @@
   },
   "dashboardCategory": {
     "headerTitle": " الفئات"
+  },
+  "dashboardOrder": {
+    "headerTitle": "الطلبات"
   }
 }
