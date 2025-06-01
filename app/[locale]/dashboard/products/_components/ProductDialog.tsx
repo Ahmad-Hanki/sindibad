@@ -8,11 +8,10 @@ import { GetAllProductsResponseType } from "@/server-actions/get/get-all-produca
 interface HeaderProps {
   initialData?: GetAllProductsResponseType;
   setOpen: Dispatch<React.SetStateAction<boolean>>;
-  locale: string;
   open: boolean;
 }
 
-const ProductDialog = ({ open, locale, initialData, setOpen }: HeaderProps) => {
+const ProductDialog = ({ open, initialData, setOpen }: HeaderProps) => {
   return (
     <div>
       <Dialog open={open} modal={false}>
@@ -24,7 +23,6 @@ const ProductDialog = ({ open, locale, initialData, setOpen }: HeaderProps) => {
             <ProductForm
               open={open}
               setOpen={setOpen}
-              locale={locale}
               initialData={initialData}
             />
           </DialogContent>

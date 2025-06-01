@@ -1,15 +1,17 @@
 "use client";
+import { useLocale } from "next-intl";
 import ProductShow from "../(home)/_components/ProductShow";
 import { useAllCategory } from "../dashboard/_api/get-all-categories";
 import { useAllProducts } from "../dashboard/products/_api/get-all-products";
 
-function MenuClient({ locale }: { locale: string }) {
+function MenuClient() {
   const { data } = useAllCategory({});
   const { data: products } = useAllProducts({});
 
   function filteredProducts(categoryId: string) {
     return products?.filter((product) => product.categoryId === categoryId);
   }
+  const locale = useLocale();
 
   return (
     <div className="my-12">
@@ -33,7 +35,7 @@ function MenuClient({ locale }: { locale: string }) {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 ">
               {filteredProducts(data.id)?.map((product) => (
                 <div key={product.id}>
-                  <ProductShow locale={locale} item={product} />
+                  <ProductShow  item={product} />
                 </div>
               ))}
             </div>

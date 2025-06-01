@@ -24,17 +24,17 @@ import { useUpdateMeal } from "../_api/update-meal";
 import { useToast } from "@/hooks/use-toast";
 import UploadImage from "./uplaod-image";
 import { SelectCategories } from "./select-categories";
+import { useLocale } from "next-intl";
 const ProductForm = ({
   // open,
   initialData,
   setOpen,
-  locale,
 }: {
   open: boolean;
   setOpen: Dispatch<React.SetStateAction<boolean>>;
-  locale: string;
   initialData?: GetAllProductsResponseType;
 }) => {
+  const locale = useLocale();
   const form = useForm<FormSchemaInput>({
     resolver: zodResolver(getProductFormSchema(locale)),
     defaultValues: {

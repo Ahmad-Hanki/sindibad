@@ -8,13 +8,11 @@ import { GetAllCategoriesResponseType } from "@/server-actions/get/get-all-categ
 interface HeaderProps {
   initialData?: GetAllCategoriesResponseType;
   setOpen: Dispatch<React.SetStateAction<boolean>>;
-  locale: string;
   open: boolean;
 }
 
 const CategoryDialog = ({
   open,
-  locale,
   initialData,
   setOpen,
 }: HeaderProps) => {
@@ -29,7 +27,6 @@ const CategoryDialog = ({
             <CategoryForm
               open={open}
               setOpen={setOpen}
-              locale={locale}
               initialData={initialData}
             />
           </DialogContent>

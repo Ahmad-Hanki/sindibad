@@ -28,7 +28,6 @@ const DropDownActions = ({ data }: { data: GetAllCategoriesResponseType }) => {
     <div>
       <CategoryDialog
         setOpen={setOpen}
-        locale={locale}
         open={open}
         initialData={data}
       />

@@ -4,25 +4,22 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import CategoryDialog from "./_components/CategoryDialog";
 import CategoryTables from "./_components/CategoryTables";
+import { useTranslations } from "next-intl";
 
-const CategoriesClient = ({ locale }: { locale: string }) => {
+const CategoriesClient = () => {
   const [categoryOpen, setCategoryOpen] = useState(false);
+  const t = useTranslations("dashboardCategory");
   return (
     <div>
       <CategoryDialog
         open={categoryOpen}
         setOpen={setCategoryOpen}
-        locale={locale}
       />
       {/* Category Section */}
       <section className="mb-20 mt-5">
         <div className="flex items-center justify-between w-full">
           <h1 className="text-lg font-semibold flex-1 w-full ">
-            {locale == "en"
-              ? "Categories"
-              : locale == "ar"
-              ? "الفئات"
-              : "Kategoriler"}
+            {t("headerTitle")}
           </h1>
           <Button
             onClick={() => {

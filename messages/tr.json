@@ -59,5 +59,11 @@
     "headerTextOne": "Hesap Ayarları",
     "headerTitleTwo": "Sipariş Bilgilerim",
     "headerTextTwo": "Siparişlerim"
+  },
+  "dashboardProduct": {
+    "headerTitle": "Ürünler"
+  },
+  "dashboardCategory": {
+    "headerTitle": "Kategoriler"
   }
 }

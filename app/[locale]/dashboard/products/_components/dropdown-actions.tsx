@@ -29,7 +29,6 @@ const DropDownActions = ({ data }: { data: GetAllProductsResponseType }) => {
     <div>
       <ProductDialog
         setOpen={setOpen}
-        locale={locale}
         open={open}
         initialData={data}
       />

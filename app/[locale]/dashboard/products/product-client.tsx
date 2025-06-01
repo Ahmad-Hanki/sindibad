@@ -5,22 +5,20 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import ProductDialog from "./_components/ProductDialog";
 import ProductsTables from "./_components/products-table";
+import { useTranslations } from "next-intl";
 
-const ProductClient = ({ locale }: { locale: string }) => {
+const ProductClient = () => {
   const [open, setOpen] = useState(false);
+  const t = useTranslations("dashboardProduct");
 
   return (
     <div>
-      <ProductDialog open={open} setOpen={setOpen} locale={locale} />
+      <ProductDialog open={open} setOpen={setOpen} />
       {/* Products Section */}
       <section className="mb-24">
         <div className="flex items-center justify-between w-full ">
           <h1 className="text-lg font-semibold flex-1 w-full ">
-            {locale == "en"
-              ? "The Products"
-              : locale == "ar"
-              ? "المنتجات"
-              : "Ürünler"}
+            {t("headerTitle")}
           </h1>
           <Button
             onClick={() => {

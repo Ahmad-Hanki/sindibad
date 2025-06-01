@@ -1,10 +1,10 @@
 import { dehydrate, QueryClient } from "@tanstack/react-query";
-import { getAllCategoryQueryOptions } from "../../_api/get-all-categories";
+import { getAllOrdersQueryOptions } from "../_api/get-all-orders";
 
 export const preloadOrderData = async () => {
   const queryClient = new QueryClient();
   const staticPrefetches = [
-    queryClient.prefetchQuery(getAllCategoryQueryOptions()),
+    queryClient.prefetchQuery(getAllOrdersQueryOptions()),
   ];
 
   await Promise.all([...staticPrefetches]);

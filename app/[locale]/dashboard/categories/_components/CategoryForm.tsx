@@ -22,17 +22,17 @@ import {
 } from "../_utils/formCategory-schemes";
 import { GetAllCategoriesResponseType } from "@/server-actions/get/get-all-categories";
 import { useToast } from "@/hooks/use-toast";
+import { useLocale } from "next-intl";
 const CategoryForm = ({
   // open,
   initialData,
   setOpen,
-  locale,
 }: {
   open: boolean;
   setOpen: Dispatch<React.SetStateAction<boolean>>;
-  locale: string;
   initialData?: GetAllCategoriesResponseType;
 }) => {
+  const locale = useLocale();
   const form = useForm<FormCategorySchemaInput>({
     resolver: zodResolver(getCategoryFormSchema(locale)),
     defaultValues: {

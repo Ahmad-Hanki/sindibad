@@ -59,5 +59,11 @@
     "headerTextOne": "إعدادات الحساب",
     "headerTitleTwo": "معلومات طلباتي",
     "headerTextTwo": "طلباتي"
+  },
+  "dashboardProduct": {
+    "headerTitle": "إدارة المنتجات"
+  },
+  "dashboardCategory": {
+    "headerTitle": " الفئات"
   }
 }

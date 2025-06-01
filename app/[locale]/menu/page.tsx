@@ -4,17 +4,17 @@ import MenuClient from "./MenuClient";
 import { HydrationBoundary } from "@tanstack/react-query";
 import { preloadMenuData } from "./_utils/preload-data";
 
-const page = async ({ params: { locale } }: { params: { locale: string } }) => {
+const MenuPage = async () => {
   const { dehydratedState } = await preloadMenuData();
   return (
     <HydrationBoundary state={dehydratedState}>
       <div className="w-full py-3">
         <Container>
-          <MenuClient locale={locale} />
+          <MenuClient  />
         </Container>
       </div>
     </HydrationBoundary>
   );
 };
 
-export default page;
+export default MenuPage;

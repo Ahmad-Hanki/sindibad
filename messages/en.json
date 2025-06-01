@@ -54,11 +54,17 @@
     "continueShopping": "Continue Shopping"
   },
   "profile": {
-    "headerTitle":"My Orders",
+    "headerTitle": "My Orders",
     "logoutTitle": "Logout",
-    "headerTitleOne":"Account Information",
-    "headerTextOne":"Account Settings",
-    "headerTitleTwo":"My Order Information",
-    "headerTextTwo":"My Orders"
+    "headerTitleOne": "Account Information",
+    "headerTextOne": "Account Settings",
+    "headerTitleTwo": "My Order Information",
+    "headerTextTwo": "My Orders"
+  },
+  "dashboardProduct": {
+    "headerTitle": "Products"
+  },
+  "dashboardCategory": {
+    "headerTitle": "Categories"
   }
 }
