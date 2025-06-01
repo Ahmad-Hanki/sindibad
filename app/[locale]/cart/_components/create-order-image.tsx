@@ -30,7 +30,6 @@ export type CreateOrderImageRef = {
   generateImage: () => Promise<string | null>;
 };
 
-// todo: translate the bill to arabic only
 
 const CreateOrderImage = forwardRef<CreateOrderImageRef, CreateOrderImageProps>(
   ({ price, shippingFee = 0, randomId }, ref) => {
@@ -66,9 +65,8 @@ const CreateOrderImage = forwardRef<CreateOrderImageRef, CreateOrderImageProps>(
     });
 
     const restaurantName = "Sindibad Lokantası";
-    const restaurantLocation =
-      "25 Aralık, Tüfekçi Yusuf Blv. No:86, 27100 Şahinbey/Gaziantep";
-    const restaurantPhone = "+90 534 927 77 44";
+    const restaurantLocation = userData?.address || "İstanbul"; // Default to Istanbul if no address is provided
+    const restaurantPhone = userData?.phone || "+90 534 927 77 44";
 
     return (
       <div
@@ -91,20 +89,18 @@ const CreateOrderImage = forwardRef<CreateOrderImageRef, CreateOrderImageProps>(
 
             <CardContent>
               <div className="flex flex-col pb-4 gap-2 justify-between">
-                <p className="text-sm text-gray-500">
-                  Sipariş Numarası: {randomId}
-                </p>
+                <p className="text-sm text-gray-500">رقم الطلب: {randomId}</p>
                 <p className="text-sm text-gray-500">{formattedDate}</p>
               </div>
 
               <Table>
-                <TableCaption className="py-3">Thank You</TableCaption>
+                <TableCaption className="py-3">شكرًا لك</TableCaption>
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="w-[100px]">Index</TableHead>
-                    <TableHead>Number</TableHead>
-                    <TableHead>Name</TableHead>
-                    <TableHead className="text-right">Price</TableHead>
+                    <TableHead className="w-[100px]">الفهرس</TableHead>
+                    <TableHead>العدد</TableHead>
+                    <TableHead>الاسم</TableHead>
+                    <TableHead className="text-right">السعر</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -129,7 +125,7 @@ const CreateOrderImage = forwardRef<CreateOrderImageRef, CreateOrderImageProps>(
                 </TableBody>
                 <TableFooter>
                   <TableRow>
-                    <TableCell colSpan={3}>Total</TableCell>
+                    <TableCell colSpan={3}>المجموع</TableCell>
                     <TableCell className="text-right">
                       ₺{price + shippingFee}
                     </TableCell>
