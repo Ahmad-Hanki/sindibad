@@ -91,6 +91,20 @@ const RightSidePayment = ({ cartData }: { cartData: CartDataType }) => {
           <p className="text-lg font-bold">₺ {price}</p>
           {/* todo: add shipping fees */}
           {/* todo: add total after shipping fees */}
+
+          {/* {todo: before the user pay, check from useUser if the phone and address are not null, if so then use this to update the user data}
+          
+          // todo:
+      <DialogUserData open={open} setOpen={setOpen} />
+      <Button onClick={() => setOpen(true)} className="w-full">
+        Open
+      </Button> 
+
+      use it in a separate component to update the user data before payment
+      
+      also if there is data, show the user address in the top, and make a button to the user if he wants to change the address
+
+          */}
         </div>
         <div className="w-full mt-16 space-y-4">
           <Button

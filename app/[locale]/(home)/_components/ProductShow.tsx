@@ -6,15 +6,11 @@ import Link from "next/link";
 import { GetAllProductsResponseType } from "@/server-actions/get/get-all-producats";
 import { useUser } from "@/server-actions/auth/get-user";
 import Images from "@/components/ui/Images";
+import { useLocale } from "next-intl";
 
-function ProductShow({
-  item,
-  locale,
-}: {
-  item: GetAllProductsResponseType;
-  locale: string;
-}) {
+function ProductShow({ item }: { item: GetAllProductsResponseType }) {
   const { data: userData } = useUser({});
+  const locale = useLocale();
 
   const { mutate, isPending } = useAddItemToCart({
     userId: userData?.id ?? "",
@@ -33,11 +29,7 @@ function ProductShow({
           />
           {/*name section*/}
           <div
-            className={` ${
-              locale == "ar"
-                ? " justify-start right-5 "
-                : " justify-end left-5 "
-            } " flex items-center absolute -bottom-5 bg-primary text-white px-12 py-2  "`}
+            className={` flex items-center absolute -bottom-5 bg-primary text-white px-12 py-2 `}
           >
             <p className="text-xl font-semibold">
               {locale == "en"

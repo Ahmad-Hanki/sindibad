@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Dispatch } from "react";
-import UploadImage from "./uplaod-image";
 import { useCreateMeal } from "../_api/add-new-meal";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -20,21 +19,22 @@ import {
 } from "@/components/ui/form";
 import { FormSchemaInput, getProductFormSchema } from "../_utils/form-schemes";
 import { Textarea } from "@/components/ui/textarea";
-import { SelectCategories } from "./select-categories";
 import { GetAllProductsResponseType } from "@/server-actions/get/get-all-producats";
 import { useUpdateMeal } from "../_api/update-meal";
 import { useToast } from "@/hooks/use-toast";
+import UploadImage from "./uplaod-image";
+import { SelectCategories } from "./select-categories";
+import { useLocale } from "next-intl";
 const ProductForm = ({
   // open,
   initialData,
   setOpen,
-  locale,
 }: {
   open: boolean;
   setOpen: Dispatch<React.SetStateAction<boolean>>;
-  locale: string;
   initialData?: GetAllProductsResponseType;
 }) => {
+  const locale = useLocale();
   const form = useForm<FormSchemaInput>({
     resolver: zodResolver(getProductFormSchema(locale)),
     defaultValues: {

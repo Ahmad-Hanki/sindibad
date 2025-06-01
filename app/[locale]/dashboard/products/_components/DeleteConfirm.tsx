@@ -18,7 +18,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { useDeleteCategory } from "../../_api/delete-category";
+import { useDeleteCategory } from "../../categories/_api/delete-category";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 

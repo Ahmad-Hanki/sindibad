@@ -1,8 +1,8 @@
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { getAllProductsQueryOptions } from "../_api/get-all-products";
-import { getAllCategoryQueryOptions } from "../_api/get-all-categories";
+import { getAllCategoryQueryOptions } from "../../_api/get-all-categories";
 
-export const preloadDashboardData = async () => {
+export const preloadProductData = async () => {
   const queryClient = new QueryClient();
   const staticPrefetches = [
     queryClient.prefetchQuery(getAllProductsQueryOptions()),

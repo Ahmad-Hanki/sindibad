@@ -1,20 +1,20 @@
 import Container from "@/components/Container";
 
-import MenuClient from "./MenuClient";
+import CategoriesClient from "./categories-client";
 import { HydrationBoundary } from "@tanstack/react-query";
-import { preloadMenuData } from "./_utils/preload-data";
+import { preloadCategoriesData } from "./_utils/preload-data";
 
-const MenuPage = async () => {
-  const { dehydratedState } = await preloadMenuData();
+const CategoryPage = async () => {
+  const { dehydratedState } = await preloadCategoriesData();
   return (
     <HydrationBoundary state={dehydratedState}>
       <div className="w-full py-3">
         <Container>
-          <MenuClient  />
+          <CategoriesClient />
         </Container>
       </div>
     </HydrationBoundary>
   );
 };
 
-export default MenuPage;
+export default CategoryPage;

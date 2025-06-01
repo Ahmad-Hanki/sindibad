@@ -9,10 +9,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useLocale } from "next-intl";
 import { useState } from "react";
-import ProductDialog from "../ProductDialog";
 import { GetAllProductsResponseType } from "@/server-actions/get/get-all-producats";
 // import { useDeleteMeal } from "../../_api/delete-meal";
 import { DeleteConfirm } from "./DeleteConfirm";
+import ProductDialog from "./ProductDialog";
 
 const DropDownActions = ({ data }: { data: GetAllProductsResponseType }) => {
   const locale = useLocale();
@@ -29,7 +29,6 @@ const DropDownActions = ({ data }: { data: GetAllProductsResponseType }) => {
     <div>
       <ProductDialog
         setOpen={setOpen}
-        locale={locale}
         open={open}
         initialData={data}
       />

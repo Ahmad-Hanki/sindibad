@@ -7,7 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useAllCategory } from "../_api/get-all-categories";
+import { useAllCategory } from "../../_api/get-all-categories";
 
 export function SelectCategories({
   selectedCategoryId,

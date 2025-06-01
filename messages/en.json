@@ -34,8 +34,9 @@
     "copyRight": "© 2024 Sindibad. All rights reserved."
   },
   "dashboard": {
-    "buttonTextOne": "Dashboard",
-    "buttonTextTwo": "Orders",
+    "buttonTextOne": "Categories",
+    "buttonTextTwo": "Products",
+    "buttonTextThree": "Orders",
     "deleteConfirmation": "Are you sure you want to delete this item?",
     "deleteConfirmationText": "This will permanently delete the item.",
     "deleteConfirmationConfirm": "Confirm Deletion",
@@ -51,5 +52,22 @@
     "checkout": "Checkout",
     "payOnDelivery": "Pay on Delivery",
     "continueShopping": "Continue Shopping"
+  },
+  "profile": {
+    "headerTitle": "My Orders",
+    "logoutTitle": "Logout",
+    "headerTitleOne": "Account Information",
+    "headerTextOne": "Account Settings",
+    "headerTitleTwo": "My Order Information",
+    "headerTextTwo": "My Orders"
+  },
+  "dashboardProduct": {
+    "headerTitle": "Products"
+  },
+  "dashboardCategory": {
+    "headerTitle": "Categories"
+  },
+  "dashboardOrder": {
+    "headerTitle": "Orders"
   }
 }

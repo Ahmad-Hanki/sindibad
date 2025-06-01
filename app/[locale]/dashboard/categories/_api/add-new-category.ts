@@ -1,28 +1,24 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-
 import { MutationConfig } from "@/lib/react-query";
+import { addNewCategoryAction } from "@/server-actions/post/add-new-category-action";
 import { Category } from "@prisma/client";
-import { updateCategoryAction } from "@/server-actions/put/update-category-action";
-import { getAllCategoryQueryOptions } from "./get-all-categories";
+import { getAllCategoryQueryOptions } from "../../_api/get-all-categories";
 import { FormCategorySchemaInput } from "../_utils/formCategory-schemes";
-
-export const updateCategory = async ({
+export const createCategory = async ({
   data,
-  id,
 }: {
   data: FormCategorySchemaInput;
-  id: string;
 }): Promise<Category> => {
-  return await updateCategoryAction(data, id);
+  return await addNewCategoryAction(data);
 };
 
-type UseUpdateCategoryOptions = {
-  mutationConfig?: MutationConfig<typeof updateCategory>;
+type UseCreateCategoryOptions = {
+  mutationConfig?: MutationConfig<typeof createCategory>;
 };
 
-export const useUpdateCategory = ({
+export const useCreateCategory = ({
   mutationConfig,
-}: UseUpdateCategoryOptions = {}) => {
+}: UseCreateCategoryOptions = {}) => {
   const queryClient = useQueryClient();
 
   const { onSuccess, ...restConfig } = mutationConfig || {};
@@ -35,6 +31,6 @@ export const useUpdateCategory = ({
       onSuccess?.(...args);
     },
     ...restConfig,
-    mutationFn: updateCategory,
+    mutationFn: createCategory,
   });
 };

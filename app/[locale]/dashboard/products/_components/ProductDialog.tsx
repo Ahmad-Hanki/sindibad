@@ -2,22 +2,16 @@
 
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Dispatch } from "react";
-import CategoryForm from "./CategoryForm";
-import { GetAllCategoriesResponseType } from "@/server-actions/get/get-all-categories";
+import ProductForm from "./ProductForm";
+import { GetAllProductsResponseType } from "@/server-actions/get/get-all-producats";
 
 interface HeaderProps {
-  initialData?: GetAllCategoriesResponseType;
+  initialData?: GetAllProductsResponseType;
   setOpen: Dispatch<React.SetStateAction<boolean>>;
-  locale: string;
   open: boolean;
 }
 
-const CategoryDialog = ({
-  open,
-  locale,
-  initialData,
-  setOpen,
-}: HeaderProps) => {
+const ProductDialog = ({ open, initialData, setOpen }: HeaderProps) => {
   return (
     <div>
       <Dialog open={open} modal={false}>
@@ -26,10 +20,9 @@ const CategoryDialog = ({
         )}
         <div>
           <DialogContent className="max-w-[550px] max-h-[600px] overflow-y-auto">
-            <CategoryForm
+            <ProductForm
               open={open}
               setOpen={setOpen}
-              locale={locale}
               initialData={initialData}
             />
           </DialogContent>
@@ -39,4 +32,4 @@ const CategoryDialog = ({
   );
 };
 
-export default CategoryDialog;
+export default ProductDialog;
