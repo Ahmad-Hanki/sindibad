@@ -9,9 +9,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useLocale } from "next-intl";
 import { useState } from "react";
-import CategoryDialog from "../CategoryDialog";
+import CategoryDialog from "../../categories/_components/CategoryDialog";
 import { GetAllCategoriesResponseType } from "@/server-actions/get/get-all-categories";
-import { DeleteConfirm } from "./DeleteConfirm";
+import { DeleteConfirm } from "../../products/_components/DeleteConfirm";
 // import { useDeleteCategory } from "../../_api/delete-category";
 
 const DropDownActions = ({ data }: { data: GetAllCategoriesResponseType }) => {

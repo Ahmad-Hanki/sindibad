@@ -1,5 +1,5 @@
 import { dehydrate, QueryClient } from "@tanstack/react-query";
-import { getAllProductsQueryOptions } from "../_api/get-all-products";
+import { getAllProductsQueryOptions } from "../products/_api/get-all-products";
 import { getAllCategoryQueryOptions } from "../_api/get-all-categories";
 
 export const preloadDashboardData = async () => {

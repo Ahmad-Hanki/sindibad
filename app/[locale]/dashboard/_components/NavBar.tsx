@@ -6,7 +6,7 @@ function NavBar() {
   const navTexts = [
     {
       text: t("buttonTextOne"),
-      url: "/dashboard",
+      url: "/dashboard/categories",
     },
     {
       text: t("buttonTextTwo"),

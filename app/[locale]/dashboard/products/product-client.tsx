@@ -1,11 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import ProductsTables from "../_components/table/products-table";
+
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
-import ProductDialog from "../_components/ProductDialog";
+import ProductDialog from "./_components/ProductDialog";
+import ProductsTables from "./_components/products-table";
 
-const DashboardClient = ({ locale }: { locale: string }) => {
+const ProductClient = ({ locale }: { locale: string }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -35,4 +36,4 @@ const DashboardClient = ({ locale }: { locale: string }) => {
   );
 };
 
-export default DashboardClient;
+export default ProductClient;

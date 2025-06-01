@@ -1,7 +1,7 @@
 "use client";
 import ProductShow from "../(home)/_components/ProductShow";
 import { useAllCategory } from "../dashboard/_api/get-all-categories";
-import { useAllProducts } from "../dashboard/_api/get-all-products";
+import { useAllProducts } from "../dashboard/products/_api/get-all-products";
 
 function MenuClient({ locale }: { locale: string }) {
   const { data } = useAllCategory({});
@@ -33,10 +33,7 @@ function MenuClient({ locale }: { locale: string }) {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 ">
               {filteredProducts(data.id)?.map((product) => (
                 <div key={product.id}>
-                  <ProductShow
-                    locale={locale}
-                    item={product}
-                  />
+                  <ProductShow locale={locale} item={product} />
                 </div>
               ))}
             </div>

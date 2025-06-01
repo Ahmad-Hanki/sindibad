@@ -1,7 +1,7 @@
 import Container from "@/components/Container";
-import DashboardClient from "./dashboard-client";
 import { preloadDashboardData } from "../_utils/preload-data";
 import { HydrationBoundary } from "@tanstack/react-query";
+import ProductClient from "./product-client";
 
 
 const page = async ({ params: { locale } }: { params: { locale: string } }) => {
@@ -10,7 +10,7 @@ const page = async ({ params: { locale } }: { params: { locale: string } }) => {
     <HydrationBoundary state={dehydratedState}>
       <div className="w-full py-3">
         <Container>
-          <DashboardClient locale={locale} />
+          <ProductClient locale={locale} />
         </Container>
       </div>
     </HydrationBoundary>

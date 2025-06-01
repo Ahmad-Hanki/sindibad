@@ -7,7 +7,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { useAllProducts } from "../../dashboard/_api/get-all-products";
+import { useAllProducts } from "../../dashboard/products/_api/get-all-products";
 import ProductShow from "./ProductShow";
 
 interface RecommendedProps {
@@ -46,10 +46,7 @@ const Recommended = ({ recommended, locale }: RecommendedProps) => {
                   <Card className="border-primary border-4 rounded-2xl ">
                     <CardContent className="aspect-square p-0">
                       {item.mostPopular === true && (
-                        <ProductShow
-                          locale={locale}
-                          item={item}
-                        />
+                        <ProductShow locale={locale} item={item} />
                       )}
                     </CardContent>
                   </Card>

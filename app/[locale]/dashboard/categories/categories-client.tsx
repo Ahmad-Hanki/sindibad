@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import CategoryDialog from "./_components/CategoryDialog";
-import CategoryTables from "./_components/table/CategoryTables";
+import CategoryTables from "./_components/CategoryTables";
 
-const DashboardClient = ({ locale }: { locale: string }) => {
+const CategoriesClient = ({ locale }: { locale: string }) => {
   const [categoryOpen, setCategoryOpen] = useState(false);
   return (
     <div>
@@ -38,4 +38,4 @@ const DashboardClient = ({ locale }: { locale: string }) => {
   );
 };
 
-export default DashboardClient;
+export default CategoriesClient;

@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { MutationConfig } from "@/lib/react-query";
-import { getAllCategoryQueryOptions } from "./get-all-categories";
+import { getAllCategoryQueryOptions } from "../../_api/get-all-categories";
 import { deleteCategoryAction } from "@/server-actions/delete/delete-category-action";
 
 export const deleteCategory = async ({
