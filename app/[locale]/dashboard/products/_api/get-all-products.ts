@@ -3,18 +3,14 @@ import { queryOptions, useQuery } from "@tanstack/react-query";
 import { QueryConfig } from "@/lib/react-query";
 import { getAllProductsAction } from "@/server-actions/get/get-all-producats";
 
-export const getAllProducts = async (categoryId?: string) => {
-  const allProducts = await getAllProductsAction();
-
-  if (!categoryId) return allProducts;
-
-  return allProducts?.filter((product) => product.categoryId === categoryId);
+export const getAllProducts = async () => {
+  return await getAllProductsAction();
 };
 
-export const getAllProductsQueryOptions = (categoryId?: string) => {
+export const getAllProductsQueryOptions = () => {
   return queryOptions({
-    queryKey: ["AllProducts", categoryId],
-    queryFn: () => getAllProducts(categoryId),
+    queryKey: ["AllProducts"],
+    queryFn: () => getAllProducts(),
   });
 };
 type UseAllProductsOptions = {
@@ -23,11 +19,10 @@ type UseAllProductsOptions = {
 };
 
 export const useAllProducts = ({
-  categoryId,
   queryConfig,
 }: UseAllProductsOptions) => {
   return useQuery({
-    ...getAllProductsQueryOptions(categoryId),
+    ...getAllProductsQueryOptions(),
     ...queryConfig,
   });
 };

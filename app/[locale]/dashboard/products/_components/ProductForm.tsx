@@ -17,10 +17,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import {
-  FormSchemaInput,
-  getProductFormSchema,
-} from "../../_utils/form-schemes";
+import { FormSchemaInput, getProductFormSchema } from "../_utils/form-schemes";
 import { Textarea } from "@/components/ui/textarea";
 import { GetAllProductsResponseType } from "@/server-actions/get/get-all-producats";
 import { useUpdateMeal } from "../_api/update-meal";

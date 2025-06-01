@@ -3,7 +3,7 @@ import { MutationConfig } from "@/lib/react-query";
 import { addNewMealAction } from "@/server-actions/post/add-new-meal-action";
 import { Product } from "@prisma/client";
 
-import { FormSchemaInput } from "../../_utils/form-schemes";
+import { FormSchemaInput } from "../_utils/form-schemes";
 import { getAllProductsQueryOptions } from "./get-all-products";
 export const createMeal = async ({
   data,

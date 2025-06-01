@@ -1,6 +1,6 @@
 "use server";
 
-import { FormSchemaInput } from "@/app/[locale]/dashboard/_utils/form-schemes";
+import { FormSchemaInput } from "@/app/[locale]/dashboard/products/_utils/form-schemes";
 import prisma from "@/lib/db";
 import { Product } from "@prisma/client";
 

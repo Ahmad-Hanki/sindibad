@@ -19,7 +19,7 @@ import {
 import {
   FormCategorySchemaInput,
   getCategoryFormSchema,
-} from "../../_utils/formCategory-schemes";
+} from "../_utils/formCategory-schemes";
 import { GetAllCategoriesResponseType } from "@/server-actions/get/get-all-categories";
 import { useToast } from "@/hooks/use-toast";
 const CategoryForm = ({

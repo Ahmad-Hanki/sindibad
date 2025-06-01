@@ -1,6 +1,6 @@
 "use server";
 
-import { FormCategorySchemaInput } from "@/app/[locale]/dashboard/_utils/formCategory-schemes";
+import { FormCategorySchemaInput } from "@/app/[locale]/dashboard/categories/_utils/formCategory-schemes";
 import prisma from "@/lib/db";
 import { Category } from "@prisma/client";
 
@@ -9,9 +9,7 @@ export const addNewCategoryAction = async (
   formData: FormCategorySchemaInput
 ): Promise<Category> => {
   try {
-    const slug = formData.name
-      .replace(/\s+/g, "-") 
-      .toLowerCase(); 
+    const slug = formData.name.replace(/\s+/g, "-").toLowerCase();
     const res = await prisma.category.create({
       data: {
         name: formData.name,

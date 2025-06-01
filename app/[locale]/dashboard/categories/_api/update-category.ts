@@ -4,7 +4,7 @@ import { MutationConfig } from "@/lib/react-query";
 import { Category } from "@prisma/client";
 import { updateCategoryAction } from "@/server-actions/put/update-category-action";
 import { getAllCategoryQueryOptions } from "../../_api/get-all-categories";
-import { FormCategorySchemaInput } from "../../_utils/formCategory-schemes";
+import { FormCategorySchemaInput } from "../_utils/formCategory-schemes";
 
 export const updateCategory = async ({
   data,

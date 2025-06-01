@@ -1,6 +1,6 @@
 "use server";
 
-import { FormCategorySchemaInput } from "@/app/[locale]/dashboard/_utils/formCategory-schemes";
+import { FormCategorySchemaInput } from "@/app/[locale]/dashboard/categories/_utils/formCategory-schemes";
 import prisma from "@/lib/db";
 import { Category } from "@prisma/client";
 

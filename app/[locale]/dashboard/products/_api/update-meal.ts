@@ -4,7 +4,7 @@ import { MutationConfig } from "@/lib/react-query";
 import { Product } from "@prisma/client";
 import { updateMealAction } from "@/server-actions/put/update-product-action";
 import { getAllProductsQueryOptions } from "./get-all-products";
-import { FormSchemaInput } from "../../_utils/form-schemes";
+import { FormSchemaInput } from "../_utils/form-schemes";
 
 export const updateMeal = async ({
   data,
