@@ -5,15 +5,7 @@ import prisma from "@/lib/db";
 export const getAllCategoryAction = async () => {
   try {
     const res = await prisma.category.findMany();
-
-    const formatted = res.map((category) => ({
-      id: category.id,
-      name: category.name,
-      name_ar: category.name_ar,
-      name_tr: category.name_tr,
-      slug: category.slug,
-    }));
-    return formatted;
+    return res;
   } catch (error) {
     console.error("Error fetching most popular products:", error);
   }

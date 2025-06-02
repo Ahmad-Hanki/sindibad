@@ -15,7 +15,6 @@ export const addNewCategoryAction = async (
         name: formData.name,
         name_ar: formData.name_ar,
         name_tr: formData.name_tr,
-        slug: slug,
       },
     });
     return res;

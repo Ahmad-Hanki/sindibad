@@ -16,7 +16,6 @@ const OrderTable = () => {
         columns={columns}
         data={data ?? []}
         searchTableName="randomId"
-        
       />
     </div>
   );
