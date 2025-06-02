@@ -16,7 +16,7 @@ const ProfileClient = () => {
   const [section, setSection] = useState("account");
   const user = useUser({});
   const { push } = useRouter();
-
+  // todo: responsive design must work
   const { mutate } = useSignOut({
     mutationConfig: {
       onSuccess: () => {

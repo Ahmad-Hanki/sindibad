@@ -140,7 +140,7 @@ export const enColumns: ColumnDef<GetAllOrdersResponseType>[] = [
       const data = row.original;
       return (
         <div>
-          <Link href={`/dashboard/orders/findOrder/${data.randomId}`}>
+          <Link href={`/dashboard/orders/find-order?orderId=${data.randomId}`}>
             <Eye size={24} />
           </Link>
         </div>
@@ -290,7 +290,7 @@ export const trColumns: ColumnDef<GetAllOrdersResponseType>[] = [
       const data = row.original;
       return (
         <div>
-          <Link href={`/dashboard/orders/findOrder/${data.randomId}`}>
+          <Link href={`/dashboard/orders/find-order?orderId=${data.randomId}`}>
             <Eye size={24} />
           </Link>
         </div>
@@ -438,7 +438,7 @@ export const arColumns: ColumnDef<GetAllOrdersResponseType>[] = [
       const data = row.original;
       return (
         <div>
-          <Link href={`/dashboard/orders/findOrder/${data.randomId}`}>
+          <Link href={`/dashboard/orders/find-order?orderId=${data.randomId}`}>
             <Eye size={24} />
           </Link>
         </div>
