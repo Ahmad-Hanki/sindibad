@@ -86,13 +86,25 @@ const RightSidePayment = ({ cartData }: { cartData: CartDataType }) => {
     <div className="w-1/2 bg-gray-100 border border-gray-100 p-5">
       <section className="p-4">
         <h2 className="text-lg font-bold mb-4">{t("subtotal")}</h2>
+        <p className="text-gray-600 text-sm">{t("subtotalDescription")}</p>
+        {/* price */}
         <div className="flex justify-between mt-12">
-          <p>{t("total")}</p>
-          <p className="text-lg font-bold">₺ {price}</p>
-          {/* todo: add shipping fees */}
-          {/* todo: add total after shipping fees */}
-
-          {/* {todo: before the user pay, check from useUser if the phone and address are not null, if so then use this to update the user data}
+          <p className="text-gray-600">{t("total")}</p>
+          <p className="text-md text-gray-600">₺ {price}</p>
+        </div>
+        {/* Shipping Fee */}
+        <div className="flex justify-between mt-4">
+          <p className="text-gray-600">{t("shipping")}</p>
+          <p className="text-md text-gray-600">
+            {shipping_fee == 0 ? t("shippingFree") : "₺ " + shipping_fee}
+          </p>
+        </div>
+        {/* Total Amount */}
+        <div className="flex justify-between mt-8">
+          <p className="font-semibold">{t("total")}</p>
+          <p className="text-lg font-bold">₺ {price + shipping_fee}</p>
+        </div>
+        {/* {todo: before the user pay, check from useUser if the phone and address are not null, if so then use this to update the user data}
           
           // todo:
       <DialogUserData open={open} setOpen={setOpen} />
@@ -105,7 +117,6 @@ const RightSidePayment = ({ cartData }: { cartData: CartDataType }) => {
       also if there is data, show the user address in the top, and make a button to the user if he wants to change the address
 
           */}
-        </div>
         <div className="w-full mt-16 space-y-4">
           <Button
             disabled={creditCardPending}
