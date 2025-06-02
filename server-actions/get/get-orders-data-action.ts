@@ -4,6 +4,7 @@ import prisma from "@/lib/db";
 import { Prisma } from "@prisma/client";
 
 const getOrderData = async (userId: string) => {
+  // todo: findMany instead of findFirst
   try {
     const res = await prisma.order.findFirst({
       where: {

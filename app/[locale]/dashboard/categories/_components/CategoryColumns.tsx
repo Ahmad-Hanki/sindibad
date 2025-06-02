@@ -8,10 +8,6 @@ export const enColumns: ColumnDef<GetAllCategoriesResponseType>[] = [
     header: "Name",
   },
   {
-    accessorKey: "slug",
-    header: "Slug",
-  },
-  {
     accessorKey: "actions",
     header: () => <div className=" flex justify-end">Actions</div>,
     cell: ({ row }) => {
@@ -29,10 +25,6 @@ export const trColumns: ColumnDef<GetAllCategoriesResponseType>[] = [
   {
     accessorKey: "name_tr",
     header: "İsim",
-  },
-  {
-    accessorKey: "slug",
-    header: "Slug",
   },
   {
     accessorKey: "actions",
@@ -56,13 +48,7 @@ export const arColumns: ColumnDef<GetAllCategoriesResponseType>[] = [
       <div className="text-right">{getValue() as string}</div>
     ),
   },
-  {
-    accessorKey: "slug",
-    header: () => <div className="text-right w-full">العينة</div>,
-    cell: ({ getValue }) => (
-      <div className="text-right">{getValue() as string}</div>
-    ),
-  },
+
   {
     accessorKey: "actions",
     header: () => <div className=" w-full">الإجراءات</div>,

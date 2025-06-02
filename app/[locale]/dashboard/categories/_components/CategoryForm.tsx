@@ -39,7 +39,6 @@ const CategoryForm = ({
       name: initialData?.name ?? "",
       name_ar: initialData?.name_ar ?? "",
       name_tr: initialData?.name_tr ?? "",
-      slug: initialData?.slug ?? "",
     },
   });
 
@@ -134,22 +133,7 @@ const CategoryForm = ({
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="slug"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>
-                {/* its the english name */}
-                {locale == "en" ? "Slug" : locale == "ar" ? "العيار" : "Slug"}
-              </FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+
         {/* select section */}
         <div>
           <DialogFooter className="flex justify-between items-center gap-4">
