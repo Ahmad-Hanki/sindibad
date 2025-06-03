@@ -54,7 +54,8 @@
     "price": "Price",
     "checkout": "Checkout",
     "payOnDelivery": "Pay on Delivery",
-    "continueShopping": "Continue Shopping"
+    "continueShopping": "Continue Shopping",
+    "addressError": "Please add your address below."
   },
   "profile": {
     "headerTitle": "My Orders",
@@ -72,5 +73,10 @@
   },
   "dashboardOrder": {
     "headerTitle": "Orders"
+  },
+  "rightSideCartSection": {
+    "headerTitle": "Address",
+    "headerText": "Please enter your address to complete the order.",
+    "buttonText": "Edit Address"
   }
 }

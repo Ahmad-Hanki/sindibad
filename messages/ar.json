@@ -53,7 +53,8 @@
     "price": "السعر",
     "checkout": "الدفع",
     "payOnDelivery": "الدفع عند الاستلام",
-    "continueShopping": "متابعة التسوق"
+    "continueShopping": "متابعة التسوق",
+    "addressError": "يرجى إضافة عنوانك أدناه."
   },
   "profile": {
     "headerTitle": "طلباتي",
@@ -71,5 +72,10 @@
   },
   "dashboardOrder": {
     "headerTitle": "الطلبات"
+  },
+  "rightSideCartSection": {
+    "headerTitle": "العنوان",
+    "headerText": "يرجى إدخال عنوانك لإكمال الطلب.",
+    "buttonText": "تعديل العنوان"
   }
 }
