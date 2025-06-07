@@ -9,7 +9,7 @@ const DashboardClient = () => {
 
   return (
     <div className="py-20 px-10">
-      <div className="flex items-center justify-center gap-3">
+      <div className="flex flex-col lg:flex-row items-center justify-center gap-5">
         <Chart data={data ?? []} />
         <LineChartComponent data={data ?? []} />
       </div>

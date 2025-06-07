@@ -84,7 +84,7 @@ const RightSidePayment = ({ cartData }: { cartData: CartDataType }) => {
     });
 
   return (
-    <div className="w-1/2 flex flex-col space-y-12">
+    <div className="w-full lg:w-[80%] 2xl:w-1/2 flex flex-col space-y-12">
       <section className="p-8 bg-gray-100 border border-gray-100 ">
         <h2 className="text-lg font-bold mb-4">{t("subtotal")}</h2>
         <p className="text-gray-600 text-sm">{t("subtotalDescription")}</p>
