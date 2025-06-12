@@ -25,7 +25,9 @@ const CartProducts = () => {
     );
   }
   return (
-    <div className="w-full flex space-x-12 mb-44">
+    <div className="w-full flex flex-col lg:flex-row 
+    max-lg:items-center max-lg:justify-center md:max-lg:px-12
+     max-lg:space-y-12 lg:space-x-12 mb-44">
       {/* Left Side Section */}
       <div className="w-full">
         {data?.cartItems.map((item) => {
@@ -33,7 +35,7 @@ const CartProducts = () => {
         })}
       </div>
       {/* Right Side Section */}
-      {data  && <RightSidePayment cartData={data} />}
+      {data && <RightSidePayment cartData={data} />}
     </div>
   );
 };

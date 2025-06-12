@@ -13,6 +13,7 @@ export const signUp = async ({ data }: { data: SignUpSchemeInput }) => {
   const formattedData = {
     email_or_phone: data.email,
     password: data.password,
+    
   };
   const signInResult = await Sn("credentials", {
     ...formattedData,

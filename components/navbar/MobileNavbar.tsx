@@ -83,7 +83,7 @@ const MobileNavbar = ({ links, getInTouch, menuText }: MobileNavbarProps) => {
     <div>
       <div className="flex justify-between items-center">
         <div className="z-[100]">
-          <Logo w="w-20" />
+          <Logo w="w-16" />
         </div>
 
         <div className="z-[100] flex gap-4 items-center">
@@ -100,7 +100,7 @@ const MobileNavbar = ({ links, getInTouch, menuText }: MobileNavbarProps) => {
             >
               <User
                 className={cn(
-                  "transition-all duration-200  hover:text-primary/70 w-9 h-9 lg:w-8 lg:h-8",
+                  "transition-all duration-200  hover:text-primary/70 w-7 h-7 lg:w-8 lg:h-8",
                   getOnlyPathname() == "/" && "text-white"
                 )}
               />
@@ -111,7 +111,7 @@ const MobileNavbar = ({ links, getInTouch, menuText }: MobileNavbarProps) => {
             onToggle={() => setOpen((prev) => !prev)}
             duration={0.5}
             color={!open && pn == "/" ? "white" : "black"}
-            size={32}
+            size={24}
           />
         </div>
       </div>
@@ -123,7 +123,8 @@ const MobileNavbar = ({ links, getInTouch, menuText }: MobileNavbarProps) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="fixed inset-0 z-50 w-full bg-popover pt-[112px] text-popover-foreground px-4 flex justify-center flex-col  h-[100vh]"
+            className="fixed inset-0 z-50 w-full bg-popover pt-[112px] text-popover-foreground
+             px-4 flex justify-center flex-col  h-[100vh]"
           >
             <p className="text-lg text-muted-foreground">{menuText}</p>
 

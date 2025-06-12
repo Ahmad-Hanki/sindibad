@@ -11,6 +11,7 @@ import CreateOrderImage, { CreateOrderImageRef } from "./create-order-image";
 import { useUploadImageToCloudinary } from "../_api/upload-image-to-cloudinary";
 import { useRouter } from "@bprogress/next";
 import { generateId } from "@/lib/idGenerater";
+import AddressSection from "./addres-section";
 
 const RightSidePayment = ({ cartData }: { cartData: CartDataType }) => {
   const { data: userData } = useUser({});
@@ -83,8 +84,8 @@ const RightSidePayment = ({ cartData }: { cartData: CartDataType }) => {
     });
 
   return (
-    <div className="w-1/2 bg-gray-100 border border-gray-100 p-5">
-      <section className="p-4">
+    <div className="w-full lg:w-[80%] 2xl:w-1/2 flex flex-col space-y-12">
+      <section className="p-8 bg-gray-100 border border-gray-100 ">
         <h2 className="text-lg font-bold mb-4">{t("subtotal")}</h2>
         <p className="text-gray-600 text-sm">{t("subtotalDescription")}</p>
         {/* price */}
@@ -104,33 +105,27 @@ const RightSidePayment = ({ cartData }: { cartData: CartDataType }) => {
           <p className="font-semibold">{t("total")}</p>
           <p className="text-lg font-bold">₺ {price + shipping_fee}</p>
         </div>
-        {/* {todo: before the user pay, check from useUser if the phone and address are not null, if so then use this to update the user data}
-          
-          // todo:
-      <DialogUserData open={open} setOpen={setOpen} />
-      <Button onClick={() => setOpen(true)} className="w-full">
-        Open
-      </Button> 
-
-      use it in a separate component to update the user data before payment
-      
-      also if there is data, show the user address in the top, and make a button to the user if he wants to change the address
-
-          */}
         <div className="w-full mt-16 space-y-4">
           <Button
             disabled={creditCardPending}
             onClick={() => {
-              payWithCreditCard({
-                cartData: cartData,
-                email: userData!.email!,
-                price,
-                randomId,
-                userName: userData!.name!,
-                userAddress: userData!.address!,
-                userPhone: userData!.phone!,
-                shipping_fee,
-              });
+              if (userData?.address === null) {
+                setPaymentError(
+                  "Lütfen aşağıdaki kısımdan adresinizi ekleyin."
+                );
+                return;
+              } else {
+                payWithCreditCard({
+                  cartData: cartData,
+                  email: userData!.email!,
+                  price,
+                  randomId,
+                  userName: userData!.name!,
+                  userAddress: userData!.address!,
+                  userPhone: userData!.phone!,
+                  shipping_fee,
+                });
+              }
             }}
             className="w-full py-6 rounded-sm text-xl"
           >
@@ -156,7 +151,7 @@ const RightSidePayment = ({ cartData }: { cartData: CartDataType }) => {
         </div>
         {paymentError && <p className="text-red-500 mt-4">{paymentError}</p>}
       </section>
-
+      <AddressSection />
       {/* Invisible component */}
       <CreateOrderImage
         ref={orderImageRef}

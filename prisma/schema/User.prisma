@@ -3,7 +3,7 @@ model User {
   name          String?
   email         String?   @unique
   phone         String?   @unique
-  address       String?
+  address       String?   
   emailVerified DateTime?
   image         String?
   password      String?   @db.VarChar(255) // Nullable for OAuth users

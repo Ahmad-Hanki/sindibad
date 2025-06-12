@@ -24,3 +24,6 @@ export const useUser = ({ queryConfig }: UseAuthUserOptions) => {
     ...queryConfig,
   });
 };
+export type GetUserType = NonNullable<
+  Awaited<ReturnType<typeof getCurrentUser>>
+>;

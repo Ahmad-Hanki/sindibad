@@ -53,7 +53,8 @@
     "price": "Fiyat",
     "checkout": "Ödeme Yap",
     "payOnDelivery": "Kapıda Ödeme",
-    "continueShopping": "Alışverişe Devam Et"
+    "continueShopping": "Alışverişe Devam Et",
+    "addressError": "Lütfen aşağıya adresinizi ekleyin."
   },
   "profile": {
     "headerTitle": "Siparişlerim",
@@ -71,5 +72,10 @@
   },
   "dashboardOrder": {
     "headerTitle": "Siparişler"
+  },
+  "rightSideCartSection": {
+    "headerTitle": "Adres",
+    "headerText": "Siparişi tamamlamak için lütfen adresinizi girin.",
+    "buttonText": "Adresi Düzenle"
   }
 }

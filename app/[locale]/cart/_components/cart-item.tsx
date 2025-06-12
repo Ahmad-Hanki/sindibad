@@ -24,9 +24,9 @@ const CartItem = ({ item }: { item: CartItemWithProductType }) => {
   return (
     <section key={item.id}>
       <div className="p-4  border-b ">
-        <div className="flex items-center gap-3 ">
+        <div className="flex-col lg:flex-row items-center gap-3 ">
           {/* Image Section */}
-          <div className="relative overflow-hidden aspect-square w-20">
+          <div className="relative overflow-hidden aspect-square w-20 mb-5">
             <Image
               src={item.product.image}
               className="object-center object-cover"
@@ -35,18 +35,18 @@ const CartItem = ({ item }: { item: CartItemWithProductType }) => {
             />
           </div>
           {/* Product Details Section */}
-          <div className="flex flex-col md:flex-row md:items-center gap-2 w-full md:justify-between">
+          <div className="flex md:items-center gap-2 w-full justify-between">
             {/* Left Section */}
-            <div className="flex flex-col gap-1 break-all line-clamp-1 overflow-hidden">
+            <div className="flex flex-col gap-y-2 md:gap-1 break-all line-clamp-1 overflow-hidden">
               <h1 className="text-lg ">{item.product.name}</h1>
               <p className="text-sm text-gray-500">
                 {t("price")} :{" "}
                 <span className="text-black"> ₺ {item.product.price}</span>
               </p>
-              <div className="text-sm text-gray-500 flex flex-col lg:flex-row items-center">
+              <div className="text-sm text-gray-500 flex flex-col md:flex-row md:items-center">
                 <p> {t("quantity")} </p>
                 <div className="flex flex-col  break-all line-clamp-1 overflow-hidden">
-                  <div className="flex items-center -space-x-1">
+                  <div className="flex items-center -space-x-1 max-md:-ml-4">
                     <Button
                       variant={"ghost"}
                       className=" hover:bg-transparent"
@@ -77,7 +77,7 @@ const CartItem = ({ item }: { item: CartItemWithProductType }) => {
               </div>
             </div>
             {/* Right Section */}
-            <div className="space-y-7 flex flex-col items-end">
+            <div className="space-y-7 flex flex-col items-center justify-center md:items-end">
               <div className="flex flex-col gap-1 break-all line-clamp-1 overflow-hidden ">
                 <div className="flex items-center gap-1">
                   {isRemoveOneItemPending ? (
